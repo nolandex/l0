@@ -38,11 +38,12 @@ const Header = () => {
       <nav className="relative flex justify-between items-center">
         {/* Left section */}
         <div className="flex items-center md:gap-x-12 flex-1">
+          {/* PERUBAHAN DI SINI: Ukuran teks dikecilkan dari 2xl menjadi xl */}
           <Link
             href="/"
             aria-label="Bisnovo"
             title="Bisnovo"
-            className="font-bold text-2xl"
+            className="font-bold text-xl" 
           >
             Bisnovo
           </Link>
@@ -89,11 +90,12 @@ const Header = () => {
           <div className="absolute top-0 left-0 w-full z-50">
             <div className="p-5 bg-background border rounded shadow-sm">
               <div className="flex items-center justify-between mb-4">
+                 {/* PERUBAHAN DI SINI: Ukuran teks dikecilkan dari xl menjadi lg */}
                 <Link
                   href="/"
                   aria-label="Bisnovo"
                   title="Bisnovo"
-                  className="font-bold text-xl tracking-wide"
+                  className="font-bold text-lg tracking-wide"
                 >
                   Bisnovo
                 </Link>
@@ -113,7 +115,6 @@ const Header = () => {
                       <Link
                         href={`/${lang === "en" ? "" : lang}${link.href}`}
                         aria-label={link.label}
-                        // PERUBAHAN DI SINI: Diperbaiki dari {label} menjadi {link.label}
                         title={link.label}
                         className="font-medium tracking-wide transition-colors duration-200 hover:text-deep-purple-accent-400 text-sm"
                         onClick={() => setIsMenuOpen(false)}
