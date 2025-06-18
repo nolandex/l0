@@ -9,11 +9,10 @@ import { useState, useEffect } from "react";
 import { CgClose } from "react-icons/cg";
 import { ThemedButton } from "../ThemedButton";
 
+// PERUBAHAN DI SINI: Memperbarui array links
 const links = [
-  { label: "Features", href: "#Features" },
-  { label: "Pricing", href: "#Pricing" },
-  { label: "Testimonials", href: "#Testimonials" },
-  { label: "FAQ", href: "#FAQ" },
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
 ];
 
 const Header = () => {
@@ -29,6 +28,18 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Fungsi untuk membuat URL dengan prefix bahasa jika diperlukan
+  const getLocalizedPath = (path) => {
+    // Jika link adalah ke root ('/'), atur path dasar
+    const basePath = lang === "en" ? "" : `/${lang}`;
+    // Jika path yang dituju juga root, kembalikan basePath atau '/'
+    if (path === "/") {
+      return basePath || "/";
+    }
+    // Gabungkan basePath dengan path halaman
+    return `${basePath}${path}`;
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-background/95 backdrop-blur-sm ${
@@ -38,12 +49,11 @@ const Header = () => {
       <nav className="relative flex justify-between items-center">
         {/* Left section */}
         <div className="flex items-center md:gap-x-12 flex-1">
-          {/* PERUBAHAN DI SINI: Ukuran teks dikecilkan dari 2xl menjadi xl */}
           <Link
-            href="/"
+            href={getLocalizedPath("/")}
             aria-label="Bisnovo"
             title="Bisnovo"
-            className="font-bold text-xl" 
+            className="font-bold text-xl"
           >
             Bisnovo
           </Link>
@@ -53,8 +63,9 @@ const Header = () => {
         <ul className="hidden md:flex items-center justify-center gap-6 flex-1">
           {links.map((link) => (
             <li key={link.label}>
+              {/* PERUBAHAN DI SINI: href diperbarui untuk menuju halaman baru */}
               <Link
-                href={`/${lang === "en" ? "" : lang}${link.href}`}
+                href={getLocalizedPath(link.href)}
                 aria-label={link.label}
                 title={link.label}
                 className="tracking-wide transition-colors duration-200 font-normal text-sm"
@@ -90,9 +101,8 @@ const Header = () => {
           <div className="absolute top-0 left-0 w-full z-50">
             <div className="p-5 bg-background border rounded shadow-sm">
               <div className="flex items-center justify-between mb-4">
-                 {/* PERUBAHAN DI SINI: Ukuran teks dikecilkan dari xl menjadi lg */}
                 <Link
-                  href="/"
+                  href={getLocalizedPath("/")}
                   aria-label="Bisnovo"
                   title="Bisnovo"
                   className="font-bold text-lg tracking-wide"
@@ -112,8 +122,9 @@ const Header = () => {
                 <ul className="space-y-4">
                   {links.map((link) => (
                     <li key={link.label}>
+                       {/* PERUBAHAN DI SINI: href diperbarui untuk menuju halaman baru */}
                       <Link
-                        href={`/${lang === "en" ? "" : lang}${link.href}`}
+                        href={getLocalizedPath(link.href)}
                         aria-label={link.label}
                         title={link.label}
                         className="font-medium tracking-wide transition-colors duration-200 hover:text-deep-purple-accent-400 text-sm"
