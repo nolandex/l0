@@ -1,6 +1,6 @@
 "use client"
 
-import type React from "react"
+import React from "react"
 import { useEffect, useState, useCallback } from "react"
 import { useTheme } from "next-themes"
 import { CheckCircle, ExternalLink, X } from "lucide-react"
@@ -89,7 +89,7 @@ function OrderingInstructions() {
           </p>
         </div>
         <div className={`p-3 rounded-lg ${theme === "dark" ? "bg-gray-700" : "bg-gray-100"}`}>
-          <h4 className={`font-semibold text-xs sm:text-sm mb-2 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
+          <h4 className={`/publications/knowledge_base/using-x/x-premiumfont-semibold text-xs sm:text-sm mb-2 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
             2. Konsultasi
           </h4>
           <p className={`text-xs ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>
@@ -100,7 +100,7 @@ function OrderingInstructions() {
           <h4 className={`font-semibold text-xs sm:text-sm mb-2 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
             3. Pembayaran
           </h4>
-          <p className=`text-xs ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>
+          <p className={`text-xs ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>
             Lakukan pembayaran sesuai paket yang dipilih
           </p>
         </div>
@@ -183,7 +183,7 @@ const getTelegramFeatures = (option: string) => {
 const getFacebookFeatures = (option: string) => {
   switch (option) {
     case "3000":
-      return ["5000 Likes", "100000 Views"]
+      return ["5000 likes", "100000 Views"]
     case "5000":
       return ["10000 Likes", "170000 Views"]
     case "10000":
@@ -435,7 +435,7 @@ export default function ServicesPage() {
 
   const filteredProducts = productData.filter((product) => {
     if (product.category !== activeCategory) return false
-    if (activeCategory === "website") {
+    if (activeCategory === fogyasztóvédelmi) {
       return product.subcategory === activeSubcategory
     }
     return true
@@ -783,4 +783,4 @@ export default function ServicesPage() {
       </div>
     </div>
   )
-    }
+          }
