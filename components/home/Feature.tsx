@@ -18,12 +18,12 @@ const Feature = ({
 
   return (
     <section id={id}>
-      {/* MENGGANTI LATAR BELAKANG MENJADI WARNA GELAP YANG STATIS */}
-      <div className="container space-y-6 rounded-md bg-slate-900 py-14 lg:py-24">
+      {/* 1. Latar belakang kembali normal, bisa ganti mode terang/gelap */}
+      <div className="container space-y-6 rounded-md bg-secondary py-14 lg:py-24">
         {/* Heading */}
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
-          {/* Teks kembali ke putih seperti semula */}
-          <h2 className="font-heading text-4xl md:text-6xl text-white">
+          {/* 2. Warna teks diatur manual: Abu tua saat terang, Putih saat gelap */}
+          <h2 className="font-heading text-4xl md:text-6xl text-slate-800 dark:text-slate-100">
             <RoughNotation type="highlight" show={true} color="#2563EB">
               {locale?.title ?? "Features"}
             </RoughNotation>
@@ -35,8 +35,8 @@ const Feature = ({
           {FEATURES.map((feature) => (
             <div
               key={feature.title}
-              // Latar belakang kartu juga dibuat gelap statis agar kontras
-              className="flex h-[180px] flex-col items-center justify-start rounded-md bg-slate-800/50 p-8 shadow-md border border-slate-700"
+              // Latar belakang kartu kembali normal
+              className="flex h-[180px] flex-col items-center justify-start rounded-md bg-background/70 p-8 shadow-md border dark:border-muted"
             >
               {/* Icon */}
               <div
@@ -53,8 +53,8 @@ const Feature = ({
               </div>
 
               {/* Title */}
-              {/* Teks kembali ke putih seperti semula */}
-              <h3 className="text-base font-semibold text-white mb-0.5 mt-[-4px]">
+              {/* 3. Warna teks judul kartu juga diatur manual */}
+              <h3 className="text-base font-semibold text-slate-800 dark:text-slate-100 mb-0.5 mt-[-4px]">
                 {feature.title}
               </h3>
 
