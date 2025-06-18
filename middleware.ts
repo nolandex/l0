@@ -5,9 +5,9 @@ import type { NextRequest } from 'next/server';
 import { match } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 
-const locales = ['en', 'id', 'ja', 'ar', 'es', 'ru'];
+const locales = ['en', 'zh', 'ja', 'ar', 'es', 'ru'];
 // --- UBAH BARIS INI ---
-const defaultLocale = 'id'; // Sebelumnya 'en'
+const defaultLocale = 'zh'; // Sebelumnya 'en'
 
 function getLocale(request: NextRequest): string {
   const negotiatorHeaders: Record<string, string> = {};
