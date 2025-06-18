@@ -24,29 +24,30 @@ const FAQ = ({
   return (
     <section id={id} className="container py-16 md:py-24">
       <div className="flex flex-col text-center gap-4 mb-12 max-w-2xl mx-auto">
-        <h2 className="text-2xl font-bold md:text-3xl">{locale.title}</h2>
+        {/* PERUBAHAN DI SINI:
+          Highlight biru sekarang diterapkan pada judul utama ini (locale.title).
+          Struktur ini meniru komponen Testimonials.
+        */}
+        <h2 className="text-2xl font-bold md:text-3xl text-white">
+          <RoughNotation type="highlight" show={true} color="#2563EB">
+            {locale.title}
+          </RoughNotation>
+        </h2>
         <p className="text-lg text-muted-foreground">{locale.description}</p>
       </div>
 
       <Accordion type="single" collapsible className="mx-auto w-full max-w-3xl">
         {FAQS?.map((item, index) => (
           <AccordionItem key={index} value={`item-${index}`}>
-            {/* EFEK BIRU DITERAPKAN DI SINI (PADA PERTANYAAN) */}
-            <AccordionTrigger className="text-base text-left no-underline hover:no-underline">
-              <RoughNotation
-                type="highlight"
-                show={true}
-                color="#2563EB"
-                padding={[2, 6]}
-                iterations={1}
-              >
-                <span className="text-white relative">
-                  {item.title}
-                </span>
-              </RoughNotation>
+            {/* PERUBAHAN DI SINI:
+              Highlight biru pada setiap pertanyaan telah DIHAPUS.
+              Sekarang hanya menampilkan teks pertanyaan biasa.
+            */}
+            <AccordionTrigger className="text-base text-left">
+              {item.title}
             </AccordionTrigger>
 
-            {/* LATAR BELAKANG BIRU DIHILANGKAN DARI SINI (PADA JAWABAN) */}
+            {/* Bagian jawaban ini sudah benar (tanpa latar belakang biru) */}
             <AccordionContent className="text-muted-foreground pt-2">
               {item.content}
             </AccordionContent>
