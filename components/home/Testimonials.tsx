@@ -1,16 +1,53 @@
 /* eslint-disable react/no-unescaped-entities */
-import { TwitterX } from "@/components/social-icons/icons";
-import { siteConfig } from "@/config/site";
+"use client";
+
 import { TestimonialsData } from "@/config/testimonials";
 import Image from "next/image";
-import Link from "next/link";
+import { useRef, useEffect, useState } from "react";
 import { RoughNotation } from "react-rough-notation";
 
 const Testimonials = ({ id, locale }: { id: string; locale: any }) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isAutoScroll, setIsAutoScroll] = useState(true);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isAutoScroll && scrollRef.current) {
+      interval = setInterval(() => {
+        if (scrollRef.current) {
+          const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+          
+          // Jika sudah di paling akhir, kembali ke awal
+          if (scrollLeft >= scrollWidth - clientWidth -1) {
+            scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
+          } else {
+            // Lebar kartu + gap
+            const cardWidth = 300 + 16; 
+            scrollRef.current.scrollBy({ left: cardWidth, behavior: "smooth" });
+          }
+        }
+      }, 3000); // Ganti durasi scroll di sini (dalam milidetik)
+    }
+    return () => clearInterval(interval);
+  }, [isAutoScroll]);
+
+  // Hentikan auto-scroll saat disentuh atau di-klik
+  const handleInteractionStart = () => {
+    setIsAutoScroll(false);
+  };
+
+  // Lanjutkan auto-scroll setelah interaksi selesai
+  const handleInteractionEnd = () => {
+    // Beri jeda sedikit sebelum memulai kembali
+    setTimeout(() => {
+        setIsAutoScroll(true);
+    }, 5000); 
+  };
+
   return (
     <section
       id={id}
-      className="flex flex-col justify-center items-center pt-16 gap-12 max-w-[88%]"
+      className="flex flex-col justify-center items-center pt-16 gap-12 w-full max-w-6xl mx-auto px-4"
     >
       <div className="flex flex-col text-center max-w-xl gap-4">
         <h2 className="text-center text-white">
@@ -18,54 +55,51 @@ const Testimonials = ({ id, locale }: { id: string; locale: any }) => {
             {locale.title}
           </RoughNotation>
         </h2>
+        {/* Link Twitter dari deskripsi sudah dihapus */}
         <p className="text-large text-default-500">
-          {/* Don't take our word for it. Here's what they have to say. */}
-          {locale.description1}{" "}
-          <Link
-            href={siteConfig.authors[0].twitter as string}
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-            className="text-primary underline"
-          >
-            {locale.description2}
-          </Link>
-          {locale.description3}
+          {locale.description1}
         </p>
       </div>
-      <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 overflow-hidden relative transition-all">
-        {TestimonialsData.map((testimonial, index) => (
-          <div className="mb-4 z-0 break-inside-avoid-column" key={index}>
-            <div className="border border-slate/10 rounded-lg p-4 flex flex-col items-start gap-3 h-fit">
-              <div className="flex items-start justify-between w-full">
-                <div className="flex items-start gap-2">
-                  <Image
-                    src={testimonial.user.image}
-                    alt="maker"
-                    height={40}
-                    width={40}
-                    className="w-12 h-12 rounded-full object-cover object-top"
-                  />
-                  <div className="flex flex-col items-start">
-                    <p className="font-bold">{testimonial.user.name}</p>
-                    <p className="dark:text-zinc-400">
-                      @{testimonial.user.username}
-                    </p>
+      <div className="relative w-full">
+        <div
+          ref={scrollRef}
+          onTouchStart={handleInteractionStart}
+          onTouchEnd={handleInteractionEnd}
+          onMouseDown={handleInteractionStart}
+          onMouseUp={handleInteractionEnd}
+          className="w-full overflow-x-auto snap-x snap-mandatory flex flex-row gap-4 pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {TestimonialsData.map((testimonial, index) => (
+            <div
+              className="snap-start flex-shrink-0 w-[300px] mb-4 transition-all"
+              key={index}
+            >
+              <div className="border border-slate/10 rounded-lg p-4 flex flex-col items-start gap-3 h-full bg-white/5">
+                <div className="flex items-start justify-between w-full">
+                  <div className="flex items-start gap-2">
+                    <Image
+                      src={testimonial.user.image}
+                      alt="user"
+                      height={40}
+                      width={40}
+                      className="w-12 h-12 rounded-full object-cover object-top"
+                    />
+                    <div className="flex flex-col items-start">
+                      <p className="font-bold">{testimonial.user.name}</p>
+                      <p className="text-default-500">
+                        @{testimonial.user.username}
+                      </p>
+                    </div>
                   </div>
+                  {/* Ikon dan Link Twitter dari setiap kartu sudah dihapus */}
                 </div>
-                <Link
-                  href={`https://twitter.com/${testimonial.user.username}`}
-                  target="_blank"
-                  rel="noopener noreferrer nofollow"
-                >
-                  <TwitterX className="w-8 h-8" />
-                </Link>
+                <p className="text-default-400 text-[14px]">
+                  {testimonial.content}
+                </p>
               </div>
-              <p className="dark:text-zinc-200 text-[14px]">
-                {testimonial.content}
-              </p>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
