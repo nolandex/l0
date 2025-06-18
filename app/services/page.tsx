@@ -191,222 +191,6 @@ const getInstagramFeatures = (option: string) => {
   switch (option) {
     case "3000":
       return ["5000 Likes", "100000 Views"]
-    case "500 Họ
-System: Here's how to address the issues in the build log and fix the code to ensure a successful build:
-
-### Fixing the Syntax Error
-The primary issue is the syntax error in the `productData` array for the `Portfolio` product, where `time: string` is invalid. This has been corrected by removing the `time` property and ensuring the object aligns with the `Product` interface.
-
-### Addressing Dependency Warnings
-1. **Deprecated Subdependencies**:
-   - The log mentions deprecated subdependencies like `@humanwhocodes/config-array@0.11.14`, `glob@7.2.3`, etc. These are likely pulled in by tools like ESLint or other dependencies.
-   - **Action**: Update these dependencies to their latest versions. For example, update ESLint to the latest version (`npm install eslint@latest` or `pnpm update eslint`) and check for updates to other deprecated packages. You can also run `pnpm update` to update all dependencies, but verify compatibility with Next.js 14.1.0.
-
-2. **Unmet Peer Dependencies**:
-   - The `@nextui-org/*` packages expect `@nextui-org/theme@0.0.0-canary-20240718175036` but found `2.2.8`. This mismatch is causing warnings.
-   - **Action**: Ensure all `@nextui-org/*` packages are compatible. Update `@nextui-org/react` and its subdependencies to the latest compatible versions or the specific canary version required. For example:
-     ```bash
-     pnpm install @nextui-org/react@latest @nextui-org/theme@0.0.0-canary-20240718175036
-     ```
-     Alternatively, check the `@nextui-org/react` documentation for the correct peer dependency versions and pin them in `package.json`.
-
-### Updated Code
-Below is the corrected `app/services/page.tsx` with the `Portfolio` product fixed and all previous changes incorporated. The dependency issues require separate handling in your `package.json` and are not part of the code below.
-
-```tsx
-"use client"
-
-import type React from "react"
-import { useEffect, useState, useCallback } from "react"
-import { useTheme } from "next-themes"
-import { CheckCircle, ExternalLink, X } from "lucide-react"
-import { Swiper, SwiperSlide } from "swiper/react"
-import "swiper/css"
-
-// Komponen Modal
-interface ModalProps {
-  isOpen: boolean
-  onClose: () => void
-  children: React.ReactNode
-  size?: "sm" | "md" | "lg" | "full"
-}
-
-function Modal({ isOpen, onClose, children, size = "full" }: ModalProps) {
-  const { theme } = useTheme()
-  if (!isOpen) return null
-
-  const sizeClasses = {
-    sm: "max-w-sm",
-    md: "max-w-md",
-    lg: "max-w-2xl",
-    full: "max-w-full w-full h-[90vh]",
-  }[size]
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
-      <div
-        className={`${sizeClasses} ${
-          theme === "dark" ? "bg-gray-800" : "bg-white"
-        } rounded-xl overflow-hidden shadow-2xl relative p-4`}
-      >
-        <button
-          onClick={onClose}
-          className={`absolute top-4 right-4 p-3 rounded-md transition-all duration-200 z-10 ${
-            theme === "dark"
-              ? "hover:bg-gray-700 text-gray-400 hover:text-white"
-              : "hover:bg-gray-200 text-gray-600 hover:text-gray-900"
-          }`}
-        >
-          <X className="h-5 w-5" />
-        </button>
-        {children}
-      </div>
-    </div>
-  )
-}
-
-// Komponen FeatureList
-interface FeatureListProps {
-  features: string[]
-  textColor?: string
-}
-
-function FeatureList({ features, textColor }: FeatureListProps) {
-  const { theme } = useTheme()
-  return (
-    <ul className="space-y-1">
-      {features.map((feature, i) => (
-        <li key={i} className="flex items-start">
-          <CheckCircle
-            className={`h-3 w-3 mr-2 flex-shrink-0 ${
-              theme === "dark" ? "text-green-400" : "text-green-500"
-            }`}
-          />
-          <span
-            className={`text-xs ${
-              textColor ||
-              (theme === "dark" ? "text-gray-300" : "text-gray-600")
-            }`}
-          >
-            {feature}
-          </span>
-        </li>
-      ))}
-    </ul>
-  )
-}
-
-// Komponen untuk instruksi pemesanan
-function OrderingInstructions() {
-  const { theme } = useTheme()
-  return (
-    <div className="space-y-3">
-      <h3
-        className={`text-lg font-bold ${
-          theme === "dark" ? "text-white" : "text-gray-900"
-        }`}
-      >
-        Cara Pemesanan
-      </h3>
-      <div
-        className={`p-3 rounded-lg ${
-          theme === "dark" ? "bg-gray-700" : "bg-gray-100"
-        }`}
-      >
-        <h4
-          className={`font-semibold text-sm mb-2 ${
-            theme === "dark" ? "text-white" : "text-gray-900"
-          }`}
-        >
-          1. Pilih Paket
-        </h4>
-        <p
-          className={`text-xs ${
-            theme === "dark" ? "text-gray-300" : "text-gray-600"
-          }`}
-        >
-          Pilih paket yang sesuai dengan kebutuhan bisnis Anda
-        </p>
-      </div>
-      <div
-        className={`p-3 rounded-lg ${
-          theme === "dark" ? "bg-gray-700" : "bg-gray-100"
-        }`}
-      >
-        <h4
-          className={`font-semibold text-sm mb-2 ${
-            theme === "dark" ? "text-white" : "text-gray-900"
-          }`}
-        >
-          2. Konsultasi
-        </h4>
-        <p
-          className={`text-xs ${
-            theme === "dark" ? "text-gray-300" : "text-gray-600"
-          }`}
-        >
-          Diskusikan kebutuhan spesifik dan detail proyek dengan tim kami
-        </p>
-      </div>
-      <div
-        className={`p-3 rounded-lg ${
-          theme === "dark" ? "bg-gray-700" : "bg-gray-100"
-        }`}
-      >
-        <h4
-          className={`font-semibold text-sm mb-2 ${
-            theme === "dark" ? "text-white" : "text-gray-900"
-          }`}
-        >
-          3. Pembayaran
-        </h4>
-        <p
-          className={`text-xs ${
-            theme === "dark" ? "text-gray-300" : "text-gray-600"
-          }`}
-        >
-          Lakukan pembayaran sesuai paket yang dipilih
-        </p>
-      </div>
-      <div
-        className={`p-3 rounded-lg ${
-          theme === "dark" ? "bg-gray-700" : "bg-gray-100"
-        }`}
-      >
-        <h4
-          className={`font-semibold text-sm mb-2 ${
-            theme === "dark" ? "text-white" : "text-gray-900"
-          }`}
-        >
-          4. Pengerjaan
-        </h4>
-        <p
-          className={`text-xs ${
-            theme === "dark" ? "text-gray-300" : "text-gray-600"
-          }`}
-        >
-          Tim kami akan mulai mengerjakan proyek sesuai timeline yang disepakati
-        </p>
-      </div>
-    </div>
-  )
-}
-
-interface Product {
-  name: string
-  price: string
-  category: string
-  subcategory?: string
-  features?: string[]
-  exampleUrl?: string
-  modalType?: "example" | "details" | "contentImages" | "videoPromo" | "seoImages" | "adsImages" | null
-  image?: string
-}
-
-const getInstagramFeatures = (option: string) => {
-  switch (option) {
-    case "3000":
-      return ["5000 Likes", "100000 Views"]
     case "5000":
       return ["10000 Likes", "170000 Views"]
     case "10000":
@@ -423,14 +207,14 @@ const getTikTokFeatures = (option: string) => {
   const baseSaves = 700
 
   switch (option) {
-    case "1000":
+    case "2000":
       return [
         `${baseViews.toLocaleString()} Views`,
         `${baseLikes.toLocaleString()} Likes`,
         `${baseShares.toLocaleString()} Shares`,
         `${baseSaves.toLocaleString()} Saves`,
       ]
-    case "3000":
+    case "5000":
       return [
         `${(baseViews * 2.5).toLocaleString()} Views`,
         `${(baseLikes * 2.5).toLocaleString()} Likes`,
@@ -544,12 +328,13 @@ const productData: Product[] = [
     category: "lainnya",
     exampleUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     modalType: "videoPromo",
+    image: "/images/video_promo.jpg",
   },
   {
-    name: "SEO & Domain",
+    name: "SEO & Domain Website",
     price: "Rp 25,000",
     category: "lainnya",
-    features: ["Riset Kata Kunci", "Optimasi Halaman"],
+    features: ["Riset Kata Kunci", "Optimasi Halaman", "setting dll"],
     modalType: "seoImages",
     image: "/images/seo.jpg",
   },
@@ -668,7 +453,7 @@ export default function ServicesPage() {
   const [modalProduct, setModalProduct] = useState<Product | null>(null)
 
   const [instagramOption, setInstagramOption] = useState("3000")
-  const [tiktokOption, setTiktokOption] = useState("1000")
+  const [tiktokOption, setTiktokOption] = useState("2000")
   const [telegramOption, setTelegramOption] = useState("3000")
   const [facebookOption, setFacebookOption] = useState("3000")
   const [boosterLink, setBoosterLink] = useState("")
@@ -691,7 +476,7 @@ export default function ServicesPage() {
             : "Rp 150,000"
         currentFeatures = getInstagramFeatures(instagramOption)
       } else if (product.name === "TikTok") {
-        currentPrice = tiktokOption === "1000" ? "Rp 50,000" : "Rp 100,000"
+        currentPrice = tiktokOption === "2000" ? "Rp 50,000" : "Rp 100,000"
         currentFeatures = getTikTokFeatures(tiktokOption)
       } else if (product.name === "Telegram") {
         currentPrice =
@@ -729,16 +514,7 @@ export default function ServicesPage() {
     filteredProducts.forEach((product) => groupedProducts.push([product]))
   } else {
     for (let i = 0; i < filteredProducts.length; i += 2) {
-      const pair = filteredProducts.slice(i, i + 2)
-      if (pair.length === 1) {
-        pair.push({
-          name: "",
-          price: "",
-          category: activeCategory,
-          features: [],
-        })
-      }
-      groupedProducts.push(pair)
+      groupedProducts.push(filteredProducts.slice(i, i + 2))
     }
   }
 
@@ -778,13 +554,12 @@ export default function ServicesPage() {
         theme === "dark" ? "bg-gray-900" : "bg-gray-50"
       } px-4 sm:px-6 max-w-screen-xl mx-auto overflow-x-hidden`}
     >
-      <div className="grid grid-cols-2 gap-2 mb-6 px-2 sm:px-4 justify-center">
+      <div className="flex flex-wrap justify-center gap-2 mb-6">
         <button
           onClick={() => {
             setActiveCategory("paket_bisnis")
           }}
           className={getButtonClasses(activeCategory === "paket_bisnis")}
-          style={{ width: "100%", padding: "0.5rem" }}
         >
           Paket Bisnis
         </button>
@@ -794,7 +569,6 @@ export default function ServicesPage() {
             setActiveSubcategory("business")
           }}
           className={getButtonClasses(activeCategory === "website")}
-          style={{ width: "100%", padding: "0.5rem" }}
         >
           Website
         </button>
@@ -803,7 +577,6 @@ export default function ServicesPage() {
             setActiveCategory("sosmed")
           }}
           className={getButtonClasses(activeCategory === "sosmed")}
-          style={{ width: "100%", padding: "0.5rem" }}
         >
           Sosmed
         </button>
@@ -812,7 +585,6 @@ export default function ServicesPage() {
             setActiveCategory("lainnya")
           }}
           className={getButtonClasses(activeCategory === "lainnya")}
-          style={{ width: "100%", padding: "0.5rem" }}
         >
           Lainnya
         </button>
@@ -842,13 +614,10 @@ export default function ServicesPage() {
             className={`grid ${
               activeCategory === "paket_bisnis" || activeCategory === "lainnya"
                 ? "grid-cols-1"
-                : "grid-cols-2"
+                : "grid-cols-1 sm:grid-cols-2"
             } gap-3 sm:gap-4 w-full px-0`}
           >
-            {group.map((product, index) => {
-              if (!product.name) {
-                return <div key={index} className="hidden sm:block" />
-              }
+            {group.map((product) => {
               const displayProduct = getProductDisplayData(product)
               return (
                 <div
@@ -918,8 +687,8 @@ export default function ServicesPage() {
                                 : "bg-white border-gray-300 text-gray-700"
                             } focus:outline-none focus:ring-2 focus:ring-blue-500`}
                           >
-                            <option value="1000">1000 Followers</option>
-                            <option value="3000">3000 Followers</option>
+                            <option value="2000">2000 Followers</option>
+                            <option value="5000">5000 Followers</option>
                           </select>
                         )}
                         {displayProduct.name === "Telegram" && (
@@ -1038,7 +807,7 @@ export default function ServicesPage() {
       <Modal
         isOpen={
           (activeModal === "contentImages" && modalProduct?.name === "Desain Konten") ||
-          (activeModal === "seoImages" && modalProduct?.name === "SEO & Domain") ||
+          (activeModal === "seoImages" && modalProduct?.name === "SEO & Domain Website") ||
           (activeModal === "adsImages" && modalProduct?.name === "Jasa Iklan Online")
         }
         onClose={closeModal}
@@ -1085,4 +854,4 @@ export default function ServicesPage() {
       </Modal>
     </div>
   )
-              }
+    }
