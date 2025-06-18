@@ -9,13 +9,11 @@ import {
   Divider,
   Link,
   Spacer,
-} from "@nextui-org/react"; // Komponen asli tetap digunakan
+} from "@nextui-org/react";
 
 import { siteConfig } from "@/config/site";
 import { ALL_TIERS } from "@/config/tiers";
 import { FaCheck } from "react-icons/fa";
-// RoughNotation tidak digunakan untuk meniru gaya shadcn yang lebih bersih
-// import { RoughNotation } from "react-rough-notation";
 
 const Pricing = ({
   id,
@@ -28,14 +26,12 @@ const Pricing = ({
 }) => {
   const TIERS = ALL_TIERS[`TIERS_${langName.toUpperCase()}`];
   
-  // Fungsi yang sama untuk menentukan tier unggulan
   const isFeatured = (tier: any, index: number) => {
     return index === 1 || (typeof tier.price === 'number' && tier.price > 0);
   };
 
   return (
     <section id={id} className="container py-8 md:py-12 lg:py-24">
-      {/* Header dengan styling shadcn/ui */}
       <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
         <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
           {locale.title}
@@ -48,13 +44,11 @@ const Pricing = ({
         </p>
       </div>
 
-      {/* Grid Kartu Harga dengan styling shadcn/ui */}
       <div className="mx-auto mt-12 grid max-w-5xl items-start gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {TIERS?.map((tier, index) => {
             const featured = isFeatured(tier, index);
 
             return(
-                // Menggunakan Komponen Card dari NextUI, tapi diberi className
                 <Card
                     key={tier.title}
                     className={`flex flex-col transition duration-200 ease-in-out ${
@@ -67,7 +61,6 @@ const Pricing = ({
                     </CardHeader>
 
                     <CardBody className="flex-1 justify-start">
-                        {/* Styling harga meniru shadcn/ui */}
                         <div className="mb-6 mt-2 flex items-baseline justify-center gap-x-2">
                             {typeof tier.price === "number" ? (
                                 <>
@@ -85,7 +78,6 @@ const Pricing = ({
                             )}
                         </div>
 
-                        {/* Styling fitur meniru shadcn/ui */}
                         <ul className="space-y-3 text-sm">
                             {tier.features?.map((feature: string, i: number) => (
                                 <li key={i} className="flex items-center gap-2">
@@ -99,11 +91,13 @@ const Pricing = ({
                     <Divider />
                     
                     <CardFooter className="justify-center pt-4 pb-4">
-                        {/* Menggunakan Button dari NextUI, tapi dengan variant yang disesuaikan */}
+                        {/* PERBAIKAN DI SINI:
+                          Ganti `tier.href` dengan nama properti yang benar dari data Anda (misal: tier.url, tier.path).
+                          Jika tidak ada properti untuk link, Anda bisa menggunakan link statis seperti "/register" atau "#".
+                        */}
                         <Button
                             as={Link}
-                            href={tier.link || "#"}
-                            // Menggunakan variant dari NextUI untuk meniru gaya solid/outline
+                            href={tier.href || "#"}
                             variant={featured ? "solid" : "bordered"}
                             color="primary"
                             className="w-full"
