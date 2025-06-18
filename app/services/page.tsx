@@ -100,7 +100,7 @@ function OrderingInstructions() {
           <h4 className={`font-semibold text-xs sm:text-sm mb-2 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
             3. Pembayaran
           </h4>
-          <p className={`text-xs ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>
+          <p className=`text-xs ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>
             Lakukan pembayaran sesuai paket yang dipilih
           </p>
         </div>
@@ -265,9 +265,9 @@ const productData: Product[] = [
   },
   {
     name: "Video Promosi",
-    price: "Rp 20,000",
+    price: "Rp 10,000",
     category: "lainnya",
-    exampleUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    exampleUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     modalType: "videoPromo",
     image: "/images/video_promo.jpg",
   },
@@ -297,7 +297,7 @@ const productData: Product[] = [
     image: "/images/landing_page.jpg",
   },
   {
-    name: "Profile Bisnis",
+    name: "Profil Bisnis",
     price: "Rp 20,000",
     category: "website",
     subcategory: "business",
@@ -308,14 +308,14 @@ const productData: Product[] = [
   {
     name: "Simple Store",
     price: "Rp 20,000",
-    category: "business",
+    category: "website",
     subcategory: "business",
     features: ["Responsif", "Hosting Gratis"],
     exampleUrl: "https://shopify.com",
     image: "/images/simple_store.jpg",
   },
   {
-    name: "Portfolio Link",
+    name: "Portfolio",
     price: "Rp 20,000",
     category: "website",
     subcategory: "business",
@@ -351,7 +351,7 @@ const productData: Product[] = [
     image: "/images/link_in_bio.jpg",
   },
   {
-    name: "Digital Invite",
+    name: "Digital Invitation",
     price: "Rp 20,000",
     category: "website",
     subcategory: "non-business",
@@ -379,11 +379,11 @@ const productData: Product[] = [
   },
 ]
 
-const imageSources = [
+const imageSources = {
   contentImages: ["/images/template1.jpg", "/images/template2.jpg", "/images/template3.jpg"],
   seoImages: ["/images/seo1.jpg"],
   adsImages: ["/images/ads1.jpg"],
-]
+}
 
 export default function ServicesPage() {
   const { theme } = useTheme()
@@ -394,7 +394,7 @@ export default function ServicesPage() {
   const [modalProduct, setModalProduct] = useState<Product | null>(null)
 
   const [instagramOption, setInstagramOption] = useState("3000")
-  const [tiktokOption, setTikTokOption] = useState("2000")
+  const [tiktokOption, setTiktokOption] = useState("2000")
   const [telegramOption, setTelegramOption] = useState("3000")
   const [facebookOption, setFacebookOption] = useState("3000")
   const [boosterLink, setBoosterLink] = useState("")
@@ -409,7 +409,7 @@ export default function ServicesPage() {
       let currentFeatures = product.features || []
 
       if (product.name === "Instagram") {
-        currentPrice = 
+        currentPrice =
           instagramOption === "3000"
             ? "Rp 50,000"
             : instagramOption === "5000"
@@ -420,11 +420,11 @@ export default function ServicesPage() {
         currentPrice = tiktokOption === "2000" ? "Rp 50,000" : "Rp 100,000"
         currentFeatures = getTikTokFeatures(tiktokOption)
       } else if (product.name === "Telegram") {
-        currentPrice = 
+        currentPrice =
           telegramOption === "3000" ? "Rp 50,000" : telegramOption === "5000" ? "Rp 70,000" : "Rp 140,000"
         currentFeatures = getTelegramFeatures(telegramOption)
       } else if (product.name === "Facebook") {
-        currentPrice = 
+        currentPrice =
           facebookOption === "3000" ? "Rp 50,000" : facebookOption === "5000" ? "Rp 80,000" : "Rp 150,000"
         currentFeatures = getFacebookFeatures(facebookOption)
       }
@@ -508,7 +508,7 @@ export default function ServicesPage() {
           </button>
           <button
             onClick={() => setActiveCategory("lainnya")}
-            className={getButtonClasses(activeCategory === "lannya")}
+            className={getButtonClasses(activeCategory === "lainnya")}
           >
             Lainnya
           </button>
@@ -540,7 +540,7 @@ export default function ServicesPage() {
                 activeCategory === "paket_bisnis" || activeCategory === "lainnya"
                   ? "grid-cols-1"
                   : "grid-cols-1 sm:grid-cols-2"
-              } gap-3 sm:gap-4 snap-x snap-mandatory}`}
+              } gap-3 sm:gap-4 snap-x snap-mandatory`}
             >
               {group.map((product) => {
                 const displayProduct = getProductDisplayData(product)
@@ -555,33 +555,33 @@ export default function ServicesPage() {
                     {displayProduct.image && (
                       <div className="mb-3">
                         <img
-                          src="displayProduct.image"
+                          src={displayProduct.image}
                           alt={displayProduct.name}
                           className="w-full h-28 sm:h-32 object-cover rounded-md"
                         />
                       </div>
-                    ))}
+                    )}
                     <div className="flex justify-between items-start mb-2">
                       <h3
-                        className={`font-semibold text-xs sm:text-sm` ${
+                        className={`font-semibold text-xs sm:text-sm leading-tight ${
                           theme === "dark" ? "text-white" : "text-gray-900"
                         }`}
                       >
                         {displayProduct.name}
-                      </div>
-
+                      </h3>
                       <span
                         className={`px-2 py-1 rounded-md font-medium text-xs whitespace-nowrap ml-2 shadow-sm ${
                           displayProduct.price === "Rp 0"
                             ? theme === "dark"
-                              ? "bg-green-600 text-white" : "bg-green-500 text-white"
+                              ? "bg-green-600 text-white"
+                              : "bg-green-500 text-white"
                             : theme === "dark"
                               ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white"
-                              : "bg-blue-500 to-blue-600 text-white"
-                          }`}
+                              : "bg-gradient-to-r from-blue-500 to-blue-600 text-white"
+                        }`}
                       >
-                          {displayProduct.price}
-                        </span>
+                        {displayProduct.price}
+                      </span>
                     </div>
 
                     <div className="flex-grow">
@@ -601,7 +601,7 @@ export default function ServicesPage() {
                               <option value="5000">5000 Followers</option>
                               <option value="10000">10000 Followers</option>
                             </select>
-                          )})
+                          )}
 
                           {displayProduct.name === "TikTok" && (
                             <select
@@ -626,7 +626,7 @@ export default function ServicesPage() {
                                 theme === "dark"
                                   ? "bg-gray-700 border-gray-600 text-gray-200"
                                   : "bg-white border-gray-300 text-gray-700"
-                              } focus:outline-none focus:ring-blue-500 focus:ring-blue-500`}
+                              } focus:outline-none focus:ring-2 focus:ring-blue-500`}
                             >
                               <option value="3000">3000 Followers</option>
                               <option value="5000">5000 Followers</option>
@@ -648,7 +648,7 @@ export default function ServicesPage() {
                               <option value="5000">5000 Followers</option>
                               <option value="10000">10000 Followers</option>
                             </select>
-                          ))}
+                          )}
                           <input
                             type="text"
                             value={boosterLink}
@@ -664,7 +664,7 @@ export default function ServicesPage() {
                             <div className="mt-1">
                               <FeatureList features={displayProduct.features} />
                             </div>
-                          ))}
+                          )}
                         </div>
                       )}
 
@@ -677,7 +677,7 @@ export default function ServicesPage() {
                           <div className="mb-3">
                             <FeatureList features={displayProduct.features} />
                           </div>
-                        ))}
+                        )}
                     </div>
 
                     <div className="flex gap-2 mt-auto">
@@ -719,10 +719,11 @@ export default function ServicesPage() {
                           >
                             Rincian
                           </button>
-                        ))}
+                        )}
                     </div>
                   </div>
-                )})}
+                )
+              })}
             </div>
           ))}
         </div>
@@ -782,4 +783,4 @@ export default function ServicesPage() {
       </div>
     </div>
   )
-                                                       }
+    }
