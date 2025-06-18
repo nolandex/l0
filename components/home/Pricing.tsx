@@ -15,9 +15,6 @@ import { ALL_TIERS } from "@/config/tiers";
 import { FaCheck } from "react-icons/fa";
 import { RoughNotation } from "react-rough-notation";
 
-// Impor siteConfig tidak lagi dibutuhkan setelah link twitter dihapus
-// import { siteConfig } from "@/config/site";
-
 const Pricing = ({
   id,
   locale,
@@ -39,17 +36,15 @@ const Pricing = ({
             {locale.title}
           </RoughNotation>
         </h2>
-        <h3 className="text-4xl font-medium tracking-tight mt-2">
-          {locale.title2}
-        </h3>
-        <Spacer y={4} />
+
+        {/* Baris <h3> yang berisi "Get unlimited access" telah dihapus dari sini */}
+
+        <Spacer y={2} /> {/* Spacer dikurangi agar jarak tidak terlalu jauh */}
         <p className="text-large text-default-500">{locale.description}</p>
       </div>
       <Spacer y={8} />
       <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 justify-items-center">
-        {TIERS?.filter(
-          (tier) => tier.buttonText !== "Get Unlimited Access"
-        ).map((tier) => (
+        {TIERS?.map((tier) => (
           <Card key={tier.key} className="p-3 flex-1 w-[90%]" shadow="md">
             <CardHeader className="flex flex-col items-start gap-2 pb-6">
               <h2 className="text-large font-medium">{tier.title}</h2>
@@ -93,7 +88,6 @@ const Pricing = ({
         ))}
       </div>
       <Spacer y={12} />
-      {/* Bagian "Follow Twitter" sudah dihapus dari sini */}
     </section>
   );
 };
