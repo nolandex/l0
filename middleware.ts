@@ -4,11 +4,11 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 // 1. Definisikan bahasa yang didukung.
-const locales = ['en', 'id', 'ja', 'ar', 'es', 'ru'];
+const locales = ['en', 'zh', 'ja', 'ar', 'es', 'ru'];
 
 // 2. Atur bahasa default mutlak Anda.
 // Pastikan ini 'id' jika file JSON Anda bernama id.json, atau 'zh' jika bernama zh.json
-const defaultLocale = 'id'; // Atau 'zh' sesuai nama file Anda
+const defaultLocale = 'zh'; // Atau 'zh' sesuai nama file Anda
 
 // 3. Fungsi middleware utama
 export function middleware(request: NextRequest) {
