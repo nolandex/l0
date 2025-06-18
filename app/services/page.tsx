@@ -62,7 +62,7 @@ function FeatureList({ features, textColor }: FeatureListProps) {
       {features.map((feature, i) => (
         <li key={i} className="flex items-start">
           <CheckCircle
-            className={`h-3 w-3 mr-2 flex-shrink-0 ${
+            className={`h-3 w-3 mt-0.5 mr-2 flex-shrink-0 ${
               theme === "dark" ? "text-green-400" : "text-green-500"
             }`}
           />
@@ -183,70 +183,55 @@ interface Product {
   subcategory?: string
   features?: string[]
   exampleUrl?: string
-  modalType?: "example" | "details" | "contentImages" | "videoPromo" | "seoImages" | "adsImages" | null
+  modalType?: "example" | "details" | "contentImages" | "seoImages" | "adsImages" | null
   image?: string
 }
 
-const getInstagramFeatures = (option: string) => {
-  switch (option) {
-    case "3000":
-      return ["5000 Likes", "100000 Views"]
-    case "5000":
-      return ["10000 Likes", "170000 Views"]
-    case "10000":
-      return ["15000 Likes", "300000 Views"]
+const getInstagramFeatures = (paket: string) => {
+  switch (paket) {
+    case "1":
+      return ["3000 Followers", "5000 Likes", "100000 Views"]
+    case "2":
+      return ["5000 Followers", "10000 Likes", "170000 Views"]
+    case "3":
+      return ["10000 Followers", "15000 Likes", "300000 Views"]
     default:
       return []
   }
 }
 
-const getTikTokFeatures = (option: string) => {
-  const baseViews = 70000
-  const baseLikes = 5000
-  const baseShares = 700
-  const baseSaves = 700
-
-  switch (option) {
-    case "2000":
-      return [
-        `${baseViews.toLocaleString()} Views`,
-        `${baseLikes.toLocaleString()} Likes`,
-        `${baseShares.toLocaleString()} Shares`,
-        `${baseSaves.toLocaleString()} Saves`,
-      ]
-    case "5000":
-      return [
-        `${(baseViews * 2.5).toLocaleString()} Views`,
-        `${(baseLikes * 2.5).toLocaleString()} Likes`,
-        `${(baseShares * 2.5).toLocaleString()} Shares`,
-        `${(baseSaves * 2.5).toLocaleString()} Saves`,
-      ]
+const getTikTokFeatures = (paket: string) => {
+  switch (paket) {
+    case "1":
+      return ["2000 Followers", "70000 Views", "5000 Likes", "700 Shares", "700 Saves"]
+    case "2":
+      return ["5000 Followers", "175000 Views", "12500 Likes", "1750 Shares", "1750 Saves"]
     default:
       return []
   }
 }
 
-const getTelegramFeatures = (option: string) => {
-  switch (option) {
-    case "3000":
-      return ["10000 Views", "1000 Reactions"]
-    case "5000":
-      return ["15000 Views", "1500 Reactions"]
-    case "10000":
-      return ["30000 Views", "3000 Reactions"]
+const getTelegramFeatures = (paket: string) => {
+  switch (paket) {
+    case "1":
+      return ["3000 Followers", "10000 Views", "1000 Reactions"]
+    case "2":
+      return ["5000 Followers", "15000 Views", "1500 Reactions"]
+    case "3":
+      return ["10000 Followers", "30000 Views", "3000 Reactions"]
     default:
       return []
   }
 }
 
-const getFacebookFeatures = (option: string) => {
-  switch (option) {
-    case "3000":
-      return ["5000 Likes", "100000 Views"]
-    case "5000":
-      return ["10000 Likes", "170000 Views"]
-    case "10000":
-      return ["15000 Likes", "300000 Views"]
+const getFacebookFeatures = (paket: string) => {
+  switch (paket) {
+    case "1":
+      return ["3000 Followers", "5000 Likes", "100000 Views"]
+    case "2":
+      return ["5000 Followers", "10000 Likes", "170000 Views"]
+    case "3":
+      return ["10000 Followers", "15000 Likes", "300000 Views"]
     default:
       return []
   }
@@ -326,9 +311,9 @@ const productData: Product[] = [
     name: "Video Promosi",
     price: "Rp 10,000",
     category: "lainnya",
-    exampleUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    modalType: "videoPromo",
-    image: "/images/video_promo.jpg",
+    exampleUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // URL embed YouTube
+    modalType: null, // Hapus modal type
+    // Hapus image agar tidak render
   },
   {
     name: "SEO & Domain Website",
@@ -452,10 +437,10 @@ export default function ServicesPage() {
   const [activeModal, setActiveModal] = useState<Product["modalType"]>(null)
   const [modalProduct, setModalProduct] = useState<Product | null>(null)
 
-  const [instagramOption, setInstagramOption] = useState("3000")
-  const [tiktokOption, setTiktokOption] = useState("2000")
-  const [telegramOption, setTelegramOption] = useState("3000")
-  const [facebookOption, setFacebookOption] = useState("3000")
+  const [instagramPackage, setInstagramPackage] = useState("1")
+  const [tiktokPackage, setTiktokPackage] = useState("1")
+  const [telegramPackage, setTelegramPackage] = useState("1")
+  const [facebookPackage, setFacebookPackage] = useState("1")
   const [boosterLink, setBoosterLink] = useState("")
 
   useEffect(() => {
@@ -469,35 +454,35 @@ export default function ServicesPage() {
 
       if (product.name === "Instagram") {
         currentPrice =
-          instagramOption === "3000"
+          instagramPackage === "1"
             ? "Rp 50,000"
-            : instagramOption === "5000"
+            : instagramPackage === "2"
             ? "Rp 80,000"
             : "Rp 150,000"
-        currentFeatures = getInstagramFeatures(instagramOption)
+        currentFeatures = getInstagramFeatures(instagramPackage)
       } else if (product.name === "TikTok") {
-        currentPrice = tiktokOption === "2000" ? "Rp 50,000" : "Rp 100,000"
-        currentFeatures = getTikTokFeatures(tiktokOption)
+        currentPrice = tiktokPackage === "1" ? "Rp 50,000" : "Rp 100,000"
+        currentFeatures = getTikTokFeatures(tiktokPackage)
       } else if (product.name === "Telegram") {
         currentPrice =
-          telegramOption === "3000"
+          telegramPackage === "1"
             ? "Rp 50,000"
-            : telegramOption === "5000"
+            : telegramPackage === "2"
             ? "Rp 70,000"
             : "Rp 140,000"
-        currentFeatures = getTelegramFeatures(telegramOption)
+        currentFeatures = getTelegramFeatures(telegramPackage)
       } else if (product.name === "Facebook") {
         currentPrice =
-          facebookOption === "3000"
+          facebookPackage === "1"
             ? "Rp 50,000"
-            : facebookOption === "5000"
+            : facebookPackage === "2"
             ? "Rp 80,000"
             : "Rp 150,000"
-        currentFeatures = getFacebookFeatures(facebookOption)
+        currentFeatures = getFacebookFeatures(facebookPackage)
       }
       return { ...product, price: currentPrice, features: currentFeatures }
     },
-    [instagramOption, tiktokOption, telegramOption, facebookOption]
+    [instagramPackage, tiktokPackage, telegramPackage, facebookPackage]
   )
 
   const filteredProducts = productData.filter((product) => {
@@ -507,16 +492,6 @@ export default function ServicesPage() {
     }
     return true
   })
-
-  // Adjust grouping based on category
-  const groupedProducts: Product[][] = []
-  if (activeCategory === "paket_bisnis" || activeCategory === "lainnya") {
-    filteredProducts.forEach((product) => groupedProducts.push([product]))
-  } else {
-    for (let i = 0; i < filteredProducts.length; i += 2) {
-      groupedProducts.push(filteredProducts.slice(i, i + 2))
-    }
-  }
 
   const openModal = useCallback(
     (type: Product["modalType"], product?: Product) => {
@@ -607,197 +582,205 @@ export default function ServicesPage() {
         </div>
       )}
 
-      <div className="space-y-3 sm:space-y-4 max-w-full">
-        {groupedProducts.map((group, groupIndex) => (
-          <div
-            key={groupIndex}
-            className={`grid ${
-              activeCategory === "paket_bisnis" || activeCategory === "lainnya"
-                ? "grid-cols-1"
-                : "grid-cols-1 sm:grid-cols-2"
-            } gap-3 sm:gap-4 w-full px-0`}
-          >
-            {group.map((product) => {
-              const displayProduct = getProductDisplayData(product)
-              return (
-                <div
-                  key={displayProduct.name + (displayProduct.subcategory || "")}
-                  className={`flex flex-col rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-lg w-full ${
-                    theme === "dark"
-                      ? "bg-gray-800 border border-gray-700"
-                      : "bg-white border border-gray-200"
-                  } p-3`}
-                >
-                  {displayProduct.image && (
-                    <div className="mb-2">
-                      <img
-                        src={displayProduct.image}
-                        alt={displayProduct.name}
-                        className="w-full h-32 object-cover rounded-md"
-                      />
-                    </div>
-                  )}
-                  <div className="flex justify-between items-start mb-2">
-                    <h3
-                      className={`font-bold leading-tight text-sm ${
-                        theme === "dark" ? "text-white" : "text-gray-900"
-                      }`}
-                    >
-                      {displayProduct.name}
-                    </h3>
-                    <span
-                      className={`px-2 py-1 rounded-md font-bold whitespace-nowrap ml-2 text-xs shadow-sm ${
-                        displayProduct.price === "Rp 0"
-                          ? theme === "dark"
-                            ? "bg-green-600 text-white"
-                            : "bg-green-500 text-white"
-                          : theme === "dark"
-                          ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white"
-                          : "bg-gradient-to-r from-blue-500 to-blue-600 text-white"
-                      }`}
-                    >
-                      {displayProduct.price}
-                    </span>
+      <div
+        className={`grid ${
+          activeCategory === "website" || activeCategory === "sosmed"
+            ? "grid-cols-1 sm:grid-cols-2"
+            : "grid-cols-1"
+        } gap-3 sm:gap-4 w-full`}
+      >
+        {filteredProducts.map((product) => {
+          const displayProduct = getProductDisplayData(product)
+          return (
+            <div
+              key={displayProduct.name + (displayProduct.subcategory || "")}
+              className={`flex flex-col rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-lg w-full ${
+                theme === "dark"
+                  ? "bg-gray-800 border border-gray-700"
+                  : "bg-white border border-gray-200"
+              } p-3`}
+            >
+              {displayProduct.name === "Video Promosi" ? (
+                <div className="aspect-video w-full mb-2 rounded-md overflow-hidden">
+                  <iframe
+                    src={displayProduct.exampleUrl}
+                    title={displayProduct.name}
+                    className="w-full h-full"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              ) : (
+                displayProduct.image && (
+                  <div className="mb-2">
+                    <img
+                      src={displayProduct.image}
+                      alt={displayProduct.name}
+                      className="w-full h-32 object-cover rounded-md"
+                    />
                   </div>
-                  <div className="flex-grow">
-                    {["Instagram", "TikTok", "Telegram", "Facebook"].includes(displayProduct.name) && (
-                      <div className="mb-3 space-y-2">
-                        {displayProduct.name === "Instagram" && (
-                          <select
-                            value={instagramOption}
-                            onChange={(e) => setInstagramOption(e.target.value)}
-                            className={`w-full px-2 py-1.5 rounded-md text-xs border ${
-                              theme === "dark"
-                                ? "bg-gray-700 border-gray-600 text-gray-200"
-                                : "bg-white border-gray-300 text-gray-700"
-                            } focus:outline-none focus:ring-2 focus:ring-blue-500`}
-                          >
-                            <option value="3000">3000 Followers</option>
-                            <option value="5000">5000 Followers</option>
-                            <option value="10000">10000 Followers</option>
-                          </select>
-                        )}
-                        {displayProduct.name === "TikTok" && (
-                          <select
-                            value={tiktokOption}
-                            onChange={(e) => setTiktokOption(e.target.value)}
-                            className={`w-full px-2 py-1.5 rounded-md text-xs border ${
-                              theme === "dark"
-                                ? "bg-gray-700 border-gray-600 text-gray-200"
-                                : "bg-white border-gray-300 text-gray-700"
-                            } focus:outline-none focus:ring-2 focus:ring-blue-500`}
-                          >
-                            <option value="2000">2000 Followers</option>
-                            <option value="5000">5000 Followers</option>
-                          </select>
-                        )}
-                        {displayProduct.name === "Telegram" && (
-                          <select
-                            value={telegramOption}
-                            onChange={(e) => setTelegramOption(e.target.value)}
-                            className={`w-full px-2 py-1.5 rounded-md text-xs border ${
-                              theme === "dark"
-                                ? "bg-gray-700 border-gray-600 text-gray-200"
-                                : "bg-white border-gray-300 text-gray-700"
-                            } focus:outline-none focus:ring-2 focus:ring-blue-500`}
-                          >
-                            <option value="3000">3000 Followers</option>
-                            <option value="5000">5000 Followers</option>
-                            <option value="10000">10000 Followers</option>
-                          </select>
-                        )}
-                        {displayProduct.name === "Facebook" && (
-                          <select
-                            value={facebookOption}
-                            onChange={(e) => setFacebookOption(e.target.value)}
-                            className={`w-full px-2 py-1.5 rounded-md text-xs border ${
-                              theme === "dark"
-                                ? "bg-gray-700 border-gray-600 text-gray-200"
-                                : "bg-white border-gray-300 text-gray-700"
-                            } focus:outline-none focus:ring-2 focus:ring-blue-500`}
-                          >
-                            <option value="3000">3000 Followers</option>
-                            <option value="5000">5000 Followers</option>
-                            <option value="10000">10000 Followers</option>
-                          </select>
-                        )}
-                        <input
-                          type="text"
-                          value={boosterLink}
-                          onChange={(e) => setBoosterLink(e.target.value)}
-                          placeholder="Masukkan Link Akun"
-                          className={`w-full mt-2 px-2 py-1.5 rounded-md text-xs border ${
-                            theme === "dark"
-                              ? "bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400"
-                              : "bg-white border-gray-300 text-gray-700 placeholder-gray-500"
-                          } focus:outline-none focus:ring-2 focus:ring-blue-500`}
-                        />
-                        {displayProduct.features && displayProduct.features.length > 0 && (
-                          <div className="mt-1">
-                            <FeatureList features={displayProduct.features} />
-                          </div>
-                        )}
+                )
+              )}
+
+              <div className="flex justify-between items-start mb-2">
+                <h3
+                  className={`font-bold leading-tight text-sm ${
+                    theme === "dark" ? "text-white" : "text-gray-900"
+                  }`}
+                >
+                  {displayProduct.name}
+                </h3>
+                <span
+                  className={`px-2 py-1 rounded-md font-bold whitespace-nowrap ml-2 text-xs shadow-sm ${
+                    displayProduct.price === "Rp 0"
+                      ? theme === "dark"
+                        ? "bg-green-600 text-white"
+                        : "bg-green-500 text-white"
+                      : theme === "dark"
+                      ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white"
+                      : "bg-gradient-to-r from-blue-500 to-blue-600 text-white"
+                  }`}
+                >
+                  {displayProduct.price}
+                </span>
+              </div>
+              <div className="flex-grow">
+                {["Instagram", "TikTok", "Telegram", "Facebook"].includes(displayProduct.name) && (
+                  <div className="mb-3 space-y-2">
+                    {displayProduct.name === "Instagram" && (
+                      <select
+                        value={instagramPackage}
+                        onChange={(e) => setInstagramPackage(e.target.value)}
+                        className={`w-full px-2 py-1.5 rounded-md text-xs border ${
+                          theme === "dark"
+                            ? "bg-gray-700 border-gray-600 text-gray-200"
+                            : "bg-white border-gray-300 text-gray-700"
+                        } focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                      >
+                        <option value="1">Paket 1</option>
+                        <option value="2">Paket 2</option>
+                        <option value="3">Paket 3</option>
+                      </select>
+                    )}
+                    {displayProduct.name === "TikTok" && (
+                      <select
+                        value={tiktokPackage}
+                        onChange={(e) => setTiktokPackage(e.target.value)}
+                        className={`w-full px-2 py-1.5 rounded-md text-xs border ${
+                          theme === "dark"
+                            ? "bg-gray-700 border-gray-600 text-gray-200"
+                            : "bg-white border-gray-300 text-gray-700"
+                        } focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                      >
+                        <option value="1">Paket 1</option>
+                        <option value="2">Paket 2</option>
+                      </select>
+                    )}
+                    {displayProduct.name === "Telegram" && (
+                      <select
+                        value={telegramPackage}
+                        onChange={(e) => setTelegramPackage(e.target.value)}
+                        className={`w-full px-2 py-1.5 rounded-md text-xs border ${
+                          theme === "dark"
+                            ? "bg-gray-700 border-gray-600 text-gray-200"
+                            : "bg-white border-gray-300 text-gray-700"
+                        } focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                      >
+                        <option value="1">Paket 1</option>
+                        <option value="2">Paket 2</option>
+                        <option value="3">Paket 3</option>
+                      </select>
+                    )}
+                    {displayProduct.name === "Facebook" && (
+                      <select
+                        value={facebookPackage}
+                        onChange={(e) => setFacebookPackage(e.target.value)}
+                        className={`w-full px-2 py-1.5 rounded-md text-xs border ${
+                          theme === "dark"
+                            ? "bg-gray-700 border-gray-600 text-gray-200"
+                            : "bg-white border-gray-300 text-gray-700"
+                        } focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                      >
+                        <option value="1">Paket 1</option>
+                        <option value="2">Paket 2</option>
+                        <option value="3">Paket 3</option>
+                      </select>
+                    )}
+                    {displayProduct.features && displayProduct.features.length > 0 && (
+                      <div className="mt-2">
+                        <FeatureList features={displayProduct.features} />
                       </div>
                     )}
-                    {displayProduct.name !== "Instagram" &&
-                      displayProduct.name !== "TikTok" &&
-                      displayProduct.name !== "Telegram" &&
-                      displayProduct.name !== "Facebook" &&
-                      displayProduct.features &&
-                      displayProduct.features.length > 0 && (
-                        <div className="mb-3">
-                          <FeatureList features={displayProduct.features} />
-                        </div>
-                      )}
-                  </div>
-                  <div className="flex gap-2 mt-auto">
-                    <button
-                      className={`flex-1 py-1.5 px-3 rounded-md font-medium text-xs transition-all duration-300 shadow-sm hover:shadow-md ${
+                    <input
+                      type="text"
+                      value={boosterLink}
+                      onChange={(e) => setBoosterLink(e.target.value)}
+                      placeholder="Masukkan Link Akun"
+                      className={`w-full mt-1 px-2 py-1.5 rounded-md text-xs border ${
                         theme === "dark"
-                          ? "bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white"
-                          : "bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white"
+                          ? "bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400"
+                          : "bg-white border-gray-300 text-gray-700 placeholder-gray-500"
+                      } focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                    />
+                  </div>
+                )}
+                {displayProduct.name !== "Instagram" &&
+                  displayProduct.name !== "TikTok" &&
+                  displayProduct.name !== "Telegram" &&
+                  displayProduct.name !== "Facebook" &&
+                  displayProduct.features &&
+                  displayProduct.features.length > 0 && (
+                    <div className="mb-3">
+                      <FeatureList features={displayProduct.features} />
+                    </div>
+                  )}
+              </div>
+              <div className="flex gap-2 mt-auto pt-2">
+                <button
+                  className={`flex-1 py-1.5 px-3 rounded-md font-medium text-xs transition-all duration-300 shadow-sm hover:shadow-md ${
+                    theme === "dark"
+                      ? "bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white"
+                      : "bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white"
+                  }`}
+                >
+                  Bayar
+                </button>
+                {displayProduct.exampleUrl && displayProduct.category === "website" && (
+                  <a
+                    href={displayProduct.exampleUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`px-2 py-1.5 rounded-md font-medium text-xs transition-all duration-300 border flex items-center gap-1 shadow-sm hover:shadow-md ${
+                      theme === "dark"
+                        ? "border-gray-600 text-gray-300 hover:bg-gray-700 hover:border-gray-500"
+                        : "border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400"
+                    }`}
+                  >
+                    <ExternalLink className="h-3 w-3" />
+                    Contoh
+                  </a>
+                )}
+                {displayProduct.modalType &&
+                  displayProduct.category !== "website" &&
+                  (displayProduct.exampleUrl ||
+                    (displayProduct.modalType && imageSources[displayProduct.modalType as keyof typeof imageSources]?.length > 0) ||
+                    displayProduct.modalType === "details") && (
+                    <button
+                      onClick={() => openModal(displayProduct.modalType, displayProduct)}
+                      className={`px-2 py-1.5 rounded-md font-medium text-xs transition-all duration-300 border flex items-center gap-1 shadow-sm hover:shadow-md ${
+                        theme === "dark"
+                          ? "border-gray-600 text-gray-300 hover:bg-gray-700 hover:border-gray-500"
+                          : "border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400"
                       }`}
                     >
-                      Bayar
+                      Rincian
                     </button>
-                    {displayProduct.exampleUrl && displayProduct.category === "website" && (
-                      <a
-                        href={displayProduct.exampleUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`px-2 py-1.5 rounded-md font-medium text-xs transition-all duration-300 border flex items-center gap-1 shadow-sm hover:shadow-md ${
-                          theme === "dark"
-                            ? "border-gray-600 text-gray-300 hover:bg-gray-700 hover:border-gray-500"
-                            : "border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400"
-                        }`}
-                      >
-                        <ExternalLink className="h-3 w-3" />
-                        Contoh
-                      </a>
-                    )}
-                    {displayProduct.modalType &&
-                      displayProduct.category !== "website" &&
-                      (displayProduct.exampleUrl ||
-                        imageSources[displayProduct.modalType as keyof typeof imageSources]?.length >
-                          0 ||
-                        displayProduct.modalType === "details") && (
-                        <button
-                          onClick={() => openModal(displayProduct.modalType, displayProduct)}
-                          className={`px-2 py-1.5 rounded-md font-medium text-xs transition-all duration-300 border flex items-center gap-1 shadow-sm hover:shadow-md ${
-                            theme === "dark"
-                              ? "border-gray-600 text-gray-300 hover:bg-gray-700 hover:border-gray-500"
-                              : "border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400"
-                          }`}
-                        >
-                          Rincian
-                        </button>
-                      )}
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        ))}
+                  )}
+              </div>
+            </div>
+          )
+        })}
       </div>
 
       <Modal isOpen={activeModal === "details" && modalProduct !== null} onClose={closeModal} size="md">
@@ -833,25 +816,6 @@ export default function ServicesPage() {
             ))}
         </Swiper>
       </Modal>
-
-      <Modal
-        isOpen={activeModal === "videoPromo" && modalProduct?.name === "Video Promosi"}
-        onClose={closeModal}
-        size="lg"
-      >
-        {modalProduct?.exampleUrl && (
-          <div className="aspect-video w-full">
-            <iframe
-              src={modalProduct.exampleUrl}
-              title={`Contoh ${modalProduct.name}`}
-              className="w-full h-full rounded-md"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-        )}
-      </Modal>
     </div>
   )
-    }
+}
