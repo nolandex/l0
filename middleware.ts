@@ -1,42 +1,27 @@
-// File: middleware.ts (di root proyek)
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
-import { match } from '@formatjs/intl-localematcher';
-import Negotiator from 'negotiator';
-
-const locales = ['en', 'id', 'ja', 'ar', 'es', 'ru'];
-const defaultLocale = 'en';
-
-function getLocale(request: NextRequest): string {
-  const negotiatorHeaders: Record<string, string> = {};
-  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
-
-  const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
-
-  try {
-    return match(languages, locales, defaultLocale);
-  } catch (e) {
-    return defaultLocale;
-  }
-}
+import { locales } from "./lib/i18n";
+import { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname;
+  const { pathname } = request.nextUrl;
 
-  const pathnameIsMissingLocale = locales.every(
-    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
-  );
+  // Daftar rute yang diizinkan tanpa prefix bahasa
+  const allowedPaths = ["/", "/services"];
 
-  if (pathnameIsMissingLocale) {
-    const locale = getLocale(request);
-    return NextResponse.redirect(
-      new URL(`/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`, request.url)
+  // Cek apakah pathname adalah rute yang diizinkan atau dimulai dengan locale
+  const isExit =
+    allowedPaths.includes(pathname) ||
+    locales.some(
+      (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
     );
-  }
+
+  if (isExit) return;
+
+  request.nextUrl.pathname = `/`;
+  return Response.redirect(request.nextUrl);
 }
 
 export const config = {
   matcher: [
-    '/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|.*\\..*).*)',
-  ],
+    '/((?!api|_next/static|_next/image|terms|.*\\.(?:txt|xml|ico|png|jpg|jpeg|svg|gif|webp|js|css|woff|woff2|ttf|eot)).*)'
+  ]
 };
