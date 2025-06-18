@@ -1,13 +1,18 @@
 import { locales } from "./lib/i18n";
-
 import { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  const isExit = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-  );
+  // Daftar rute yang diizinkan tanpa prefix bahasa
+  const allowedPaths = ["/", "/services"];
+
+  // Cek apakah pathname adalah rute yang diizinkan atau dimulai dengan locale
+  const isExit =
+    allowedPaths.includes(pathname) ||
+    locales.some(
+      (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+    );
 
   if (isExit) return;
 
