@@ -11,7 +11,9 @@ import {
   Spacer,
 } from "@nextui-org/react";
 
-import { siteConfig } from "@/config/site";
+// Impor siteConfig mungkin tidak lagi dibutuhkan jika Anda hardcode link,
+// tapi kita biarkan untuk saat ini.
+import { siteConfig } from "@/config/site"; 
 import { ALL_TIERS } from "@/config/tiers";
 import { FaCheck } from "react-icons/fa";
 
@@ -91,10 +93,6 @@ const Pricing = ({
                     <Divider />
                     
                     <CardFooter className="justify-center pt-4 pb-4">
-                        {/* PERBAIKAN DI SINI:
-                          Ganti `tier.href` dengan nama properti yang benar dari data Anda (misal: tier.url, tier.path).
-                          Jika tidak ada properti untuk link, Anda bisa menggunakan link statis seperti "/register" atau "#".
-                        */}
                         <Button
                             as={Link}
                             href={tier.href || "#"}
@@ -113,7 +111,11 @@ const Pricing = ({
 
        <div className="mx-auto mt-16 max-w-5xl text-center text-sm text-default-500">
         {locale.doYouLike}
-        <Link href={siteConfig.links.github} className="font-medium text-primary underline underline-offset-4" >
+        {/* PERBAIKAN FINAL DI SINI:
+          Link GitHub sekarang ditulis langsung (hardcoded) untuk menghindari error.
+          Ganti dengan URL repository Anda yang sebenarnya.
+        */}
+        <Link href="https://github.com/USERNAME/REPO" className="font-medium text-primary underline underline-offset-4" >
           {` ${locale.follow}`}
         </Link>
       </div>
