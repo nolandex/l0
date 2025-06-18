@@ -1,12 +1,10 @@
-import { match } from "@formatjs/intl-localematcher";
-import Negotiator from "negotiator";
-import { headers } from "next/headers"; // Asumsi penggunaan Next.js, sesuaikan jika berbeda
+// File: i18n.ts (atau nama file logika Anda)
 
-// 1. Daftar semua kode bahasa yang Anda dukung.
-// 'id' digunakan untuk Bahasa Indonesia. Varian 'zh-' (Chinese) dihapus.
+// Langsung impor seluruh file JSON gabungan Anda
+import translations from "@/locales/locales.json";
+
 export const locales = ["en", "id", "ja", "ar", "es", "ru"];
 
-// 2. Daftar nama bahasa untuk ditampilkan di pemilih bahasa.
 export const localeNames: Record<string, string> = {
   en: "🇺🇸 English",
   id: "🇮🇩 Indonesia",
@@ -16,44 +14,34 @@ export const localeNames: Record<string, string> = {
   ru: "🇷🇺 Русский",
 };
 
-// 3. Atur bahasa default.
 export const defaultLocale = "en";
 
-// 4. Fungsi untuk mendeteksi bahasa dari browser.
-// Fungsi ini tidak perlu diubah.
+// Fungsi getLocale tidak perlu diubah, tapi saya sertakan lagi untuk kelengkapan
+// Pastikan Anda sudah menginstal negotiator dan @formatjs/intl-localematcher
+import { match } from "@formatjs/intl-localematcher";
+import Negotiator from "negotiator";
+import { headers } from "next/headers";
+
 export function getLocale(): string {
-  const acceptLanguage = headers().get('accept-language');
-  if (!acceptLanguage) {
-    return defaultLocale;
-  }
+    const acceptLanguage = headers().get('accept-language');
+    if (!acceptLanguage) {
+        return defaultLocale;
+    }
 
-  const languages = new Negotiator({
-    headers: { 'accept-language': acceptLanguage },
-  }).languages();
+    const languages = new Negotiator({
+        headers: { 'accept-language': acceptLanguage },
+    }).languages();
 
-  // 'as any' mungkin diperlukan jika ada ketidakcocokan tipe
-  return match(languages, locales as any, defaultLocale);
+    return match(languages, locales as any, defaultLocale);
 }
 
-// 5. Objek yang memetakan kode bahasa ke file .json yang sesuai.
-// Perhatikan 'id' sekarang memuat 'id.json'.
-const dictionaries = {
-  en: () => import("@/locales/en.json").then((module) => module.default),
-  id: () => import("@/locales/id.json").then((module) => module.default),
-  ja: () => import("@/locales/ja.json").then((module) => module.default),
-  ar: () => import("@/locales/ar.json").then((module) => module.default),
-  es: () => import("@/locales/es.json").then((module) => module.default),
-  ru: () => import("@/locales/ru.json").then((module) => module.default),
-};
-
-// 6. Fungsi untuk mengambil data kamus berdasarkan bahasa.
-// Logika untuk 'zh-CN', 'zh-TW' dihapus karena tidak relevan.
+// Fungsi getDictionary menjadi jauh lebih sederhana
 export const getDictionary = async (locale: string) => {
-  // Jika locale yang diminta tidak ada di daftar kamus, gunakan bahasa default.
-  if (!Object.keys(dictionaries).includes(locale)) {
-    locale = defaultLocale;
+  // Cek apakah bahasa yang diminta ada di dalam file gabungan kita
+  if (Object.keys(translations).includes(locale)) {
+    // Jika ada, kembalikan bagian (object) dari bahasa tersebut
+    return translations[locale as keyof typeof translations];
   }
-
-  // 'as keyof typeof dictionaries' untuk keamanan tipe di TypeScript
-  return dictionaries[locale as keyof typeof dictionaries]();
+  // Jika tidak ada, kembalikan bahasa default
+  return translations[defaultLocale as keyof typeof translations];
 };
