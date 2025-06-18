@@ -17,11 +17,13 @@ const Feature = ({
     ALL_FEATURES[`FEATURES_${langName?.toUpperCase?.()}`] ?? ALL_FEATURES.FEATURES_EN;
 
   return (
-    <section id={id}>
+    // MENAMBAHKAN KELAS "dark" DI SINI UNTUK MEMAKSA MODE GELAP
+    <section id={id} className="dark"> 
       <div className="container space-y-6 rounded-md bg-secondary py-14 lg:py-24">
         {/* Heading */}
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
-          <h2 className="font-heading text-4xl md:text-6xl text-secondary-foreground">
+          {/* Mengembalikan warna teks ke putih */}
+          <h2 className="font-heading text-4xl md:text-6xl text-white"> 
             <RoughNotation type="highlight" show={true} color="#2563EB">
               {locale?.title ?? "Features"}
             </RoughNotation>
@@ -50,8 +52,9 @@ const Feature = ({
               </div>
 
               {/* Title */}
-              <h3 className="text-base font-semibold text-foreground mb-0.5 mt-[-4px]">
-                {feature.title} {/* DIKEMBALIKAN SEPERTI SEMULA */}
+              {/* Mengembalikan warna teks ke putih */}
+              <h3 className="text-base font-semibold text-white mb-0.5 mt-[-4px]"> 
+                {feature.title}
               </h3>
 
               {/* Description */}
