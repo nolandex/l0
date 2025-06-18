@@ -1,210 +1,179 @@
-import { LucideIcon, MagnetIcon } from "lucide-react";
+import { LucideIcon, GlobeIcon, DollarSignIcon, UsersIcon } from "lucide-react";
 import { IconType } from "react-icons";
-import { BsGithub } from "react-icons/bs";
-import { FaToolbox } from "react-icons/fa";
-import { FaEarthAsia, FaMobileScreenButton } from "react-icons/fa6";
-import { MdCloudUpload } from "react-icons/md";
+import { FaImages } from "react-icons/fa6";
+import { MdCampaign } from "react-icons/md";
 
+// English Translations
 export const FEATURES_EN = [
   {
-    title: "Open Source Advantage",
-    content: "Completely free with a wealth of customization options.",
-    icon: BsGithub,
+    title: "Professional Website",
+    content: "Get a modern & responsive website!",
+    icon: GlobeIcon,
   },
   {
-    title: "Responsive Design",
-    content:
-      "Templates meticulously designed to ensure optimal display on any device.",
-    icon: FaMobileScreenButton,
+    title: "Promotional Video",
+    content: "Be more professional with a promotional video.",
+    icon: MdCampaign,
   },
   {
-    title: "Easy Customization",
-    content:
-      "Effortlessly change colors, fonts, and layouts without any coding knowledge.",
-    icon: FaToolbox,
+    title: "Ready-to-Post Content",
+    content: "Ready-to-use content! Cool designs + engaging captions make buyers click order instantly.",
+    icon: FaImages,
   },
   {
-    title: "SEO Optimized",
-    content:
-      "Templates built with search engine optimization in mind to enhance your website's discoverability.",
-    icon: MagnetIcon,
+    title: "Social Media Boosting",
+    content: "Professional social media accounts with added followers, likes, & views to attract more buyers.",
+    icon: UsersIcon,
   },
   {
-    title: "One-Click Deployment",
-    content:
-      "Tightly integrated with leading web hosting services for instant website publishing.",
-    icon: MdCloudUpload,
-  },
-  {
-    title: "Globalization Support",
-    content:
-      "Supports multiple languages, making your website attractive to a global audience.",
-    icon: FaEarthAsia,
+    title: "Join the Group",
+    content: "Join the group and exchange information with other online sellers.",
+    icon: DollarSignIcon,
   },
 ];
 
+// Indonesian Content (as requested in 'ZH' variable)
 export const FEATURES_ZH = [
   {
-    title: "开源优势",
-    content: "完全免费，提供丰富的自定义选项。",
-    icon: BsGithub,
+    title: "Website Profesional",
+    content: "Dapatkan website modern & responsif !",
+    icon: GlobeIcon,
   },
   {
-    title: "响应式设计",
-    content: "精心设计的模板，确保在任何设备上都能优化显示。",
-    icon: FaMobileScreenButton,
+    title: "Video promosi",
+    content: "Lebih profesional dengan video promosi",
+    icon: MdCampaign,
   },
   {
-    title: "易于定制",
-    content: "轻松更改颜色、字体和布局，无需任何编码知识。",
-    icon: FaToolbox,
+    title: "Desain Konten Siap Posting",
+    content: "Konten siap pakai! Desain keren + caption menarik bikin pembeli langsung klik order.",
+    icon: FaImages,
   },
   {
-    title: "SEO优化",
-    content: "构建模板时考虑到搜索引擎优化，增强网站的可发现性。",
-    icon: MagnetIcon,
+    title: "Sosmed Boosting",
+    content: "Akun medsos profesional dengan Tambah followers, like, & view untuk tarik lebih banyak pembeli.",
+    icon: UsersIcon,
   },
   {
-    title: "一键部署",
-    content: "与领先的网站托管服务紧密集成，实现即时网站发布。",
-    icon: MdCloudUpload,
-  },
-  {
-    title: "全球化支持",
-    content: "支持多种语言，让你的网站吸引全球受众。",
-    icon: FaEarthAsia,
+    title: "Join grup",
+    content: "Gabung grup dan bertukar informasi seller online",
+    icon: DollarSignIcon,
   },
 ];
 
+// Japanese Translations
 export const FEATURES_JA = [
   {
-    title: "オープンソースの利点",
-    content: "完全無料で、豊富なカスタマイズオプションを提供。",
-    icon: BsGithub,
+    title: "プロフェッショナルなウェブサイト",
+    content: "モダンでレスポンシブなウェブサイトを手に入れましょう！",
+    icon: GlobeIcon,
   },
   {
-    title: "レスポンシブデザイン",
-    content: "どのデバイス上でも最適に表示されるように細心のデザインを施したテンプレート。",
-    icon: FaMobileScreenButton,
+    title: "プロモーションビデオ",
+    content: "プロモーションビデオでよりプロフェッショナルに。",
+    icon: MdCampaign,
   },
   {
-    title: "簡単カスタマイズ",
-    content: "色、フォント、レイアウトをコーディング知識なしで簡単に変更可能。",
-    icon: FaToolbox,
+    title: "投稿用コンテンツデザイン",
+    content: "クールなデザインと魅力的なキャプションで、購入者はすぐに注文します。",
+    icon: FaImages,
   },
   {
-    title: "SEO最適化",
-    content: "ウェブサイトの発見可能性を高めるために、検索エンジン最適化を念頭に置いて構築されたテンプレート。",
-    icon: MagnetIcon,
+    title: "ソーシャルメディアブースティング",
+    content: "フォロワー、いいね、ビューを増やして、より多くの購入者を引き付けます。",
+    icon: UsersIcon,
   },
   {
-    title: "ワンクリックデプロイメント",
-    content: "主要なウェブホスティングサービスと密接に統合し、即時にウェブサイトを公開。",
-    icon: MdCloudUpload,
-  },
-  {
-    title: "グローバリゼーションサポート",
-    content: "複数言語をサポートし、グローバルな視聴者を魅了するウェブサイト。",
-    icon: FaEarthAsia,
+    title: "グループに参加",
+    content: "グループに参加して、他のオンラインセラーと情報を交換しましょう。",
+    icon: DollarSignIcon,
   },
 ];
 
+// Arabic Translations
 export const FEATURES_AR = [
   {
-    title: "ميزة المصدر المفتوح",
-    content: "مجانية بالكامل مع ثروة من خيارات التخصيص.",
-    icon: BsGithub,
+    title: "موقع احترافي",
+    content: "احصل على موقع ويب حديث ومتجاوب!",
+    icon: GlobeIcon,
   },
   {
-    title: "تصميم متجاوب",
-    content: "تم تصميم القوالب بعناية لضمان عرض مثالي على أي جهاز.",
-    icon: FaMobileScreenButton,
+    title: "فيديو ترويجي",
+    content: "كن أكثر احترافية مع فيديو ترويجي.",
+    icon: MdCampaign,
   },
   {
-    title: "تخصيص سهل",
-    content: "غير الألوان والخطوط والتخطيطات بسهولة دون الحاجة إلى معرفة بالبرمجة.",
-    icon: FaToolbox,
+    title: "تصميم محتوى جاهز للنشر",
+    content: "محتوى جاهز للاستخدام! تصميمات رائعة وتعليقات جذابة تجعل المشترين يطلبون فورًا.",
+    icon: FaImages,
   },
   {
-    title: "مُحسّن لمحركات البحث",
-    content: "تم بناء القوالب مع مراعاة تحسين محركات البحث لتعزيز قابلية اكتشاف موقعك.",
-    icon: MagnetIcon,
+    title: "تعزيز وسائل التواصل الاجتماعي",
+    content: "حسابات احترافية مع متابعين وإعجابات ومشاهدات إضافية لجذب المزيد من المشترين.",
+    icon: UsersIcon,
   },
   {
-    title: "نشر بنقرة واحدة",
-    content: "متكاملة بشكل وثيق مع خدمات استضافة الويب الرائدة لنشر الموقع فوراً.",
-    icon: MdCloudUpload,
-  },
-  {
-    title: "دعم العولمة",
-    content: "يدعم لغات متعددة، مما يجعل موقعك جذابًا لجمهور عالمي.",
-    icon: FaEarthAsia,
+    title: "انضم إلى المجموعة",
+    content: "انضم إلى المجموعة وتبادل المعلومات مع البائعين الآخرين عبر الإنترنت.",
+    icon: DollarSignIcon,
   },
 ];
 
+// Spanish Translations
 export const FEATURES_ES = [
   {
-    title: "Ventaja del Código Abierto",
-    content: "Completamente gratuito con una riqueza de opciones de personalización.",
-    icon: BsGithub,
+    title: "Sitio Web Profesional",
+    content: "¡Obtén un sitio web moderno y responsivo!",
+    icon: GlobeIcon,
   },
   {
-    title: "Diseño Responsivo",
-    content: "Plantillas diseñadas meticulosamente para garantizar una visualización óptima en cualquier dispositivo.",
-    icon: FaMobileScreenButton,
+    title: "Video Promocional",
+    content: "Sé más profesional con un video promocional.",
+    icon: MdCampaign,
   },
   {
-    title: "Personalización Fácil",
-    content: "Cambia colores, fuentes y diseños sin esfuerzo y sin necesidad de conocimientos de codificación.",
-    icon: FaToolbox,
+    title: "Diseño de Contenido Listo para Publicar",
+    content: "¡Contenido listo para usar! Diseños geniales y leyendas atractivas hacen que los compradores ordenen al instante.",
+    icon: FaImages,
   },
   {
-    title: "Optimizado para SEO",
-    content: "Plantillas construidas con la optimización de motores de búsqueda en mente para mejorar la descubribilidad de tu sitio web.",
-    icon: MagnetIcon,
+    title: "Impulso en Redes Sociales",
+    content: "Cuentas profesionales en redes sociales con más seguidores, me gusta y vistas para atraer a más compradores.",
+    icon: UsersIcon,
   },
   {
-    title: "Despliegue con Un Clic",
-    content: "Integrado estrechamente con servicios líderes de alojamiento web para la publicación instantánea del sitio web.",
-    icon: MdCloudUpload,
-  },
-  {
-    title: "Soporte de Globalización",
-    content: "Soporta múltiples idiomas, haciendo tu sitio web atractivo para una audiencia global.",
-    icon: FaEarthAsia,
+    title: "Unirse al Grupo",
+    content: "Únete al grupo e intercambia información con otros vendedores en línea.",
+    icon: DollarSignIcon,
   },
 ];
 
+// Russian Translations
 export const FEATURES_RU = [
   {
-    title: "Преимущество Открытого Исходного Кода",
-    content: "Полностью бесплатно с широкими возможностями настройки.",
-    icon: BsGithub,
+    title: "Профессиональный веб-сайт",
+    content: "Получите современный и адаптивный веб-сайт!",
+    icon: GlobeIcon,
   },
   {
-    title: "Адаптивный Дизайн",
-    content: "Шаблоны, тщательно разработанные для обеспечения оптимального отображения на любом устройстве.",
-    icon: FaMobileScreenButton,
+    title: "Промо-видео",
+    content: "Станьте более профессиональными с промо-видео.",
+    icon: MdCampaign,
   },
   {
-    title: "Легкая Настройка",
-    content: "Легко изменяйте цвета, шрифты и макеты без знаний в области программирования.",
-    icon: FaToolbox,
+    title: "Дизайн контента, готового к публикации",
+    content: "Готовый контент! Классный дизайн и привлекательные подписи заставляют покупателей заказывать мгновенно.",
+    icon: FaImages,
   },
   {
-    title: "Оптимизировано для Поисковых Систем",
-    content: "Шаблоны созданы с учетом оптимизации для поисковых систем, чтобы повысить обнаруживаемость вашего сайта.",
-    icon: MagnetIcon,
+    title: "Продвижение в социальных сетях",
+    content: "Профессиональные аккаунты с добавлением подписчиков, лайков и просмотров для привлечения покупателей.",
+    icon: UsersIcon,
   },
   {
-    title: "Развертывание в Один Клик",
-    content: "Плотно интегрировано с ведущими сервисами веб-хостинга для мгновенной публикации сайта.",
-    icon: MdCloudUpload,
-  },
-  {
-    title: "Поддержка Глобализации",
-    content: "Поддерживает несколько языков, делая ваш сайт привлекательным для мировой аудитории.",
-    icon: FaEarthAsia,
+    title: "Присоединяйтесь к группе",
+    content: "Присоединяйтесь к группе и обменивайтесь информацией с другими онлайн-продавцами.",
+    icon: DollarSignIcon,
   },
 ];
 
@@ -218,9 +187,9 @@ interface FeaturesCollection {
 
 export const ALL_FEATURES: FeaturesCollection = {
   FEATURES_EN,
-  FEATURES_ZH,
+  FEATURES_ZH, // Indonesian content is here as requested
   FEATURES_JA,
   FEATURES_AR,
   FEATURES_ES,
-  FEATURES_RU
-}
+  FEATURES_RU,
+};
