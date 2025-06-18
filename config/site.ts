@@ -36,17 +36,18 @@ const baseSiteConfig = {
     shortcut: "/favicon-16x16.png",
     apple: "/logo.png",
   },
-  // PERUBAHAN: headerLinks diganti dengan WhatsApp, Email, dan Instagram
   headerLinks: [
     { name: 'whatsapp', href: "https://api.whatsapp.com/send/?phone=6285156779923", icon: BsWhatsapp },
     { name: 'email', href: "mailto:kontak@bisnovo.com", icon: MdEmail }, // GANTI email ini jika perlu
     { name: 'instagram', href: "https://www.instagram.com/bisnovo", icon: BsInstagram }
   ],
+  // PERUBAHAN: Menambahkan email ke daftar footerLinks
   footerLinks: [
     { name: 'instagram', href: "https://www.instagram.com/bisnovo", icon: BsInstagram },
     { name: 'tiktok', href: "https://www.tiktok.com/@bisnovo", icon: BsTiktok },
     { name: 'facebook', href: "https://www.facebook.com/share/1H87XB9aw7/", icon: BsFacebook },
     { name: 'whatsapp', href: "https://api.whatsapp.com/send/?phone=6285156779923", icon: BsWhatsapp },
+    { name: 'email', href: "mailto:kontak@bisnovo.com", icon: MdEmail },
   ],
   footerProducts: []
 }
