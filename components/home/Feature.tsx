@@ -33,11 +33,11 @@ const Feature = ({
           {FEATURES.map((feature) => (
             <div
               key={feature.title}
-              className="flex h-[160px] flex-col items-center justify-start rounded-md bg-background/70 p-6 shadow-md border dark:border-muted"
+              className="flex h-[180px] flex-col items-center justify-start rounded-md bg-background/70 p-8 shadow-md border dark:border-muted"
             >
               {/* Icon */}
               <div
-                className="flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 text-primary mb-2 mt-2"
+                className="flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 text-primary mb-3 mt-1"
               >
                 {feature.icon && typeof feature.icon === "string" ? (
                   <span className="text-3xl">{feature.icon}</span>
@@ -50,12 +50,12 @@ const Feature = ({
               </div>
 
               {/* Title */}
-              <h3 className="text-base font-semibold text-white mb-1">
+              <h3 className="text-base font-semibold text-white mb-0.5 mt-[-4px]">
                 {feature.title}
               </h3>
 
               {/* Description */}
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-muted-foreground mt-0">
                 {feature.content}
               </p>
             </div>
