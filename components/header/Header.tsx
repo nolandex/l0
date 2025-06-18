@@ -16,7 +16,7 @@ const links = [
 
 const Header = () => {
   const params = useParams();
-  const lang = params.lang;
+  const lang = params.lang as string | undefined; // Type assertion untuk lang
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,16 +28,17 @@ const Header = () => {
   }, []);
 
   // Fungsi untuk membuat URL dengan prefix bahasa jika diperlukan
-  // PERUBAHAN DI SINI: Menambahkan tipe 'string' pada parameter path
   const getLocalizedPath = (path: string) => {
-    // Jika link adalah ke root ('/'), atur path dasar
-    const basePath = lang === "en" ? "" : `/${lang}`;
-    // Jika path yang dituju juga root, kembalikan basePath atau '/'
-    if (path === "/") {
-      return basePath || "/";
+    // Jika tidak ada lang atau lang adalah "en", kembalikan path asli
+    if (!lang || lang === "en") {
+      console.log("Path generated:", path); // Debug
+      return path;
     }
-    // Gabungkan basePath dengan path halaman
-    return `${basePath}${path}`;
+    // Tambahkan prefix lang
+    const basePath = `/${lang}`;
+    const result = path === "/" ? basePath : `${basePath}${path}`;
+    console.log("Path generated:", result); // Debug
+    return result;
   };
 
   return (
@@ -54,6 +55,7 @@ const Header = () => {
             aria-label="Bisnovo"
             title="Bisnovo"
             className="font-bold text-xl"
+            onClick={() => console.log("Navigating to:", getLocalizedPath("/"))} // Debug
           >
             Bisnovo
           </Link>
@@ -68,6 +70,7 @@ const Header = () => {
                 aria-label={link.label}
                 title={link.label}
                 className="tracking-wide transition-colors duration-200 font-normal text-sm"
+                onClick={() => console.log("Navigating to:", getLocalizedPath(link.href))} // Debug
               >
                 {link.label}
               </Link>
@@ -105,6 +108,7 @@ const Header = () => {
                   aria-label="Bisnovo"
                   title="Bisnovo"
                   className="font-bold text-lg tracking-wide"
+                  onClick={() => console.log("Navigating to:", getLocalizedPath("/"))} // Debug
                 >
                   Bisnovo
                 </Link>
@@ -126,7 +130,10 @@ const Header = () => {
                         aria-label={link.label}
                         title={link.label}
                         className="font-medium tracking-wide transition-colors duration-200 hover:text-deep-purple-accent-400 text-sm"
-                        onClick={() => setIsMenuOpen(false)}
+                        onClick={() => {
+                          console.log("Navigating to:", getLocalizedPath(link.href)); // Debug
+                          setIsMenuOpen(false);
+                        }}
                       >
                         {link.label}
                       </Link>
@@ -147,4 +154,3 @@ const Header = () => {
 };
 
 export default Header;
-
