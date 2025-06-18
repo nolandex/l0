@@ -1,47 +1,31 @@
-// File: i18n.ts (atau nama file logika Anda)
+// File: lib/i18n.ts (REVISI FINAL)
+// HANYA BOLEH BERISI KODE INI
 
-// Langsung impor seluruh file JSON gabungan Anda
-import translations from "@/locales/locales.json";
-
-export const locales = ["en", "id", "ja", "ar", "es", "ru"];
+export const locales = ['en', 'id', 'ja', 'ar', 'es', 'ru'];
 
 export const localeNames: Record<string, string> = {
-  en: "🇺🇸 English",
-  id: "🇮🇩 Indonesia",
-  ja: "🇯🇵 日本語",
-  ar: "🇸🇦 العربية",
-  es: "🇪🇸 Español",
-  ru: "🇷🇺 Русский",
+  en: '🇺🇸 English',
+  id: '🇮🇩 Indonesia',
+  ja: '🇯🇵 日本語',
+  ar: '🇸🇦 العربية',
+  es: '🇪🇸 Español',
+  ru: '🇷🇺 Русский',
 };
 
-export const defaultLocale = "en";
+export const defaultLocale = 'en';
 
-// Fungsi getLocale tidak perlu diubah, tapi saya sertakan lagi untuk kelengkapan
-// Pastikan Anda sudah menginstal negotiator dan @formatjs/intl-localematcher
-import { match } from "@formatjs/intl-localematcher";
-import Negotiator from "negotiator";
-import { headers } from "next/headers";
+const dictionaries = {
+  en: () => import('@/locales/en.json').then((module) => module.default),
+  id: () => import('@/locales/id.json').then((module) => module.default),
+  ja: () => import('@/locales/ja.json').then((module) => module.default),
+  ar: () => import('@/locales/ar.json').then((module) => module.default),
+  es: () => import('@/locales/es.json').then((module) => module.default),
+  ru: () => import('@/locales/ru.json').then((module) => module.default),
+};
 
-export function getLocale(): string {
-    const acceptLanguage = headers().get('accept-language');
-    if (!acceptLanguage) {
-        return defaultLocale;
-    }
-
-    const languages = new Negotiator({
-        headers: { 'accept-language': acceptLanguage },
-    }).languages();
-
-    return match(languages, locales as any, defaultLocale);
-}
-
-// Fungsi getDictionary menjadi jauh lebih sederhana
 export const getDictionary = async (locale: string) => {
-  // Cek apakah bahasa yang diminta ada di dalam file gabungan kita
-  if (Object.keys(translations).includes(locale)) {
-    // Jika ada, kembalikan bagian (object) dari bahasa tersebut
-    return translations[locale as keyof typeof translations];
+  if (!Object.keys(dictionaries).includes(locale)) {
+    locale = defaultLocale;
   }
-  // Jika tidak ada, kembalikan bahasa default
-  return translations[defaultLocale as keyof typeof translations];
+  return dictionaries[locale as keyof typeof dictionaries]();
 };
