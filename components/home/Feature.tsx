@@ -21,7 +21,7 @@ const Feature = ({
       <div className="container space-y-6 rounded-md bg-secondary py-14 lg:py-24">
         {/* Heading */}
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
-          <h2 className="font-heading text-4xl md:text-6xl text-secondary-foreground"> {/* DIUBAH DI SINI */}
+          <h2 className="font-heading text-4xl md:text-6xl text-secondary-foreground">
             <RoughNotation type="highlight" show={true} color="#2563EB">
               {locale?.title ?? "Features"}
             </RoughNotation>
@@ -50,8 +50,8 @@ const Feature = ({
               </div>
 
               {/* Title */}
-              <h3 className="text-base font-semibold text-foreground mb-0.5 mt-[-4px]"> {/* DIUBAH DI SINI */}
-                {feature.title.toUpperCase()}
+              <h3 className="text-base font-semibold text-foreground mb-0.5 mt-[-4px]">
+                {feature.title} {/* DIKEMBALIKAN SEPERTI SEMULA */}
               </h3>
 
               {/* Description */}
