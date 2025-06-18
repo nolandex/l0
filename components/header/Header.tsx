@@ -3,7 +3,6 @@ import HeaderLinks from "@/components/header/HeaderLinks";
 import { LangSwitcher } from "@/components/header/LangSwitcher";
 import { siteConfig } from "@/config/site";
 import { MenuIcon } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
@@ -39,22 +38,14 @@ const Header = () => {
       <nav className="relative flex justify-between items-center">
         {/* Left section */}
         <div className="flex items-center md:gap-x-12 flex-1">
+          {/* PERUBAHAN DI SINI: Ukuran teks dikecilkan dari 2xl menjadi xl */}
           <Link
             href="/"
-            aria-label="Landing Page Boilerplate"
-            title="Landing Page Boilerplate"
-            className="flex items-center space-x-1 font-bold translate-y-[-2px]"
+            aria-label="Bisnovo"
+            title="Bisnovo"
+            className="font-bold text-xl" 
           >
-            <Image
-              alt="Logo"
-              src="/logo.svg"
-              className="w-8 h-8"
-              width={32}
-              height={32}
-            />
-            <span className="text-gray-950 dark:text-gray-300 hidden md:block text-lg">
-              {siteConfig.name}
-            </span>
+            Bisnovo
           </Link>
         </div>
 
@@ -99,22 +90,14 @@ const Header = () => {
           <div className="absolute top-0 left-0 w-full z-50">
             <div className="p-5 bg-background border rounded shadow-sm">
               <div className="flex items-center justify-between mb-4">
+                 {/* PERUBAHAN DI SINI: Ukuran teks dikecilkan dari xl menjadi lg */}
                 <Link
                   href="/"
-                  aria-label="Landing Page Boilerplate"
-                  title="Landing Page Boilerplate"
-                  className="inline-flex items-center"
+                  aria-label="Bisnovo"
+                  title="Bisnovo"
+                  className="font-bold text-lg tracking-wide"
                 >
-                  <Image
-                    alt={siteConfig.name}
-                    src="/logo.svg"
-                    className="w-8 h-8"
-                    width={32}
-                    height={32}
-                  />
-                  <span className="ml-2 text-lg font-bold tracking-wide text-gray-950 dark:text-gray-300">
-                    {siteConfig.name}
-                  </span>
+                  Bisnovo
                 </Link>
                 <button
                   aria-label="Close Menu"
