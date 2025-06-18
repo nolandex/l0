@@ -125,10 +125,9 @@ interface Product {
   features?: string[]
   exampleUrl?: string
   modalType?: "example" | "details" | "contentImages" | "videoPromo" | "seoImages" | "adsImages" | null
-  image?: string
 }
 
-const getInstagramFeatures = (option: string) => {
+const getInstagramBoosterFeatures = (option: string) => {
   switch (option) {
     case "3000":
       return ["5000 Likes", "100000 Views"]
@@ -141,7 +140,7 @@ const getInstagramFeatures = (option: string) => {
   }
 }
 
-const getTikTokFeatures = (option: string) => {
+const getTikTokBoosterFeatures = (option: string) => {
   const baseViews = 70000
   const baseLikes = 5000
   const baseShares = 700
@@ -167,7 +166,7 @@ const getTikTokFeatures = (option: string) => {
   }
 }
 
-const getTelegramFeatures = (option: string) => {
+const getTelegramBoosterFeatures = (option: string) => {
   switch (option) {
     case "3000":
       return ["10000 Views", "1000 Reactions"]
@@ -180,7 +179,7 @@ const getTelegramFeatures = (option: string) => {
   }
 }
 
-const getFacebookFeatures = (option: string) => {
+const getFacebookBoosterFeatures = (option: string) => {
   switch (option) {
     case "3000":
       return ["5000 Likes", "100000 Views"]
@@ -201,14 +200,13 @@ const productData: Product[] = [
     features: [
       "Website",
       "Desain Konten Sosmed",
-      "Sosmed",
+      "Booster Sosmed",
       "Video Promosi",
       "Copywriting",
       "SEO On-page",
     ],
     exampleUrl: "https://example.com",
     modalType: "details",
-    image: "/images/paket_bisnis.jpg",
   },
   {
     name: "Paket Bisnis Reseller",
@@ -217,65 +215,58 @@ const productData: Product[] = [
     features: [
       "Website",
       "Desain Konten Sosmed",
-      "Sosmed",
+      "Booster Sosmed",
       "Video Promosi",
       "Copywriting",
       "Alat promosi",
     ],
     exampleUrl: "https://example.com",
     modalType: "details",
-    image: "/images/paket_reseller.jpg",
   },
   {
-    name: "Instagram",
+    name: "Instagram Booster",
     price: "",
-    category: "sosmed",
+    category: "sosmed_booster",
     features: [],
     exampleUrl: "https://example.com/instagram",
     modalType: "details",
-    image: "/images/instagram.jpg",
   },
   {
-    name: "TikTok",
+    name: "TikTok Booster",
     price: "",
-    category: "sosmed",
+    category: "sosmed_booster",
     features: [],
     exampleUrl: "https://example.com/tiktok",
     modalType: "details",
-    image: "/images/tiktok.jpg",
   },
   {
-    name: "Telegram",
+    name: "Telegram Booster",
     price: "",
-    category: "sosmed",
+    category: "sosmed_booster",
     features: [],
     exampleUrl: "https://example.com/telegram",
     modalType: "details",
-    image: "/images/telegram.jpg",
   },
   {
-    name: "Facebook",
+    name: "Facebook Booster",
     price: "",
-    category: "sosmed",
+    category: "sosmed_booster",
     features: [],
     exampleUrl: "https://example.com/facebook",
     modalType: "details",
-    image: "/images/facebook.jpg",
   },
   {
     name: "Desain Konten",
     price: "Rp 10,000",
     category: "lainnya",
     modalType: "contentImages",
-    image: "/images/desain_konten.jpg",
   },
   {
     name: "Video Promosi",
     price: "Rp 10,000",
     category: "lainnya",
-    exampleUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    exampleUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Example video
     modalType: "videoPromo",
-    image: "/images/video_promo.jpg",
   },
   {
     name: "SEO & Domain Website",
@@ -283,7 +274,6 @@ const productData: Product[] = [
     category: "lainnya",
     features: ["Riset Kata Kunci", "Optimasi Halaman", "setting dll"],
     modalType: "seoImages",
-    image: "/images/seo.jpg",
   },
   {
     name: "Jasa Iklan Online",
@@ -291,7 +281,6 @@ const productData: Product[] = [
     category: "lainnya",
     features: ["Meta ads", "Tiktok ads"],
     modalType: "adsImages",
-    image: "/images/iklan.jpg",
   },
   {
     name: "Landing Page",
@@ -300,7 +289,7 @@ const productData: Product[] = [
     subcategory: "business",
     features: ["Responsif", "Hosting Gratis"],
     exampleUrl: "https://unbounce.com",
-    image: "/images/landing_page.jpg",
+    modalType: "example",
   },
   {
     name: "Profil Bisnis",
@@ -309,7 +298,7 @@ const productData: Product[] = [
     subcategory: "business",
     features: ["Responsif", "Hosting Gratis"],
     exampleUrl: "https://profil-bisnis-demo.vercel.app",
-    image: "/images/profil_bisnis.jpg",
+    modalType: "example",
   },
   {
     name: "Simple Store",
@@ -318,7 +307,7 @@ const productData: Product[] = [
     subcategory: "business",
     features: ["Responsif", "Hosting Gratis"],
     exampleUrl: "https://shopify.com",
-    image: "/images/simple_store.jpg",
+    modalType: "example",
   },
   {
     name: "Portfolio",
@@ -327,7 +316,7 @@ const productData: Product[] = [
     subcategory: "business",
     features: ["Responsif", "Hosting Gratis"],
     exampleUrl: "https://portfolio-demo.vercel.app",
-    image: "/images/portfolio.jpg",
+    modalType: "example",
   },
   {
     name: "Online Course",
@@ -336,7 +325,7 @@ const productData: Product[] = [
     subcategory: "business",
     features: ["Responsif", "Hosting Gratis"],
     exampleUrl: "https://course-demo.vercel.app",
-    image: "/images/online_course.jpg",
+    modalType: "example",
   },
   {
     name: "Membership",
@@ -345,7 +334,7 @@ const productData: Product[] = [
     subcategory: "business",
     features: ["Responsif", "Hosting Gratis"],
     exampleUrl: "https://membership-demo.vercel.app",
-    image: "/images/membership.jpg",
+    modalType: "example",
   },
   {
     name: "Link in Bio",
@@ -354,7 +343,7 @@ const productData: Product[] = [
     subcategory: "business",
     features: ["Responsif", "Hosting Gratis"],
     exampleUrl: "https://linkinbio-demo.vercel.app",
-    image: "/images/link_in_bio.jpg",
+    modalType: "example",
   },
   {
     name: "Digital Invitation",
@@ -363,7 +352,7 @@ const productData: Product[] = [
     subcategory: "non-business",
     features: ["Responsif", "Hosting Gratis"],
     exampleUrl: "https://invitation-demo.vercel.app",
-    image: "/images/digital_invitation.jpg",
+    modalType: "example",
   },
   {
     name: "Birthday",
@@ -372,7 +361,7 @@ const productData: Product[] = [
     subcategory: "non-business",
     features: ["Responsif", "Hosting Gratis"],
     exampleUrl: "https://birthday-demo.vercel.app",
-    image: "/images/birthday.jpg",
+    modalType: "example",
   },
   {
     name: "Event",
@@ -381,7 +370,7 @@ const productData: Product[] = [
     subcategory: "non-business",
     features: ["Responsif", "Hosting Gratis"],
     exampleUrl: "https://event-demo.vercel.app",
-    image: "/images/event.jpg",
+    modalType: "example",
   },
 ]
 
@@ -391,7 +380,7 @@ const imageSources = {
   adsImages: ["/images/ads1.jpg"],
 }
 
-export default function ServicesPage() {
+export default function ServicesPage() { // Ganti nama fungsi agar lebih deskriptif
   const { theme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const [activeCategory, setActiveCategory] = useState("paket_bisnis")
@@ -399,10 +388,10 @@ export default function ServicesPage() {
   const [activeModal, setActiveModal] = useState<Product["modalType"]>(null)
   const [modalProduct, setModalProduct] = useState<Product | null>(null)
 
-  const [instagramOption, setInstagramOption] = useState("3000")
-  const [tiktokOption, setTiktokOption] = useState("2000")
-  const [telegramOption, setTelegramOption] = useState("3000")
-  const [facebookOption, setFacebookOption] = useState("3000")
+  const [instagramBoosterOption, setInstagramBoosterOption] = useState("3000")
+  const [tiktokBoosterOption, setTiktokBoosterOption] = useState("2000")
+  const [telegramBoosterOption, setTelegramBoosterOption] = useState("3000")
+  const [facebookBoosterOption, setFacebookBoosterOption] = useState("3000")
   const [boosterLink, setBoosterLink] = useState("")
 
   useEffect(() => {
@@ -414,29 +403,29 @@ export default function ServicesPage() {
       let currentPrice = product.price
       let currentFeatures = product.features || []
 
-      if (product.name === "Instagram") {
+      if (product.name === "Instagram Booster") {
         currentPrice =
-          instagramOption === "3000"
+          instagramBoosterOption === "3000"
             ? "Rp 50,000"
-            : instagramOption === "5000"
+            : instagramBoosterOption === "5000"
               ? "Rp 80,000"
               : "Rp 150,000"
-        currentFeatures = getInstagramFeatures(instagramOption)
-      } else if (product.name === "TikTok") {
-        currentPrice = tiktokOption === "2000" ? "Rp 50,000" : "Rp 100,000"
-        currentFeatures = getTikTokFeatures(tiktokOption)
-      } else if (product.name === "Telegram") {
+        currentFeatures = getInstagramBoosterFeatures(instagramBoosterOption)
+      } else if (product.name === "TikTok Booster") {
+        currentPrice = tiktokBoosterOption === "2000" ? "Rp 50,000" : "Rp 100,000"
+        currentFeatures = getTikTokBoosterFeatures(tiktokBoosterOption)
+      } else if (product.name === "Telegram Booster") {
         currentPrice =
-          telegramOption === "3000" ? "Rp 50,000" : telegramOption === "5000" ? "Rp 70,000" : "Rp 140,000"
-        currentFeatures = getTelegramFeatures(telegramOption)
-      } else if (product.name === "Facebook") {
+          telegramBoosterOption === "3000" ? "Rp 50,000" : telegramBoosterOption === "5000" ? "Rp 70,000" : "Rp 140,000"
+        currentFeatures = getTelegramBoosterFeatures(telegramBoosterOption)
+      } else if (product.name === "Facebook Booster") {
         currentPrice =
-          facebookOption === "3000" ? "Rp 50,000" : facebookOption === "5000" ? "Rp 80,000" : "Rp 150,000"
-        currentFeatures = getFacebookFeatures(facebookOption)
+          facebookBoosterOption === "3000" ? "Rp 50,000" : facebookBoosterOption === "5000" ? "Rp 80,000" : "Rp 150,000"
+        currentFeatures = getFacebookBoosterFeatures(facebookBoosterOption)
       }
       return { ...product, price: currentPrice, features: currentFeatures }
     },
-    [instagramOption, tiktokOption, telegramOption, facebookOption],
+    [instagramBoosterOption, tiktokBoosterOption, telegramBoosterOption, facebookBoosterOption],
   )
 
   const filteredProducts = productData.filter((product) => {
@@ -504,11 +493,11 @@ export default function ServicesPage() {
           </button>
           <button
             onClick={() => {
-              setActiveCategory("sosmed")
+              setActiveCategory("sosmed_booster")
             }}
-            className={getButtonClasses(activeCategory === "sosmed")}
+            className={getButtonClasses(activeCategory === "sosmed_booster")}
           >
-            Sosmed
+            Sosmed Booster
           </button>
           <button
             onClick={() => {
@@ -550,15 +539,6 @@ export default function ServicesPage() {
                       theme === "dark" ? "bg-gray-800 border border-gray-700" : "bg-white border border-gray-200"
                     } p-3`}
                   >
-                    {displayProduct.image && (
-                      <div className="mb-2">
-                        <img
-                          src={displayProduct.image}
-                          alt={displayProduct.name}
-                          className="w-full h-32 object-cover rounded-md"
-                        />
-                      </div>
-                    )}
                     <div className="flex justify-between items-start mb-2">
                       <h3
                         className={`font-bold leading-tight text-sm ${
@@ -583,12 +563,14 @@ export default function ServicesPage() {
                     </div>
 
                     <div className="flex-grow">
-                      {["Instagram", "TikTok", "Telegram", "Facebook"].includes(displayProduct.name) && (
+                      {["Instagram Booster", "TikTok Booster", "Telegram Booster", "Facebook Booster"].includes(
+                        displayProduct.name,
+                      ) && (
                         <div className="mb-3 space-y-2">
-                          {displayProduct.name === "Instagram" && (
+                          {displayProduct.name === "Instagram Booster" && (
                             <select
-                              value={instagramOption}
-                              onChange={(e) => setInstagramOption(e.target.value)}
+                              value={instagramBoosterOption}
+                              onChange={(e) => setInstagramBoosterOption(e.target.value)}
                               className={`w-full px-2 py-1.5 rounded-md text-xs border ${
                                 theme === "dark"
                                   ? "bg-gray-700 border-gray-600 text-gray-200"
@@ -601,10 +583,10 @@ export default function ServicesPage() {
                             </select>
                           )}
 
-                          {displayProduct.name === "TikTok" && (
+                          {displayProduct.name === "TikTok Booster" && (
                             <select
-                              value={tiktokOption}
-                              onChange={(e) => setTiktokOption(e.target.value)}
+                              value={tiktokBoosterOption}
+                              onChange={(e) => setTiktokBoosterOption(e.target.value)}
                               className={`w-full px-2 py-1.5 rounded-md text-xs border ${
                                 theme === "dark"
                                   ? "bg-gray-700 border-gray-600 text-gray-200"
@@ -616,10 +598,10 @@ export default function ServicesPage() {
                             </select>
                           )}
 
-                          {displayProduct.name === "Telegram" && (
+                          {displayProduct.name === "Telegram Booster" && (
                             <select
-                              value={telegramOption}
-                              onChange={(e) => setTelegramOption(e.target.value)}
+                              value={telegramBoosterOption}
+                              onChange={(e) => setTelegramBoosterOption(e.target.value)}
                               className={`w-full px-2 py-1.5 rounded-md text-xs border ${
                                 theme === "dark"
                                   ? "bg-gray-700 border-gray-600 text-gray-200"
@@ -632,10 +614,10 @@ export default function ServicesPage() {
                             </select>
                           )}
 
-                          {displayProduct.name === "Facebook" && (
+                          {displayProduct.name === "Facebook Booster" && (
                             <select
-                              value={facebookOption}
-                              onChange={(e) => setFacebookOption(e.target.value)}
+                              value={facebookBoosterOption}
+                              onChange={(e) => setFacebookBoosterOption(e.target.value)}
                               className={`w-full px-2 py-1.5 rounded-md text-xs border ${
                                 theme === "dark"
                                   ? "bg-gray-700 border-gray-600 text-gray-200"
@@ -666,10 +648,10 @@ export default function ServicesPage() {
                         </div>
                       )}
 
-                      {displayProduct.name !== "Instagram" &&
-                        displayProduct.name !== "TikTok" &&
-                        displayProduct.name !== "Telegram" &&
-                        displayProduct.name !== "Facebook" &&
+                      {displayProduct.name !== "Instagram Booster" &&
+                        displayProduct.name !== "TikTok Booster" &&
+                        displayProduct.name !== "Telegram Booster" &&
+                        displayProduct.name !== "Facebook Booster" &&
                         displayProduct.features &&
                         displayProduct.features.length > 0 && (
                           <div className="mb-3">
@@ -688,22 +670,7 @@ export default function ServicesPage() {
                       >
                         Bayar
                       </button>
-                      {displayProduct.exampleUrl && displayProduct.category === "website" && (
-                        <a
-                          href={displayProduct.exampleUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`px-2 py-1.5 rounded-md font-medium text-xs transition-all duration-300 border flex items-center gap-1 shadow-sm hover:shadow-md ${
-                            theme === "dark"
-                              ? "border-gray-600 text-gray-300 hover:bg-gray-700 hover:border-gray-500"
-                              : "border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400"
-                          }`}
-                        >
-                          <ExternalLink className="h-3 w-3" /> Contoh
-                        </a>
-                      )}
                       {displayProduct.modalType &&
-                        displayProduct.category !== "website" &&
                         (displayProduct.exampleUrl ||
                           imageSources[displayProduct.modalType as keyof typeof imageSources]?.length > 0 ||
                           displayProduct.modalType === "details") && (
@@ -715,7 +682,13 @@ export default function ServicesPage() {
                                 : "border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400"
                             }`}
                           >
-                            Rincian
+                            {displayProduct.modalType === "example" ? (
+                              <>
+                                <ExternalLink className="h-3 w-3" /> Contoh
+                              </>
+                            ) : (
+                              "Rincian"
+                            )}
                           </button>
                         )}
                     </div>
@@ -726,6 +699,17 @@ export default function ServicesPage() {
           ))}
         </div>
 
+        <Modal isOpen={activeModal === "example" && modalProduct !== null} onClose={closeModal} size="full">
+          {modalProduct?.exampleUrl && (
+            <iframe
+              src={modalProduct.exampleUrl}
+              title={`Contoh ${modalProduct.name}`}
+              className="w-full h-full border-0"
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            />
+          )}
+        </Modal>
+
         <Modal isOpen={activeModal === "details" && modalProduct !== null} onClose={closeModal} size="md">
           <OrderingInstructions />
         </Modal>
@@ -733,7 +717,7 @@ export default function ServicesPage() {
         <Modal
           isOpen={
             (activeModal === "contentImages" && modalProduct?.name === "Desain Konten") ||
-            (activeModal === "seoImages" && modalProduct?.name === "SEO & Domain Website") ||
+            (activeModal === "seoImages" && modalProduct?.name === "SEO & Domain Website") || // <-- PERBAIKAN BUG
             (activeModal === "adsImages" && modalProduct?.name === "Jasa Iklan Online")
           }
           onClose={closeModal}
