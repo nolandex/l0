@@ -17,31 +17,26 @@ const Testimonials = ({ id, locale }: { id: string; locale: any }) => {
         if (scrollRef.current) {
           const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
           
-          // Jika sudah di paling akhir, kembali ke awal
-          if (scrollLeft >= scrollWidth - clientWidth -1) {
+          if (scrollLeft >= scrollWidth - clientWidth - 1) {
             scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
           } else {
-            // Lebar kartu + gap
-            const cardWidth = 300 + 16; 
+            const cardWidth = 300 + 16;
             scrollRef.current.scrollBy({ left: cardWidth, behavior: "smooth" });
           }
         }
-      }, 3000); // Ganti durasi scroll di sini (dalam milidetik)
+      }, 3000);
     }
     return () => clearInterval(interval);
   }, [isAutoScroll]);
 
-  // Hentikan auto-scroll saat disentuh atau di-klik
   const handleInteractionStart = () => {
     setIsAutoScroll(false);
   };
 
-  // Lanjutkan auto-scroll setelah interaksi selesai
   const handleInteractionEnd = () => {
-    // Beri jeda sedikit sebelum memulai kembali
     setTimeout(() => {
-        setIsAutoScroll(true);
-    }, 5000); 
+      setIsAutoScroll(true);
+    }, 5000);
   };
 
   return (
@@ -55,10 +50,7 @@ const Testimonials = ({ id, locale }: { id: string; locale: any }) => {
             {locale.title}
           </RoughNotation>
         </h2>
-        {/* Link Twitter dari deskripsi sudah dihapus */}
-        <p className="text-large text-default-500">
-          {locale.description1}
-        </p>
+        <p className="text-large text-default-500">{locale.description1}</p>
       </div>
       <div className="relative w-full">
         <div
@@ -91,9 +83,9 @@ const Testimonials = ({ id, locale }: { id: string; locale: any }) => {
                       </p>
                     </div>
                   </div>
-                  {/* Ikon dan Link Twitter dari setiap kartu sudah dihapus */}
                 </div>
-                <p className="text-default-400 text-[14px]">
+                {/* PERUBAHAN DI SINI: Warna teks diubah agar tidak samar */}
+                <p className="text-slate-800 dark:text-slate-300 text-[14px]">
                   {testimonial.content}
                 </p>
               </div>
