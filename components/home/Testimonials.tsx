@@ -2,7 +2,8 @@
 "use client";
 
 import { TestimonialsData } from "@/config/testimonials";
-import Image from "next/image";
+// Import "Image" sudah tidak diperlukan lagi, jadi bisa dihapus atau diabaikan.
+// import Image from "next/image"; 
 import { useRef, useEffect, useState } from "react";
 import { RoughNotation } from "react-rough-notation";
 
@@ -50,7 +51,8 @@ const Testimonials = ({ id, locale }: { id: string; locale: any }) => {
             {locale.title}
           </RoughNotation>
         </h2>
-        <p className="text-large text-default-500">{locale.description1}</p>
+        {/* PERUBAHAN 1: Paragraf deskripsi di bawah judul telah dihapus */}
+        {/* <p className="text-large text-default-500">{locale.description1}</p> */}
       </div>
       <div className="relative w-full">
         <div
@@ -66,25 +68,11 @@ const Testimonials = ({ id, locale }: { id: string; locale: any }) => {
               className="snap-start flex-shrink-0 w-[300px] mb-4 transition-all"
               key={index}
             >
-              <div className="border border-slate/10 rounded-lg p-4 flex flex-col items-start gap-3 h-full bg-white/5">
-                <div className="flex items-start justify-between w-full">
-                  <div className="flex items-start gap-2">
-                    <Image
-                      src={testimonial.user.image}
-                      alt="user"
-                      height={40}
-                      width={40}
-                      className="w-12 h-12 rounded-full object-cover object-top"
-                    />
-                    <div className="flex flex-col items-start">
-                      <p className="font-bold">{testimonial.user.name}</p>
-                      <p className="text-default-500">
-                        @{testimonial.user.username}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                {/* PERUBAHAN DI SINI: Warna teks diubah agar tidak samar */}
+              {/* PERUBAHAN 2: Konten di dalam kartu disederhanakan */}
+              <div className="border border-slate/10 rounded-lg p-4 flex flex-col items-start justify-center h-full bg-white/5">
+                
+                {/* Seluruh bagian info pengguna (foto, nama, username) telah dihapus */}
+
                 <p className="text-slate-800 dark:text-slate-300 text-[14px]">
                   {testimonial.content}
                 </p>
