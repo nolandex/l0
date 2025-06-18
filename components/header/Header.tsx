@@ -3,8 +3,6 @@ import HeaderLinks from "@/components/header/HeaderLinks";
 import { LangSwitcher } from "@/components/header/LangSwitcher";
 import { siteConfig } from "@/config/site";
 import { MenuIcon } from "lucide-react";
-// PERUBAHAN: Import Image dihapus karena tidak digunakan lagi
-// import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
@@ -40,7 +38,6 @@ const Header = () => {
       <nav className="relative flex justify-between items-center">
         {/* Left section */}
         <div className="flex items-center md:gap-x-12 flex-1">
-          {/* PERUBAHAN DI SINI: Logo gambar diganti dengan teks "Bisnovo" */}
           <Link
             href="/"
             aria-label="Bisnovo"
@@ -92,7 +89,6 @@ const Header = () => {
           <div className="absolute top-0 left-0 w-full z-50">
             <div className="p-5 bg-background border rounded shadow-sm">
               <div className="flex items-center justify-between mb-4">
-                {/* PERUBAHAN DI SINI: Logo gambar di menu mobile diganti teks "Bisnovo" */}
                 <Link
                   href="/"
                   aria-label="Bisnovo"
@@ -117,7 +113,8 @@ const Header = () => {
                       <Link
                         href={`/${lang === "en" ? "" : lang}${link.href}`}
                         aria-label={link.label}
-                        title={label}
+                        // PERUBAHAN DI SINI: Diperbaiki dari {label} menjadi {link.label}
+                        title={link.label}
                         className="font-medium tracking-wide transition-colors duration-200 hover:text-deep-purple-accent-400 text-sm"
                         onClick={() => setIsMenuOpen(false)}
                       >
