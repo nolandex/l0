@@ -9,7 +9,6 @@ import { useState, useEffect } from "react";
 import { CgClose } from "react-icons/cg";
 import { ThemedButton } from "../ThemedButton";
 
-// PERUBAHAN DI SINI: Memperbarui array links
 const links = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
@@ -29,7 +28,8 @@ const Header = () => {
   }, []);
 
   // Fungsi untuk membuat URL dengan prefix bahasa jika diperlukan
-  const getLocalizedPath = (path) => {
+  // PERUBAHAN DI SINI: Menambahkan tipe 'string' pada parameter path
+  const getLocalizedPath = (path: string) => {
     // Jika link adalah ke root ('/'), atur path dasar
     const basePath = lang === "en" ? "" : `/${lang}`;
     // Jika path yang dituju juga root, kembalikan basePath atau '/'
@@ -63,7 +63,6 @@ const Header = () => {
         <ul className="hidden md:flex items-center justify-center gap-6 flex-1">
           {links.map((link) => (
             <li key={link.label}>
-              {/* PERUBAHAN DI SINI: href diperbarui untuk menuju halaman baru */}
               <Link
                 href={getLocalizedPath(link.href)}
                 aria-label={link.label}
@@ -122,7 +121,6 @@ const Header = () => {
                 <ul className="space-y-4">
                   {links.map((link) => (
                     <li key={link.label}>
-                       {/* PERUBAHAN DI SINI: href diperbarui untuk menuju halaman baru */}
                       <Link
                         href={getLocalizedPath(link.href)}
                         aria-label={link.label}
@@ -149,3 +147,4 @@ const Header = () => {
 };
 
 export default Header;
+
