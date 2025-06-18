@@ -1,57 +1,54 @@
 import { SiteConfig } from "@/types/siteConfig";
-import { BsGithub, BsTwitterX, BsWechat } from "react-icons/bs";
-import { MdEmail } from "react-icons/md";
-import { SiBuymeacoffee, SiJuejin } from "react-icons/si";
+// PERUBAHAN: Import icon disesuaikan untuk header dan footer
+import { 
+  BsInstagram, 
+  BsTiktok, 
+  BsFacebook, 
+  BsWhatsapp 
+} from "react-icons/bs";
+import { MdEmail } from "react-icons/md"; // Menambahkan kembali icon email
 
 const OPEN_SOURCE_URL = 'https://github.com/weijunext/landing-page-boilerplate'
 
 const baseSiteConfig = {
-  name: "Landing page boilerplate",
+  name: "Bisnovo",
   description:
     "A free, open-source, and powerful landing page boilerplate, ideal for various projects, enabling you to create a landing page in under an hour.",
-  url: "https://landingpage.weijunext.com",
-  ogImage: "https://landingpage.weijunext.com/og.png",
+  url: "https://www.bisnovo.com",
+  ogImage: "https://www.bisnovo.com/og.png",
   metadataBase: '/',
-  keywords: ["landing page boilerplate", "landing page template", "awesome landing page", "next.js landing page"],
+  keywords: ["bisnis online", "jasa pembuatan website", "landing page", "bisnovo"],
   authors: [
     {
-      name: "weijunext",
-      url: "https://weijunext.com",
-      twitter: 'https://twitter.com/weijunext',
+      name: "Bisnovo",
+      url: "https://www.instagram.com/bisnovo",
     }
   ],
-  creator: '@weijunext',
+  creator: '@bisnovo',
   openSourceURL: 'https://github.com/weijunext/landing-page-boilerplate',
   themeColors: [
     { media: '(prefers-color-scheme: light)', color: 'white' },
     { media: '(prefers-color-scheme: dark)', color: 'black' },
   ],
-  nextThemeColor: 'dark', // next-theme option: system | dark | light
+  nextThemeColor: 'dark',
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon-16x16.png",
     apple: "/logo.png",
   },
+  // PERUBAHAN: headerLinks diganti dengan WhatsApp, Email, dan Instagram
   headerLinks: [
-    { name: 'repo', href: OPEN_SOURCE_URL, icon: BsGithub },
-    { name: 'twitter', href: "https://twitter.com/weijunext", icon: BsTwitterX },
-    { name: 'buyMeCoffee', href: "https://www.buymeacoffee.com/weijunext", icon: SiBuymeacoffee }
+    { name: 'whatsapp', href: "https://api.whatsapp.com/send/?phone=6285156779923", icon: BsWhatsapp },
+    { name: 'email', href: "mailto:kontak@bisnovo.com", icon: MdEmail }, // GANTI email ini jika perlu
+    { name: 'instagram', href: "https://www.instagram.com/bisnovo", icon: BsInstagram }
   ],
   footerLinks: [
-    { name: 'email', href: "mailto:weijunext@gmail.com", icon: MdEmail },
-    { name: 'twitter', href: "https://twitter.com/weijunext", icon: BsTwitterX },
-    { name: 'github', href: "https://github.com/weijunext/", icon: BsGithub },
-    { name: 'buyMeCoffee', href: "https://www.buymeacoffee.com/weijunext", icon: SiBuymeacoffee },
-    { name: 'juejin', href: "https://juejin.cn/user/26044008768029", icon: SiJuejin },
-    { name: 'weChat', href: "https://weijunext.com/make-a-friend", icon: BsWechat }
+    { name: 'instagram', href: "https://www.instagram.com/bisnovo", icon: BsInstagram },
+    { name: 'tiktok', href: "https://www.tiktok.com/@bisnovo", icon: BsTiktok },
+    { name: 'facebook', href: "https://www.facebook.com/share/1H87XB9aw7/", icon: BsFacebook },
+    { name: 'whatsapp', href: "https://api.whatsapp.com/send/?phone=6285156779923", icon: BsWhatsapp },
   ],
-  footerProducts: [
-    { url: 'https://nexty.dev/', name: 'SaaS Starter' },
-    { url: 'https://landingpage.weijunext.com/', name: 'Landing Page Boilerplate' },
-    { url: 'https://weijunext.com/', name: 'J实验室' },
-    { url: 'https://nextjscn.org/', name: 'Next.js 中文文档' },
-    { url: 'https://github.com/weijunext/indie-hacker-tools', name: 'Indie Hacker Tools' },
-  ]
+  footerProducts: []
 }
 
 export const siteConfig: SiteConfig = {
