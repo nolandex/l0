@@ -16,7 +16,7 @@ export const defaultLocale = 'id'; // Sebelumnya 'en'
 
 const dictionaries = {
   en: () => import('@/locales/en.json').then((module) => module.default),
-  id: () => import('@/locales/id.json').then((module) => module.default),
+  id: () => import('@/locales/zh.json').then((module) => module.default),
   ja: () => import('@/locales/ja.json').then((module) => module.default),
   ar: () => import('@/locales/ar.json').then((module) => module.default),
   es: () => import('@/locales/es.json').then((module) => module.default),
