@@ -511,6 +511,18 @@ export default function ServicesPage() {
   }, [])
 
   const getButtonClasses = (isActive: boolean) => {
+    // Menambahkan w-full agar tombol memenuhi lebar grid cell, py-2 untuk tinggi yang lebih baik
+    const baseClasses = "w-full px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300"
+    const activeClasses =
+      theme === "dark" ? "bg-blue-600 text-white shadow-lg" : "bg-blue-500 text-white shadow-lg"
+    const inactiveClasses =
+      theme === "dark"
+        ? "bg-gray-700 text-gray-200 hover:bg-gray-600"
+        : "bg-white text-gray-700 hover:bg-gray-100 shadow-md"
+    return `${baseClasses} ${isActive ? activeClasses : inactiveClasses}`
+  }
+
+  const getSubButtonClasses = (isActive: boolean) => {
     const baseClasses = "px-4 py-1 rounded-lg font-medium text-sm transition-all duration-300"
     const activeClasses =
       theme === "dark" ? "bg-blue-600 text-white shadow-lg" : "bg-blue-500 text-white shadow-lg"
@@ -521,6 +533,7 @@ export default function ServicesPage() {
     return `${baseClasses} ${isActive ? activeClasses : inactiveClasses}`
   }
 
+
   if (!mounted) return null
 
   return (
@@ -529,7 +542,8 @@ export default function ServicesPage() {
         theme === "dark" ? "bg-gray-900" : "bg-gray-50"
       } px-4 sm:px-6 max-w-screen-xl mx-auto overflow-x-hidden`}
     >
-      <div className="flex flex-wrap justify-center gap-2 mb-6">
+      {/* --- Tata Letak Tombol Kategori Diubah menjadi Grid 2 Kolom --- */}
+      <div className="grid grid-cols-2 gap-3 mb-6 max-w-md mx-auto">
         <button
           onClick={() => {
             setActiveCategory("paket_bisnis")
@@ -569,25 +583,27 @@ export default function ServicesPage() {
         <div className="flex justify-center gap-2 mb-6 px-2 sm:px-4">
           <button
             onClick={() => setActiveSubcategory("business")}
-            className={getButtonClasses(activeSubcategory === "business")}
+            className={getSubButtonClasses(activeSubcategory === "business")}
           >
             Bisnis
           </button>
           <button
             onClick={() => setActiveSubcategory("non-business")}
-            className={getButtonClasses(activeSubcategory === "non-business")}
+            className={getSubButtonClasses(activeSubcategory === "non-business")}
           >
             Non-Bisnis
           </button>
         </div>
       )}
-
+      
+      {/* --- Container Grid Produk --- */}
+      {/* Kelas grid-cols-1 sm:grid-cols-2 memastikan tata letak 2 kolom di layar sm (640px) ke atas */}
       <div
         className={`grid ${
           activeCategory === "website" || activeCategory === "sosmed"
-            ? "grid-cols-1 sm:grid-cols-2"
-            : "grid-cols-1"
-        } gap-3 sm:gap-4 w-full`}
+            ? "grid-cols-1 sm:grid-cols-2" // 1 kolom di mobile, 2 kolom di desktop
+            : "grid-cols-1" // Selalu 1 kolom untuk kategori lain
+        } gap-4 w-full`}
       >
         {filteredProducts.map((product) => {
           const displayProduct = getProductDisplayData(product)
