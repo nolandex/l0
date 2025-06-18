@@ -1,42 +1,39 @@
-// File: middleware.ts
+// File: middleware.ts (Versi Revisi - Mengabaikan Bahasa Browser)
 
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { match } from '@formatjs/intl-localematcher';
-import Negotiator from 'negotiator';
 
-const locales = ['en', 'zh', 'ja', 'ar', 'es', 'ru'];
-// --- UBAH BARIS INI ---
-const defaultLocale = 'zh'; // Sebelumnya 'en'
+// 1. Definisikan bahasa yang didukung.
+const locales = ['en', 'id', 'ja', 'ar', 'es', 'ru'];
 
-function getLocale(request: NextRequest): string {
-  const negotiatorHeaders: Record<string, string> = {};
-  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
+// 2. Atur bahasa default mutlak Anda.
+// Pastikan ini 'id' jika file JSON Anda bernama id.json, atau 'zh' jika bernama zh.json
+const defaultLocale = 'id'; // Atau 'zh' sesuai nama file Anda
 
-  const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
-
-  try {
-    return match(languages, locales, defaultLocale);
-  } catch (e) {
-    return defaultLocale;
-  }
-}
-
+// 3. Fungsi middleware utama
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
+  // Cek apakah URL yang diakses sudah memiliki awalan bahasa
   const pathnameIsMissingLocale = locales.every(
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
   );
 
+  // Jika awalan bahasa tidak ada...
   if (pathnameIsMissingLocale) {
-    const locale = getLocale(request);
+    // ... TIDAK PERLU DETEKSI BAHASA LAGI.
+    // Langsung gunakan 'defaultLocale' yang sudah kita tentukan.
+    const locale = defaultLocale;
+
+    // Arahkan (redirect) pengguna ke URL dengan awalan bahasa default.
+    // Contoh: /services -> /id/services
     return NextResponse.redirect(
       new URL(`/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`, request.url)
     );
   }
 }
 
+// 4. Konfigurasi Matcher (Tidak perlu diubah)
 export const config = {
   matcher: [
     '/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|.*\\..*).*)',
