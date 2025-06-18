@@ -17,13 +17,13 @@ const Feature = ({
     ALL_FEATURES[`FEATURES_${langName?.toUpperCase?.()}`] ?? ALL_FEATURES.FEATURES_EN;
 
   return (
-    // MENAMBAHKAN KELAS "dark" DI SINI UNTUK MEMAKSA MODE GELAP
-    <section id={id} className="dark"> 
-      <div className="container space-y-6 rounded-md bg-secondary py-14 lg:py-24">
+    <section id={id}>
+      {/* MENGGANTI LATAR BELAKANG MENJADI WARNA GELAP YANG STATIS */}
+      <div className="container space-y-6 rounded-md bg-slate-900 py-14 lg:py-24">
         {/* Heading */}
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
-          {/* Mengembalikan warna teks ke putih */}
-          <h2 className="font-heading text-4xl md:text-6xl text-white"> 
+          {/* Teks kembali ke putih seperti semula */}
+          <h2 className="font-heading text-4xl md:text-6xl text-white">
             <RoughNotation type="highlight" show={true} color="#2563EB">
               {locale?.title ?? "Features"}
             </RoughNotation>
@@ -35,7 +35,8 @@ const Feature = ({
           {FEATURES.map((feature) => (
             <div
               key={feature.title}
-              className="flex h-[180px] flex-col items-center justify-start rounded-md bg-background/70 p-8 shadow-md border dark:border-muted"
+              // Latar belakang kartu juga dibuat gelap statis agar kontras
+              className="flex h-[180px] flex-col items-center justify-start rounded-md bg-slate-800/50 p-8 shadow-md border border-slate-700"
             >
               {/* Icon */}
               <div
@@ -52,8 +53,8 @@ const Feature = ({
               </div>
 
               {/* Title */}
-              {/* Mengembalikan warna teks ke putih */}
-              <h3 className="text-base font-semibold text-white mb-0.5 mt-[-4px]"> 
+              {/* Teks kembali ke putih seperti semula */}
+              <h3 className="text-base font-semibold text-white mb-0.5 mt-[-4px]">
                 {feature.title}
               </h3>
 
