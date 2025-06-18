@@ -1,5 +1,3 @@
-// File: components/home/FAQ.tsx
-
 "use client";
 
 import { ALL_FAQS } from "@/config/faqs";
@@ -8,7 +6,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"; // Impor ini sekarang akan berhasil
+} from "@/components/ui/accordion"; 
 
 const FAQ = ({
   id,
@@ -24,9 +22,11 @@ const FAQ = ({
   return (
     <section id={id} className="container py-16 md:py-24">
       <div className="flex flex-col text-center gap-4 mb-12 max-w-2xl mx-auto">
-        <h2 className="text-3xl font-bold md:text-4xl">{locale.title}</h2>
+        {/* PERUBAHAN DI SINI: Ukuran teks dikecilkan */}
+        <h2 className="text-2xl font-bold md:text-3xl">{locale.title}</h2>
         <p className="text-lg text-muted-foreground">{locale.description}</p>
       </div>
+
       <Accordion type="single" collapsible className="mx-auto w-full max-w-3xl">
         {FAQS?.map((item, index) => (
           <AccordionItem key={index} value={`item-${index}`}>
@@ -40,3 +40,4 @@ const FAQ = ({
 };
 
 export default FAQ;
+
