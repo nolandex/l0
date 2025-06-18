@@ -4,15 +4,15 @@ import { ALL_FEATURES } from "@/config/feature";
 import React from "react";
 import { RoughNotation } from "react-rough-notation";
 
-const Feature = ({
-  id,
-  locale,
-  langName,
-}: {
+interface FeatureProps {
   id: string;
-  locale: any;
+  locale: {
+    title?: string;
+  };
   langName: string;
-}) => {
+}
+
+const Feature: React.FC<FeatureProps> = ({ id, locale, langName }) => {
   const FEATURES =
     ALL_FEATURES[`FEATURES_${langName?.toUpperCase?.()}`] ?? ALL_FEATURES.FEATURES_EN;
 
