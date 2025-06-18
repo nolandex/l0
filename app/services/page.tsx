@@ -469,7 +469,7 @@ export default function ServicesPage() {
   }, [])
 
   const getButtonClasses = (isActive: boolean) => {
-    const baseClasses = "px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300"
+    const baseClasses = "px-4 py-1 rounded-lg font-medium text-sm transition-all duration-300" // Changed py-2 to py-1
     const activeClasses = theme === "dark" ? "bg-blue-600 text-white shadow-lg" : "bg-blue-500 text-white shadow-lg"
     const inactiveClasses =
       theme === "dark"
@@ -481,7 +481,7 @@ export default function ServicesPage() {
   if (!mounted) return null
 
   return (
-    <div className={`min-h-screen pt-20 pb-8 ${theme === "dark" ? "bg-gray-900" : "bg-gray-50"}`}>
+    <div className={`min-h-screen pt-20 pb-8 ${theme === "dark" ? "bg-gray-900" : "bg-gray-50"} px-4`}> {/* Added px-4 */}
       <div className="w-full">
         <div className="flex flex-row justify-center gap-2 sm:gap-4 mb-6 px-2 sm:px-4">
           <button
@@ -787,4 +787,4 @@ export default function ServicesPage() {
       </div>
     </div>
   )
-            }
+        }
