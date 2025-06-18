@@ -36,13 +36,15 @@ const Feature = ({
               className="flex h-[160px] flex-col items-center justify-start rounded-md bg-background/70 p-6 shadow-md border dark:border-muted"
             >
               {/* Icon */}
-              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-2">
+              <div
+                className="flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 text-primary mb-2 mt-2"
+              >
                 {feature.icon && typeof feature.icon === "string" ? (
-                  <span className="text-2xl">{feature.icon}</span>
+                  <span className="text-3xl">{feature.icon}</span>
                 ) : (
                   feature.icon &&
                   React.createElement(feature.icon, {
-                    className: "text-2xl",
+                    className: "text-3xl",
                   })
                 )}
               </div>
