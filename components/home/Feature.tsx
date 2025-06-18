@@ -25,24 +25,27 @@ const Feature = ({
             </RoughNotation>
           </h2>
         </div>
+
         <div className="mx-auto grid justify-center gap-4 text-center sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
           {FEATURES?.map((feature) => (
             <div
               key={feature.title}
-              className="flex h-[200px] flex-col justify-between rounded-md bg-background/70 p-6 shadow-md border dark:border-muted"
+              className="flex h-[160px] flex-col justify-between rounded-md bg-background/70 p-6 shadow-md border dark:border-muted"
             >
-              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mx-auto mb-4">
-                {feature.icon && typeof feature.icon === "string" ? (
-                  <span className="text-2xl">{feature.icon}</span>
-                ) : (
-                  React.createElement(feature.icon, {
-                    className: "text-2xl",
-                  })
-                )}
+              <div className="flex flex-col items-center justify-center">
+                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-2">
+                  {feature.icon && typeof feature.icon === "string" ? (
+                    <span className="text-2xl">{feature.icon}</span>
+                  ) : (
+                    React.createElement(feature.icon, {
+                      className: "text-2xl",
+                    })
+                  )}
+                </div>
+                <h3 className="text-lg font-semibold text-white">
+                  {feature.title}
+                </h3>
               </div>
-              <h3 className="text-lg font-semibold text-white mb-1">
-                {feature.title}
-              </h3>
               <p className="text-sm text-muted-foreground">{feature.content}</p>
             </div>
           ))}
