@@ -45,7 +45,13 @@ const Pricing = ({
       </div>
       <Spacer y={8} />
       <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 justify-items-center">
-        {TIERS?.map((tier) => (
+        {/* PERUBAHAN DI SINI:
+          Menambahkan .filter() untuk menghapus kartu yang tombolnya
+          bertuliskan "Get Unlimited Access" sebelum ditampilkan.
+        */}
+        {TIERS?.filter(
+          (tier) => tier.buttonText !== "Get Unlimited Access"
+        ).map((tier) => (
           <Card key={tier.key} className="p-3 flex-1 w-[90%]" shadow="md">
             <CardHeader className="flex flex-col items-start gap-2 pb-6">
               <h2 className="text-large font-medium">{tier.title}</h2>
