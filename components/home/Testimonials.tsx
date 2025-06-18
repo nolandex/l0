@@ -2,8 +2,8 @@
 "use client";
 
 import { TestimonialsData } from "@/config/testimonials";
-// Import "Image" sudah tidak diperlukan lagi, jadi bisa dihapus atau diabaikan.
-// import Image from "next/image"; 
+// Import 'Image' tidak lagi digunakan.
+// import Image from "next/image";
 import { useRef, useEffect, useState } from "react";
 import { RoughNotation } from "react-rough-notation";
 
@@ -51,7 +51,7 @@ const Testimonials = ({ id, locale }: { id: string; locale: any }) => {
             {locale.title}
           </RoughNotation>
         </h2>
-        {/* PERUBAHAN 1: Paragraf deskripsi di bawah judul telah dihapus */}
+        {/* Teks deskripsi di bawah judul telah dihapus sesuai permintaan */}
         {/* <p className="text-large text-default-500">{locale.description1}</p> */}
       </div>
       <div className="relative w-full">
@@ -68,10 +68,12 @@ const Testimonials = ({ id, locale }: { id: string; locale: any }) => {
               className="snap-start flex-shrink-0 w-[300px] mb-4 transition-all"
               key={index}
             >
-              {/* PERUBAHAN 2: Konten di dalam kartu disederhanakan */}
-              <div className="border border-slate/10 rounded-lg p-4 flex flex-col items-start justify-center h-full bg-white/5">
+              <div className="border border-slate/10 rounded-lg p-4 flex flex-col items-start gap-3 h-full bg-white/5">
                 
-                {/* Seluruh bagian info pengguna (foto, nama, username) telah dihapus */}
+                {/* PERUBAHAN DI SINI: Hanya nama yang ditampilkan */}
+                <div>
+                  <p className="font-bold">{testimonial.user.name}</p>
+                </div>
 
                 <p className="text-slate-800 dark:text-slate-300 text-[14px]">
                   {testimonial.content}
