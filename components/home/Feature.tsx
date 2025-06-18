@@ -13,7 +13,8 @@ const Feature = ({
   locale: any;
   langName: string;
 }) => {
-  const FEATURES = ALL_FEATURES[`FEATURES_${langName.toUpperCase()}`];
+  const FEATURES =
+    ALL_FEATURES[`FEATURES_${langName?.toUpperCase?.()}`] ?? [];
 
   return (
     <section id={id}>
@@ -21,13 +22,13 @@ const Feature = ({
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
           <h2 className="font-heading text-4xl md:text-6xl text-white">
             <RoughNotation type="highlight" show={true} color="#2563EB">
-              {locale.title}
+              {locale?.title ?? "Features"}
             </RoughNotation>
           </h2>
         </div>
 
         <div className="mx-auto grid justify-center gap-4 text-center sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
-          {FEATURES?.map((feature) => (
+          {FEATURES.map((feature) => (
             <div
               key={feature.title}
               className="flex h-[160px] flex-col justify-between rounded-md bg-background/70 p-6 shadow-md border dark:border-muted"
@@ -37,6 +38,7 @@ const Feature = ({
                   {feature.icon && typeof feature.icon === "string" ? (
                     <span className="text-2xl">{feature.icon}</span>
                   ) : (
+                    feature.icon &&
                     React.createElement(feature.icon, {
                       className: "text-2xl",
                     })
@@ -46,7 +48,9 @@ const Feature = ({
                   {feature.title}
                 </h3>
               </div>
-              <p className="text-sm text-muted-foreground">{feature.content}</p>
+              <p className="text-sm text-muted-foreground">
+                {feature.content}
+              </p>
             </div>
           ))}
         </div>
