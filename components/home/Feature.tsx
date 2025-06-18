@@ -22,8 +22,8 @@ const Feature = ({
       <div className="container space-y-6 rounded-md bg-secondary py-14 lg:py-24">
         {/* Heading */}
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
-          {/* 2. Warna teks diatur manual: Abu tua saat terang, Putih saat gelap */}
-          <h2 className="font-heading text-4xl md:text-6xl text-slate-800 dark:text-slate-100">
+          {/* 2. Warna teks diubah menjadi putih */}
+          <h2 className="font-heading text-4xl md:text-6xl text-white">
             <RoughNotation type="highlight" show={true} color="#2563EB">
               {locale?.title ?? "Features"}
             </RoughNotation>
