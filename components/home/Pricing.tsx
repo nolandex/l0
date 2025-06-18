@@ -11,11 +11,10 @@ import {
   Spacer,
 } from "@nextui-org/react";
 
-// Impor siteConfig mungkin tidak lagi dibutuhkan jika Anda hardcode link,
-// tapi kita biarkan untuk saat ini.
-import { siteConfig } from "@/config/site"; 
+import { siteConfig } from "@/config/site";
 import { ALL_TIERS } from "@/config/tiers";
 import { FaCheck } from "react-icons/fa";
+import { RoughNotation } from "react-rough-notation";
 
 const Pricing = ({
   id,
@@ -27,97 +26,81 @@ const Pricing = ({
   langName: string;
 }) => {
   const TIERS = ALL_TIERS[`TIERS_${langName.toUpperCase()}`];
-  
-  const isFeatured = (tier: any, index: number) => {
-    return index === 1 || (typeof tier.price === 'number' && tier.price > 0);
-  };
-
   return (
-    <section id={id} className="container py-8 md:py-12 lg:py-24">
-      <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
-        <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
-          {locale.title}
+    <section
+      id={id}
+      className="flex flex-col justify-center max-w-4xl items-center pt-16"
+    >
+      <div className="flex flex-col text-center max-w-xl">
+        <h2 className="text-center text-white">
+          <RoughNotation type="highlight" show={true} color="#2563EB">
+            {locale.title}
+          </RoughNotation>
         </h2>
-        <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl text-primary">
+        <h3 className="text-4xl font-medium tracking-tight mt-2">
           {locale.title2}
-        </h2>
-        <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-          {locale.description}
+        </h3>
+        <Spacer y={4} />
+        <p className="text-large text-default-500">{locale.description}</p>
+      </div>
+      <Spacer y={8} />
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 justify-items-center">
+        {TIERS?.map((tier) => (
+          <Card key={tier.key} className="p-3 flex-1 w-[90%]" shadow="md">
+            <CardHeader className="flex flex-col items-start gap-2 pb-6">
+              <h2 className="text-large font-medium">{tier.title}</h2>
+              <p className="text-medium text-default-500">{tier.description}</p>
+            </CardHeader>
+            <Divider />
+            <CardBody className="gap-8">
+              <p className="flex items-baseline gap-1 pt-2">
+                <span className="inline bg-gradient-to-br from-foreground to-foreground-600 bg-clip-text text-2xl font-semibold leading-7 tracking-tight text-transparent">
+                  {tier.price}
+                </span>
+                {typeof tier.price !== "string" ? (
+                  <span className="text-small font-medium text-default-400">
+                    {tier.price}
+                  </span>
+                ) : null}
+              </p>
+              <ul className="flex flex-col gap-2">
+                {tier.features?.map((feature) => (
+                  <li key={feature} className="flex items-center gap-2">
+                    <FaCheck className="text-blue-500" />
+                    <p className="text-default-500">{feature}</p>
+                  </li>
+                ))}
+              </ul>
+            </CardBody>
+            <CardFooter>
+              <Button
+                fullWidth
+                as={Link}
+                color={tier.buttonColor}
+                href={tier.href}
+                variant={tier.buttonVariant}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+              >
+                {tier.buttonText}
+              </Button>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
+      <Spacer y={12} />
+      <div className="flex py-2">
+        <p className="text-default-400 text-center">
+          {locale.doYouLike}&nbsp;
+          <Link
+            color="foreground"
+            href={siteConfig.authors[0].twitter}
+            underline="always"
+            rel="noopener noreferrer nofollow"
+          >
+            {locale.follow}
+          </Link>
         </p>
-      </div>
-
-      <div className="mx-auto mt-12 grid max-w-5xl items-start gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {TIERS?.map((tier, index) => {
-            const featured = isFeatured(tier, index);
-
-            return(
-                <Card
-                    key={tier.title}
-                    className={`flex flex-col transition duration-200 ease-in-out ${
-                        featured ? "border-2 border-primary shadow-lg" : "border dark:border-zinc-800"
-                    }`}
-                >
-                    <CardHeader className="flex-col items-start">
-                        <h3 className="text-xl font-semibold">{tier.title}</h3>
-                        <p className="text-small text-default-500">{tier.description}</p>
-                    </CardHeader>
-
-                    <CardBody className="flex-1 justify-start">
-                        <div className="mb-6 mt-2 flex items-baseline justify-center gap-x-2">
-                            {typeof tier.price === "number" ? (
-                                <>
-                                <span className="text-5xl font-bold tracking-tight text-foreground">
-                                    ${tier.price}
-                                </span>
-                                <span className="text-sm font-semibold leading-6 tracking-wide text-default-500">
-                                    /month
-                                </span>
-                                </>
-                            ) : (
-                                <span className="text-4xl font-bold tracking-tight text-foreground">
-                                {tier.price}
-                                </span>
-                            )}
-                        </div>
-
-                        <ul className="space-y-3 text-sm">
-                            {tier.features?.map((feature: string, i: number) => (
-                                <li key={i} className="flex items-center gap-2">
-                                <FaCheck className="h-4 w-4 text-primary" />
-                                <span>{feature}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </CardBody>
-
-                    <Divider />
-                    
-                    <CardFooter className="justify-center pt-4 pb-4">
-                        <Button
-                            as={Link}
-                            href={tier.href || "#"}
-                            variant={featured ? "solid" : "bordered"}
-                            color="primary"
-                            className="w-full"
-                            size="lg"
-                        >
-                            {tier.buttonText}
-                        </Button>
-                    </CardFooter>
-                </Card>
-            )
-        })}
-      </div>
-
-       <div className="mx-auto mt-16 max-w-5xl text-center text-sm text-default-500">
-        {locale.doYouLike}
-        {/* PERBAIKAN FINAL DI SINI:
-          Link GitHub sekarang ditulis langsung (hardcoded) untuk menghindari error.
-          Ganti dengan URL repository Anda yang sebenarnya.
-        */}
-        <Link href="https://github.com/USERNAME/REPO" className="font-medium text-primary underline underline-offset-4" >
-          {` ${locale.follow}`}
-        </Link>
       </div>
     </section>
   );
