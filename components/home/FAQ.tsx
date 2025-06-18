@@ -1,6 +1,6 @@
 "use client";
 
-// 1. Import komponen RoughNotation
+// Import komponen RoughNotation
 import { RoughNotation } from "react-rough-notation";
 import { ALL_FAQS } from "@/config/faqs";
 import {
@@ -31,29 +31,22 @@ const FAQ = ({
       <Accordion type="single" collapsible className="mx-auto w-full max-w-3xl">
         {FAQS?.map((item, index) => (
           <AccordionItem key={index} value={`item-${index}`}>
-            {/* PERUBAHAN DI SINI: 
-              - Judul pertanyaan dibungkus dengan RoughNotation.
-              - class "no-underline" ditambahkan agar tidak ada garis bawah saat hover.
-            */}
+            {/* EFEK BIRU DITERAPKAN DI SINI (PADA PERTANYAAN) */}
             <AccordionTrigger className="text-base text-left no-underline hover:no-underline">
               <RoughNotation
                 type="highlight"
                 show={true}
-                color="#2563EB" // Warna biru yang sama dengan Testimonials
-                padding={[2, 6]} // Memberi sedikit padding pada highlight
-                iterations={1} // Membuat highlight lebih solid
+                color="#2563EB"
+                padding={[2, 6]}
+                iterations={1}
               >
-                {/* Teks judul dibuat putih agar kontras dengan highlight biru */}
                 <span className="text-white relative">
                   {item.title}
                 </span>
               </RoughNotation>
             </AccordionTrigger>
 
-            {/* PERUBAHAN DI SINI:
-              - Latar belakang biru pada konten deskripsi dihapus.
-              - Diberi sedikit padding atas (pt-2) untuk jarak.
-            */}
+            {/* LATAR BELAKANG BIRU DIHILANGKAN DARI SINI (PADA JAWABAN) */}
             <AccordionContent className="text-muted-foreground pt-2">
               {item.content}
             </AccordionContent>
