@@ -1,10 +1,10 @@
 // File: lib/i18n.ts
 
-export const locales = ['en', 'id', 'ja', 'ar', 'es', 'ru'];
+export const locales = ['en', 'zh', 'ja', 'ar', 'es', 'ru'];
 
 export const localeNames: Record<string, string> = {
   en: '🇺🇸 English',
-  id: '🇮🇩 Indonesia',
+  zh: '🇮🇩 Indonesia',
   ja: '🇯🇵 日本語',
   ar: '🇸🇦 العربية',
   es: '🇪🇸 Español',
