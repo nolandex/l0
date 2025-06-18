@@ -208,7 +208,6 @@ const productData: Product[] = [
     ],
     exampleUrl: "https://example.com",
     modalType: "details",
-    // image removed
   },
   {
     name: "Paket Bisnis Reseller",
@@ -224,7 +223,6 @@ const productData: Product[] = [
     ],
     exampleUrl: "https://example.com",
     modalType: "details",
-    // image removed
   },
   {
     name: "Instagram",
@@ -233,7 +231,6 @@ const productData: Product[] = [
     features: [],
     exampleUrl: "https://example.com/instagram",
     modalType: "details",
-    // image removed
   },
   {
     name: "TikTok",
@@ -242,7 +239,6 @@ const productData: Product[] = [
     features: [],
     exampleUrl: "https://example.com/tiktok",
     modalType: "details",
-    // image removed
   },
   {
     name: "Telegram",
@@ -251,7 +247,6 @@ const productData: Product[] = [
     features: [],
     exampleUrl: "https://example.com/telegram",
     modalType: "details",
-    // image removed
   },
   {
     name: "Facebook",
@@ -260,7 +255,6 @@ const productData: Product[] = [
     features: [],
     exampleUrl: "https://example.com/facebook",
     modalType: "details",
-    // image removed
   },
   {
     name: "Desain Konten",
@@ -450,10 +444,8 @@ export default function ServicesPage() {
   // Adjust grouping based on category
   const groupedProducts: Product[][] = []
   if (activeCategory === "paket_bisnis" || activeCategory === "lainnya") {
-    // 1 product per row for paket_bisnis and lainnya
     filteredProducts.forEach((product) => groupedProducts.push([product]))
   } else {
-    // 2 products per row for other categories
     for (let i = 0; i < filteredProducts.length; i += 2) {
       groupedProducts.push(filteredProducts.slice(i, i + 2))
     }
@@ -490,7 +482,7 @@ export default function ServicesPage() {
 
   return (
     <div className={`min-h-screen pt-20 pb-8 ${theme === "dark" ? "bg-gray-900" : "bg-gray-50"}`}>
-      <div className="container max-w-4xl mx-auto px-4 sm:px-6">
+      <div className="container max-w-full mx-auto px-2 sm:px-4">
         <div className="grid grid-cols-2 sm:flex sm:flex-row sm:justify-center gap-2 sm:gap-4 mb-6">
           <button
             onClick={() => {
@@ -552,7 +544,7 @@ export default function ServicesPage() {
                 activeCategory === "paket_bisnis" || activeCategory === "lainnya"
                   ? "grid-cols-1"
                   : "grid-cols-2"
-              } gap-3 sm:gap-4`}
+              } gap-3 sm:gap-4 mx-2 sm:mx-4`}
             >
               {group.map((product) => {
                 const displayProduct = getProductDisplayData(product)
@@ -560,7 +552,7 @@ export default function ServicesPage() {
                 return (
                   <div
                     key={displayProduct.name + (displayProduct.subcategory || "")}
-                    className={`flex flex-col rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-lg ${
+                    className={`flex flex-col rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-lg w-full ${
                       theme === "dark" ? "bg-gray-800 border border-gray-700" : "bg-white border border-gray-200"
                     } p-3`}
                   >
@@ -795,4 +787,4 @@ export default function ServicesPage() {
       </div>
     </div>
   )
-    }
+                          }
