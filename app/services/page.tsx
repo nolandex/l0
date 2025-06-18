@@ -482,8 +482,8 @@ export default function ServicesPage() {
 
   return (
     <div className={`min-h-screen pt-20 pb-8 ${theme === "dark" ? "bg-gray-900" : "bg-gray-50"}`}>
-      <div className="container mx-auto px-0">
-        <div className="grid grid-cols-2 sm:flex sm:flex-row sm:justify-center gap-2 sm:gap-4 mb-6 px-2 sm:px-4">
+      <div className="w-full">
+        <div className="flex flex-row justify-center gap-2 sm:gap-4 mb-6 px-2 sm:px-4">
           <button
             onClick={() => {
               setActiveCategory("paket_bisnis")
@@ -544,7 +544,7 @@ export default function ServicesPage() {
                 activeCategory === "paket_bisnis" || activeCategory === "lainnya"
                   ? "grid-cols-1"
                   : "grid-cols-2"
-              } gap-3 sm:gap-4 px-0`}
+              } gap-3 sm:gap-4 w-full px-0`}
             >
               {group.map((product) => {
                 const displayProduct = getProductDisplayData(product)
@@ -787,4 +787,4 @@ export default function ServicesPage() {
       </div>
     </div>
   )
-          }
+            }
