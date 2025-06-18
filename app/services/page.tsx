@@ -207,14 +207,14 @@ const getTikTokFeatures = (option: string) => {
   const baseSaves = 700
 
   switch (option) {
-    case "2000":
+    case "1000":
       return [
         `${baseViews.toLocaleString()} Views`,
         `${baseLikes.toLocaleString()} Likes`,
         `${baseShares.toLocaleString()} Shares`,
         `${baseSaves.toLocaleString()} Saves`,
       ]
-    case "5000":
+    case "3000":
       return [
         `${(baseViews * 2.5).toLocaleString()} Views`,
         `${(baseLikes * 2.5).toLocaleString()} Likes`,
@@ -328,13 +328,12 @@ const productData: Product[] = [
     category: "lainnya",
     exampleUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     modalType: "videoPromo",
-    image: "/images/video_promo.jpg",
   },
   {
-    name: "SEO & Domain Website",
+    name: "SEO & Domain",
     price: "Rp 25,000",
     category: "lainnya",
-    features: ["Riset Kata Kunci", "Optimasi Halaman", "setting dll"],
+    features: ["Riset Kata Kunci", "Optimasi Halaman"],
     modalType: "seoImages",
     image: "/images/seo.jpg",
   },
@@ -375,6 +374,7 @@ const productData: Product[] = [
   },
   {
     name: "Portfolio",
+    time: string
     price: "Rp 20,000",
     category: "website",
     subcategory: "business",
@@ -453,7 +453,7 @@ export default function ServicesPage() {
   const [modalProduct, setModalProduct] = useState<Product | null>(null)
 
   const [instagramOption, setInstagramOption] = useState("3000")
-  const [tiktokOption, setTiktokOption] = useState("2000")
+  const [tiktokOption, setTiktokOption] = useState("1000")
   const [telegramOption, setTelegramOption] = useState("3000")
   const [facebookOption, setFacebookOption] = useState("3000")
   const [boosterLink, setBoosterLink] = useState("")
@@ -476,7 +476,7 @@ export default function ServicesPage() {
             : "Rp 150,000"
         currentFeatures = getInstagramFeatures(instagramOption)
       } else if (product.name === "TikTok") {
-        currentPrice = tiktokOption === "2000" ? "Rp 50,000" : "Rp 100,000"
+        currentPrice = tiktokOption === "1000" ? "Rp 50,000" : "Rp 100,000"
         currentFeatures = getTikTokFeatures(tiktokOption)
       } else if (product.name === "Telegram") {
         currentPrice =
@@ -514,7 +514,16 @@ export default function ServicesPage() {
     filteredProducts.forEach((product) => groupedProducts.push([product]))
   } else {
     for (let i = 0; i < filteredProducts.length; i += 2) {
-      groupedProducts.push(filteredProducts.slice(i, i + 2))
+      const pair = filteredProducts.slice(i, i + 2)
+      if (pair.length === 1) {
+        pair.push({
+          name: "",
+          price: "",
+          category: activeCategory,
+          features: [],
+        })
+      }
+      groupedProducts.push(pair)
     }
   }
 
@@ -554,12 +563,13 @@ export default function ServicesPage() {
         theme === "dark" ? "bg-gray-900" : "bg-gray-50"
       } px-4 sm:px-6 max-w-screen-xl mx-auto overflow-x-hidden`}
     >
-      <div className="flex flex-wrap justify-center gap-2 mb-6">
+      <div className="grid grid-cols-2 gap-2 mb-6 px-2 sm:px-4 justify-center">
         <button
           onClick={() => {
             setActiveCategory("paket_bisnis")
           }}
           className={getButtonClasses(activeCategory === "paket_bisnis")}
+          style={{ width: "100%", padding: "0.5rem" }}
         >
           Paket Bisnis
         </button>
@@ -569,6 +579,7 @@ export default function ServicesPage() {
             setActiveSubcategory("business")
           }}
           className={getButtonClasses(activeCategory === "website")}
+          style={{ width: "100%", padding: "0.5rem" }}
         >
           Website
         </button>
@@ -577,6 +588,7 @@ export default function ServicesPage() {
             setActiveCategory("sosmed")
           }}
           className={getButtonClasses(activeCategory === "sosmed")}
+          style={{ width: "100%", padding: "0.5rem" }}
         >
           Sosmed
         </button>
@@ -585,6 +597,7 @@ export default function ServicesPage() {
             setActiveCategory("lainnya")
           }}
           className={getButtonClasses(activeCategory === "lainnya")}
+          style={{ width: "100%", padding: "0.5rem" }}
         >
           Lainnya
         </button>
@@ -614,10 +627,13 @@ export default function ServicesPage() {
             className={`grid ${
               activeCategory === "paket_bisnis" || activeCategory === "lainnya"
                 ? "grid-cols-1"
-                : "grid-cols-1 sm:grid-cols-2"
+                : "grid-cols-2"
             } gap-3 sm:gap-4 w-full px-0`}
           >
-            {group.map((product) => {
+            {group.map((product, index) => {
+              if (!product.name) {
+                return <div key={index} className="hidden sm:block" />
+              }
               const displayProduct = getProductDisplayData(product)
               return (
                 <div
@@ -687,8 +703,8 @@ export default function ServicesPage() {
                                 : "bg-white border-gray-300 text-gray-700"
                             } focus:outline-none focus:ring-2 focus:ring-blue-500`}
                           >
-                            <option value="2000">2000 Followers</option>
-                            <option value="5000">5000 Followers</option>
+                            <option value="1000">1000 Followers</option>
+                            <option value="3000">3000 Followers</option>
                           </select>
                         )}
                         {displayProduct.name === "Telegram" && (
@@ -807,7 +823,7 @@ export default function ServicesPage() {
       <Modal
         isOpen={
           (activeModal === "contentImages" && modalProduct?.name === "Desain Konten") ||
-          (activeModal === "seoImages" && modalProduct?.name === "SEO & Domain Website") ||
+          (activeModal === "seoImages" && modalProduct?.name === "SEO & Domain") ||
           (activeModal === "adsImages" && modalProduct?.name === "Jasa Iklan Online")
         }
         onClose={closeModal}
@@ -854,4 +870,4 @@ export default function ServicesPage() {
       </Modal>
     </div>
   )
-    }
+}
