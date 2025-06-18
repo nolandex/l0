@@ -11,10 +11,12 @@ import {
   Spacer,
 } from "@nextui-org/react";
 
-import { siteConfig } from "@/config/site";
 import { ALL_TIERS } from "@/config/tiers";
 import { FaCheck } from "react-icons/fa";
 import { RoughNotation } from "react-rough-notation";
+
+// Impor siteConfig tidak lagi dibutuhkan setelah link twitter dihapus
+// import { siteConfig } from "@/config/site";
 
 const Pricing = ({
   id,
@@ -45,10 +47,6 @@ const Pricing = ({
       </div>
       <Spacer y={8} />
       <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 justify-items-center">
-        {/* PERUBAHAN DI SINI:
-          Menambahkan .filter() untuk menghapus kartu yang tombolnya
-          bertuliskan "Get Unlimited Access" sebelum ditampilkan.
-        */}
         {TIERS?.filter(
           (tier) => tier.buttonText !== "Get Unlimited Access"
         ).map((tier) => (
@@ -95,19 +93,7 @@ const Pricing = ({
         ))}
       </div>
       <Spacer y={12} />
-      <div className="flex py-2">
-        <p className="text-default-400 text-center">
-          {locale.doYouLike}&nbsp;
-          <Link
-            color="foreground"
-            href={siteConfig.authors[0].twitter}
-            underline="always"
-            rel="noopener noreferrer nofollow"
-          >
-            {locale.follow}
-          </Link>
-        </p>
-      </div>
+      {/* Bagian "Follow Twitter" sudah dihapus dari sini */}
     </section>
   );
 };
