@@ -208,7 +208,7 @@ const productData: Product[] = [
     ],
     exampleUrl: "https://example.com",
     modalType: "details",
-    image: "/images/paket_bisnis.jpg",
+    // image removed
   },
   {
     name: "Paket Bisnis Reseller",
@@ -224,7 +224,7 @@ const productData: Product[] = [
     ],
     exampleUrl: "https://example.com",
     modalType: "details",
-    image: "/images/paket_reseller.jpg",
+    // image removed
   },
   {
     name: "Instagram",
@@ -233,7 +233,7 @@ const productData: Product[] = [
     features: [],
     exampleUrl: "https://example.com/instagram",
     modalType: "details",
-    image: "/images/instagram.jpg",
+    // image removed
   },
   {
     name: "TikTok",
@@ -242,7 +242,7 @@ const productData: Product[] = [
     features: [],
     exampleUrl: "https://example.com/tiktok",
     modalType: "details",
-    image: "/images/tiktok.jpg",
+    // image removed
   },
   {
     name: "Telegram",
@@ -251,7 +251,7 @@ const productData: Product[] = [
     features: [],
     exampleUrl: "https://example.com/telegram",
     modalType: "details",
-    image: "/images/telegram.jpg",
+    // image removed
   },
   {
     name: "Facebook",
@@ -260,7 +260,7 @@ const productData: Product[] = [
     features: [],
     exampleUrl: "https://example.com/facebook",
     modalType: "details",
-    image: "/images/facebook.jpg",
+    // image removed
   },
   {
     name: "Desain Konten",
@@ -447,9 +447,16 @@ export default function ServicesPage() {
     return true
   })
 
+  // Adjust grouping based on category
   const groupedProducts: Product[][] = []
-  for (let i = 0; i < filteredProducts.length; i += 2) {
-    groupedProducts.push(filteredProducts.slice(i, i + 2))
+  if (activeCategory === "paket_bisnis" || activeCategory === "lainnya") {
+    // 1 product per row for paket_bisnis and lainnya
+    filteredProducts.forEach((product) => groupedProducts.push([product]))
+  } else {
+    // 2 products per row for other categories
+    for (let i = 0; i < filteredProducts.length; i += 2) {
+      groupedProducts.push(filteredProducts.slice(i, i + 2))
+    }
   }
 
   const openModal = useCallback(
@@ -539,7 +546,14 @@ export default function ServicesPage() {
 
         <div className="space-y-3 sm:space-y-4">
           {groupedProducts.map((group, groupIndex) => (
-            <div key={groupIndex} className="grid grid-cols-2 gap-3 sm:gap-4">
+            <div
+              key={groupIndex}
+              className={`grid ${
+                activeCategory === "paket_bisnis" || activeCategory === "lainnya"
+                  ? "grid-cols-1"
+                  : "grid-cols-2"
+              } gap-3 sm:gap-4`}
+            >
               {group.map((product) => {
                 const displayProduct = getProductDisplayData(product)
 
@@ -781,4 +795,4 @@ export default function ServicesPage() {
       </div>
     </div>
   )
-                                              }
+    }
