@@ -2,6 +2,7 @@
 
 import {
   Button,
+  ButtonGroup,
   Card,
   CardBody,
   CardFooter,
@@ -9,9 +10,7 @@ import {
   Divider,
   Link,
   Spacer,
-  ButtonGroup,
 } from "@nextui-org/react";
-
 import { useState } from "react";
 import { ALL_TIERS } from "@/config/tiers";
 import { FaCheck } from "react-icons/fa";
@@ -27,12 +26,7 @@ const Pricing = ({
   langName: string;
 }) => {
   const TIERS = ALL_TIERS[`TIERS_${langName.toUpperCase()}`];
-
-  const [activeTier, setActiveTier] = useState<"standar" | "pro">("standar");
-
-  const filteredTiers = TIERS?.filter(
-    (tier) => tier.category === activeTier
-  );
+  const [activePlan, setActivePlan] = useState<"standard" | "pro">("standard");
 
   return (
     <section
@@ -40,37 +34,34 @@ const Pricing = ({
       className="flex flex-col justify-center max-w-4xl items-center pt-16"
     >
       <div className="flex flex-col text-center max-w-xl">
-        <h2 className="text-center text-white text-3xl font-semibold">
+        <h2 className="text-center text-white">
           <RoughNotation type="highlight" show={true} color="#2563EB">
             {locale.title}
           </RoughNotation>
         </h2>
+        <Spacer y={4} />
       </div>
-
       <Spacer y={4} />
-
-      <ButtonGroup isBordered variant="solid" color="primary">
+      <ButtonGroup>
         <Button
-          onPress={() => setActiveTier("standar")}
-          isDisabled={activeTier === "standar"}
+          color={activePlan === "standard" ? "primary" : "default"}
+          onPress={() => setActivePlan("standard")}
         >
-          Standar
+          Standard
         </Button>
         <Button
-          onPress={() => setActiveTier("pro")}
-          isDisabled={activeTier === "pro"}
+          color={activePlan === "pro" ? "primary" : "default"}
+          onPress={() => setActivePlan("pro")}
         >
           Pro
         </Button>
       </ButtonGroup>
-
       <Spacer y={6} />
-
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 justify-items-center w-full">
-        {filteredTiers?.map((tier) => (
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 justify-items-center">
+        {TIERS?.slice(0, activePlan === "pro" ? 2 : 1).map((tier) => (
           <Card key={tier.key} className="p-3 flex-1 w-[90%]" shadow="md">
             <CardHeader className="flex flex-col items-start gap-2 pb-6">
-              <h3 className="text-large font-medium">{tier.title}</h3>
+              <h2 className="text-large font-medium">{tier.title}</h2>
               <p className="text-medium text-default-500">{tier.description}</p>
             </CardHeader>
             <Divider />
@@ -79,6 +70,11 @@ const Pricing = ({
                 <span className="inline bg-gradient-to-br from-foreground to-foreground-600 bg-clip-text text-2xl font-semibold leading-7 tracking-tight text-transparent">
                   {tier.price}
                 </span>
+                {typeof tier.price !== "string" ? (
+                  <span className="text-small font-medium text-default-400">
+                    {tier.price}
+                  </span>
+                ) : null}
               </p>
               <ul className="flex flex-col gap-2">
                 {tier.features?.map((feature) => (
@@ -105,7 +101,6 @@ const Pricing = ({
           </Card>
         ))}
       </div>
-
       <Spacer y={12} />
     </section>
   );
