@@ -55,9 +55,9 @@ export const FEATURES_ZH = [
     icon: UsersIcon,
   },
   {
-    title: "Join grup",
-    content: "Gabung grup dan bertukar informasi seller online",
-    icon: DollarSignIcon,
+    title: "SEO",
+    content: "Muncul nama bisnis/ produk kamu di google search",
+    icon: GlobeSignIcon,
   },
 ];
 
