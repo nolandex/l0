@@ -46,17 +46,17 @@ export const FEATURES_ZH = [
   },
   {
     title: "Desain Konten Siap Posting",
-    content: "Konten siap pakai! Desain keren + caption menarik bikin pembeli langsung klik order.",
+    content: "Konten Desain keren untuk menarik bikin pembeli",
     icon: FaImages,
   },
   {
     title: "Sosmed Boosting",
-    content: "Akun medsos profesional dengan Tambah followers, like, & view untuk tarik lebih banyak pembeli.",
+    content: "Boosting sosmed dengan followers, like, & view ",
     icon: UsersIcon,
   },
   {
     title: "SEO",
-    content: "Muncul nama bisnis/ produk kamu di google search",
+    content: "Muncul nama bisnis / produk kamu di google search",
     icon: SearchIcon, // Changed to SearchIcon for SEO
   },
 ];
