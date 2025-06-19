@@ -14,7 +14,7 @@ const LOGOS = [
   { name: "Shadcnui", image: "/images/techStack/shadcnui.svg" },
   { name: "Nextui", image: "/images/techStack/nextui.svg" },
   { name: "TS", image: "/images/techStack/typescript.svg" },
-  { name: "Vercel", image: "/images/techStack/vercel.svg" },
+  { name: "Vercel", image: "/images/techStack/vercel.svg" }
 ];
 
 const Hero = ({
@@ -34,7 +34,7 @@ const Hero = ({
         lang={langName}
         className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 pt-16 md:pt-24 text-center"
       >
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white">
           {locale.title1} <LineText>{locale.title2}</LineText> {locale.title3}
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-2xl tracking-tight text-slate-700 dark:text-slate-400">
