@@ -19,9 +19,12 @@ const Feature = ({
     ALL_FEATURES[`FEATURES_${langName?.toUpperCase?.()}`] ?? ALL_FEATURES.FEATURES_EN;
 
   const handleCardClick = (index: number) => {
-    // Toggle image: show if not selected, hide if already selected
+    // Toggle video/image: show if not selected, hide if already selected
     setSelectedFeatureIndex(selectedFeatureIndex === index ? null : index);
   };
+
+  // Hardcoded YouTube video URL for the second feature
+  const SECOND_FEATURE_VIDEO_URL = "https://www.youtube.com/embed/dQw4w9WgXcQ"; // Example: Rick Astley - Never Gonna Give You Up
 
   return (
     <section id={id}>
@@ -65,16 +68,29 @@ const Feature = ({
                 {feature.content}
               </p>
 
-              {/* Image Display */}
+              {/* Conditional Video/Image Display */}
               {selectedFeatureIndex === index && (
-                <div className="mt-4">
-                  <Image
-                    src={`/images/${index + 1}.jpg`}
-                    alt={`Feature ${feature.title}`}
-                    width={200}
-                    height={150}
-                    className="rounded-lg w-full h-auto"
-                  />
+                <div className="mt-4 w-full">
+                  {index === 1 ? (
+                    <div className="relative" style={{ paddingBottom: "56.25%" /* 16:9 aspect ratio */ }}>
+                      <iframe
+                        src={https://www.youtube.com/embed/dQw4w9WgXcQ}
+                        title={`Feature ${feature.title}`}
+                        className="absolute top-0 left-0 w-full h-full rounded-lg"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    </div>
+                  ) : (
+                    <Image
+                      src={`/images/${index + 1}.jpg`}
+                      alt={`Feature ${feature.title}`}
+                      width={200}
+                      height={150}
+                      className="rounded-lg w-full h-auto"
+                    />
+                  )}
                 </div>
               )}
             </button>
