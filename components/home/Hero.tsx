@@ -2,13 +2,10 @@
 
 import { LineText } from "@/components/LineText";
 import CTAButton from "@/components/home/CTAButton";
-
-// Impor baru yang dibutuhkan oleh ScrollingLogos
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 
-// Data LOGOS dipindahkan langsung ke sini
 const LOGOS = [
   {
     name: "Next.js",
@@ -53,7 +50,6 @@ const Hero = ({
   langName: string;
   CTALocale: any;
 }) => {
-  // Hook useTheme ditambahkan di sini
   const { theme } = useTheme();
 
   return (
@@ -62,17 +58,22 @@ const Hero = ({
         lang={langName}
         className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 pt-16 md:pt-24 text-center"
       >
-        <h1 className="!text-5xl !md:text-7xl !lg:text-8xl !xl:text-9xl !font-bold !leading-tight">
+        <h1
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight tracking-tight
+                     [&>*]:block sm:[&>*]:inline-block" // Ensures LineText wraps on small screens
+          style={{
+            fontSize: "clamp(2.5rem, 8vw, 5rem)", // Fluid typography
+          }}
+        >
           {locale.title1} <LineText>{locale.title2}</LineText> {locale.title3}
         </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-2xl tracking-tight text-slate-700 dark:text-slate-400">
+        <p className="mx-auto mt-6 max-w-2xl text-lg sm:text-xl md:text-2xl tracking-tight text-slate-700 dark:text-slate-400">
           {locale.description}
         </p>
       </section>
 
       <CTAButton locale={CTALocale}></CTAButton>
 
-      {/* Bagian ikon dollar diganti dengan Scrolling Logos */}
       <section className="mx-auto w-full md:max-w-5xl lg:max-w-7xl px-0 md:px-6 lg:px-8 pt-16 pb-12">
         <Marquee direction="left" autoFill pauseOnHover>
           {LOGOS.map((image, index) => (
