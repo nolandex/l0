@@ -1,7 +1,7 @@
 import { siteConfig } from "@/config/site";
 import { Tier, TiersEnum } from "@/types/pricing";
 
-// English Translation
+// English Translation with updated Pro Package features
 export const TIERS_EN: Array<Tier> = [
   {
     key: TiersEnum.Free,
@@ -28,9 +28,9 @@ export const TIERS_EN: Array<Tier> = [
     price: "Rp100,000",
     features: [
       "3 Websites",
-      "30 Content Designs",
+      "30 Content Designs", // Updated
       "3x Social Media Boosting",
-      "3 Promotional Videos",
+      "3 Promotional Videos", // Updated
       "Advanced SEO",
     ],
     buttonText: "Contact Us",
@@ -39,7 +39,7 @@ export const TIERS_EN: Array<Tier> = [
   },
 ];
 
-// Indonesian (Bahasa Indonesia)
+// Revised Indonesian (Bahasa Indonesia) content with updated Pro Package features
 export const TIERS_ZH: Array<Tier> = [
   {
     key: TiersEnum.Free,
@@ -66,9 +66,9 @@ export const TIERS_ZH: Array<Tier> = [
     price: "Rp100.000",
     features: [
       "3 Website",
-      "30 Desain konten",
+      "30 Desain konten", // Diperbarui
       "3x Sosmed boosting",
-      "3 Video promosi",
+      "3 Video promosi", // Diperbarui
       "SEO tingkat lanjut",
     ],
     buttonText: "Hubungi Kami",
@@ -77,7 +77,7 @@ export const TIERS_ZH: Array<Tier> = [
   },
 ];
 
-// Japanese Translation
+// Japanese Translation with updated Pro Package features
 export const TIERS_JA: Array<Tier> = [
   {
     key: TiersEnum.Free,
@@ -104,9 +104,9 @@ export const TIERS_JA: Array<Tier> = [
     price: "Rp100.000",
     features: [
       "3つのウェブサイト",
-      "30のコンテンツデザイン",
+      "30のコンテンツデザイン", // 更新
       "3倍のSNSブースティング",
-      "3つのプロモーションビデオ",
+      "3つのプロモーションビデオ", // 更新
       "高度なSEO",
     ],
     buttonText: "お問い合わせ",
@@ -115,7 +115,7 @@ export const TIERS_JA: Array<Tier> = [
   },
 ];
 
-// Arabic Translation
+// Arabic Translation with updated Pro Package features
 export const TIERS_AR: Array<Tier> = [
   {
     key: TiersEnum.Free,
@@ -142,9 +142,9 @@ export const TIERS_AR: Array<Tier> = [
     price: "Rp100.000",
     features: [
       "3 مواقع إلكترونية",
-      "30 تصميم محتوى",
+      "30 تصميم محتوى", // تم التحديث
       "3 أضعاف تعزيز وسائل التواصل",
-      "3 فيديوهات ترويجية",
+      "3 فيديوهات ترويجية", // تم التحديث
       "تحسين محركات البحث المتقدم",
     ],
     buttonText: "اتصل بنا",
@@ -153,7 +153,7 @@ export const TIERS_AR: Array<Tier> = [
   },
 ];
 
-// Spanish Translation
+// Spanish Translation with updated Pro Package features
 export const TIERS_ES: Array<Tier> = [
   {
     key: TiersEnum.Free,
@@ -180,9 +180,9 @@ export const TIERS_ES: Array<Tier> = [
     price: "Rp100.000",
     features: [
       "3 Sitios Web",
-      "30 Diseños de Contenido",
+      "30 Diseños de Contenido", // Actualizado
       "3x Impulso en Redes Sociales",
-      "3 Videos Promocionales",
+      "3 Videos Promocionales", // Actualizado
       "SEO Avanzado",
     ],
     buttonText: "Contáctanos",
@@ -191,7 +191,7 @@ export const TIERS_ES: Array<Tier> = [
   },
 ];
 
-// Russian Translation
+// Russian Translation with updated Pro Package features
 export const TIERS_RU: Array<Tier> = [
   {
     key: TiersEnum.Free,
@@ -218,9 +218,9 @@ export const TIERS_RU: Array<Tier> = [
     price: "Rp100.000",
     features: [
       "3 веб-сайта",
-      "30 дизайнов контента",
+      "30 дизайнов контента", // Обновлено
       "3x продвижение в соцсетях",
-      "3 рекламных видео",
+      "3 рекламных видео", // Обновлено
       "Расширенное SEO",
     ],
     buttonText: "Связаться с нами",
@@ -235,7 +235,7 @@ interface TiersCollection {
 
 export const ALL_TIERS: TiersCollection = {
   TIERS_EN,
-  TIERS_ZH, // Diperbaiki dari TIERS_ZH
+  TIERS_ZH,
   TIERS_JA,
   TIERS_AR,
   TIERS_ES,
