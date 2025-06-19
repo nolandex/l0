@@ -1,7 +1,7 @@
 import { siteConfig } from "@/config/site";
 import { Tier, TiersEnum } from "@/types/pricing";
 
-// English Translation with updated Pro Package features
+// English Translation
 export const TIERS_EN: Array<Tier> = [
   {
     key: TiersEnum.Free,
@@ -19,6 +19,7 @@ export const TIERS_EN: Array<Tier> = [
     buttonText: "Pay Now",
     buttonColor: "primary",
     buttonVariant: "solid",
+    category: "standar",
   },
   {
     key: TiersEnum.Customize,
@@ -28,18 +29,19 @@ export const TIERS_EN: Array<Tier> = [
     price: "Rp100,000",
     features: [
       "3 Websites",
-      "30 Content Designs", // Updated
+      "30 Content Designs",
       "3x Social Media Boosting",
-      "3 Promotional Videos", // Updated
+      "3 Promotional Videos",
       "Advanced SEO",
     ],
     buttonText: "Contact Us",
     buttonColor: "default",
     buttonVariant: "flat",
+    category: "pro",
   },
 ];
 
-// Revised Indonesian (Bahasa Indonesia) content with updated Pro Package features
+// Bahasa Indonesia (replacing ZH)
 export const TIERS_ZH: Array<Tier> = [
   {
     key: TiersEnum.Free,
@@ -57,6 +59,7 @@ export const TIERS_ZH: Array<Tier> = [
     buttonText: "Bayar",
     buttonColor: "primary",
     buttonVariant: "solid",
+    category: "standar",
   },
   {
     key: TiersEnum.Customize,
@@ -66,18 +69,19 @@ export const TIERS_ZH: Array<Tier> = [
     price: "Rp100.000",
     features: [
       "3 Website",
-      "30 Desain konten", // Diperbarui
+      "30 Desain konten",
       "3x Sosmed boosting",
-      "3 Video promosi", // Diperbarui
+      "3 Video promosi",
       "SEO tingkat lanjut",
     ],
     buttonText: "Hubungi Kami",
     buttonColor: "default",
     buttonVariant: "flat",
+    category: "pro",
   },
 ];
 
-// Japanese Translation with updated Pro Package features
+// Japanese
 export const TIERS_JA: Array<Tier> = [
   {
     key: TiersEnum.Free,
@@ -95,6 +99,7 @@ export const TIERS_JA: Array<Tier> = [
     buttonText: "支払う",
     buttonColor: "primary",
     buttonVariant: "solid",
+    category: "standar",
   },
   {
     key: TiersEnum.Customize,
@@ -104,18 +109,19 @@ export const TIERS_JA: Array<Tier> = [
     price: "Rp100.000",
     features: [
       "3つのウェブサイト",
-      "30のコンテンツデザイン", // 更新
+      "30のコンテンツデザイン",
       "3倍のSNSブースティング",
-      "3つのプロモーションビデオ", // 更新
+      "3つのプロモーションビデオ",
       "高度なSEO",
     ],
     buttonText: "お問い合わせ",
     buttonColor: "default",
     buttonVariant: "flat",
+    category: "pro",
   },
 ];
 
-// Arabic Translation with updated Pro Package features
+// Arabic
 export const TIERS_AR: Array<Tier> = [
   {
     key: TiersEnum.Free,
@@ -133,6 +139,7 @@ export const TIERS_AR: Array<Tier> = [
     buttonText: "ادفع الآن",
     buttonColor: "primary",
     buttonVariant: "solid",
+    category: "standar",
   },
   {
     key: TiersEnum.Customize,
@@ -142,18 +149,19 @@ export const TIERS_AR: Array<Tier> = [
     price: "Rp100.000",
     features: [
       "3 مواقع إلكترونية",
-      "30 تصميم محتوى", // تم التحديث
+      "30 تصميم محتوى",
       "3 أضعاف تعزيز وسائل التواصل",
-      "3 فيديوهات ترويجية", // تم التحديث
+      "3 فيديوهات ترويجية",
       "تحسين محركات البحث المتقدم",
     ],
     buttonText: "اتصل بنا",
     buttonColor: "default",
     buttonVariant: "flat",
+    category: "pro",
   },
 ];
 
-// Spanish Translation with updated Pro Package features
+// Spanish
 export const TIERS_ES: Array<Tier> = [
   {
     key: TiersEnum.Free,
@@ -171,6 +179,7 @@ export const TIERS_ES: Array<Tier> = [
     buttonText: "Pagar Ahora",
     buttonColor: "primary",
     buttonVariant: "solid",
+    category: "standar",
   },
   {
     key: TiersEnum.Customize,
@@ -180,18 +189,19 @@ export const TIERS_ES: Array<Tier> = [
     price: "Rp100.000",
     features: [
       "3 Sitios Web",
-      "30 Diseños de Contenido", // Actualizado
+      "30 Diseños de Contenido",
       "3x Impulso en Redes Sociales",
-      "3 Videos Promocionales", // Actualizado
+      "3 Videos Promocionales",
       "SEO Avanzado",
     ],
     buttonText: "Contáctanos",
     buttonColor: "default",
     buttonVariant: "flat",
+    category: "pro",
   },
 ];
 
-// Russian Translation with updated Pro Package features
+// Russian
 export const TIERS_RU: Array<Tier> = [
   {
     key: TiersEnum.Free,
@@ -209,6 +219,7 @@ export const TIERS_RU: Array<Tier> = [
     buttonText: "Оплатить",
     buttonColor: "primary",
     buttonVariant: "solid",
+    category: "standar",
   },
   {
     key: TiersEnum.Customize,
@@ -218,17 +229,19 @@ export const TIERS_RU: Array<Tier> = [
     price: "Rp100.000",
     features: [
       "3 веб-сайта",
-      "30 дизайнов контента", // Обновлено
+      "30 дизайнов контента",
       "3x продвижение в соцсетях",
-      "3 рекламных видео", // Обновлено
+      "3 рекламных видео",
       "Расширенное SEO",
     ],
     buttonText: "Связаться с нами",
     buttonColor: "default",
     buttonVariant: "flat",
+    category: "pro",
   },
 ];
 
+// Combine all
 interface TiersCollection {
   [key: `TIERS_${string}`]: Array<Tier>;
 }
