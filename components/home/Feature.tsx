@@ -23,9 +23,6 @@ const Feature = ({
     setSelectedFeatureIndex(selectedFeatureIndex === index ? null : index);
   };
 
-  // Hardcoded YouTube video URL for the second feature
-  const SECOND_FEATURE_VIDEO_URL = "https://www.youtube.com/embed/dQw4w9WgXcQ"; // Example: Rick Astley - Never Gonna Give You Up
-
   return (
     <section id={id}>
       <div className="container space-y-6 rounded-md bg-secondary py-14 lg:py-24">
@@ -71,10 +68,10 @@ const Feature = ({
               {/* Conditional Video/Image Display */}
               {selectedFeatureIndex === index && (
                 <div className="mt-4 w-full">
-                  {index === 1 ? (
+                  {index === 1 && feature.videoUrl ? (
                     <div className="relative" style={{ paddingBottom: "56.25%" /* 16:9 aspect ratio */ }}>
                       <iframe
-                        src={https://www.youtube.com/embed/dQw4w9WgXcQ}
+                        src={feature.videoUrl}
                         title={`Feature ${feature.title}`}
                         className="absolute top-0 left-0 w-full h-full rounded-lg"
                         frameBorder="0"
