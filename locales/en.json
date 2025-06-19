@@ -1,47 +1,39 @@
 {
   "Hero": {
-    "title1": "Start",
-    "title2": "Your Online Business",
-    "title3": "Easily & Quickly",
-    "description": "Build a professional and trustworthy business — or join our high-profit reseller program!"
+    "title": "Launch Your Business",
+    "subtitle": "Simple & Fast",
+    "description": "Build a trusted online business or join our profitable reseller program."
   },
   "SocialProof": {
-    "maker": "people have successfully built their online business with us"
+    "text": "Trusted by thousands to build their online business"
   },
   "Showcase": {
     "title": "Success Stories",
-    "description": "Over 1,000 MSMEs and resellers have successfully gone online with us effortlessly."
+    "description": "1,000+ MSMEs & resellers thrive online with us."
   },
   "Feature": {
-    "title": "Why Bisnovo?"
+    "title": "Why Choose Bisnovo?"
   },
   "Pricing": {
-    "title": "Choose Your Package",
-    "title2": "Affordable Prices, Complete Services",
-    "description": "A complete package for online businesses or resellers. Simple, fast, and proven results.",
-    "doYouLike": "Want to start an online business easily?",
-    "follow": "Follow us on Instagram @bisnovoco"
+    "title": "Select Your Plan",
+    "subtitle": "Affordable & Complete",
+    "description": "All-in-one solutions for businesses & resellers. Proven results.",
+    "cta": "Start today!",
+    "social": "Follow @bisnovoco on Instagram"
   },
   "Testimonials": {
     "title": "Customer Stories",
-    "description1": "Real feedback from those who built their business with Bisnovo",
-    "description2": "See their stories",
-    "description3": "and real results."
+    "description": "Real feedback & results from Bisnovo users."
   },
   "FAQ": {
-    "title": "Frequently Asked Questions",
-    "description": "Find answers about our online business packages and reseller program."
+    "title": "FAQs",
+    "description": "Answers about our business packages & reseller program."
   },
   "CTA": {
-    "title": "Start Your Online Business Now",
-    "description1": "Get 50% off",
-    "description2": "for our resellers",
-    "description3": "and also",
-    "description4": "receive",
-    "description5": "free marketing tools",
-    "description6": "."
+    "title": "Launch Your Business Now",
+    "description": "50% off for resellers + free marketing tools."
   },
   "CTAButton": {
-    "title": "Get Started Now"
+    "title": "Start Now"
   }
 }
