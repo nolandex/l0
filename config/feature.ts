@@ -1,4 +1,4 @@
-import { LucideIcon, GlobeIcon, DollarSignIcon, UsersIcon } from "lucide-react";
+import { LucideIcon, GlobeIcon, DollarSignIcon, UsersIcon, SearchIcon } from "lucide-react";
 import { IconType } from "react-icons";
 import { FaImages } from "react-icons/fa6";
 import { MdCampaign } from "react-icons/md";
@@ -57,7 +57,7 @@ export const FEATURES_ZH = [
   {
     title: "SEO",
     content: "Muncul nama bisnis/ produk kamu di google search",
-    icon: GlobeSignIcon,
+    icon: SearchIcon, // Changed to SearchIcon for SEO
   },
 ];
 
