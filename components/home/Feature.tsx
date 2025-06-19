@@ -1,9 +1,9 @@
 "use client";
 
 import { ALL_FEATURES } from "@/config/feature";
-import React from React, { useState } from "react";
+import React, { useState } from "react"; // Fixed import
 import { RoughNotation } from "react-rough-notation";
-import { Modal } from "@headlessui/modal"; // Example modal library
+import { Modal } from "@headlessui/modal";
 import Image from "next/image";
 
 const Feature = ({
@@ -20,7 +20,6 @@ const Feature = ({
   const FEATURES =
     ALL_FEATURES[`FEATURES_${langName?.toUpperCase?.()}`] ?? ALL_FEATURES.FEATURES_EN;
 
-  // Function to open modal with the correct image
   const handleImageClick = (index: number) => {
     setSelectedImage(`/images/${index + 1}.jpg`);
     setModalOpen(true);
@@ -39,7 +38,7 @@ const Feature = ({
             className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
             onClick={() => setModalOpen(false)}
           >
-            &times;
+            ×
           </button>
           {selectedImage && (
             <Image
@@ -76,7 +75,6 @@ const Feature = ({
                   className="absolute top-2 right-2 text-gray-500 hover:text-primary"
                   onClick={() => handleImageClick(index)}
                 >
-                  {/* Example icon (you can use an SVG or icon library like react-icons) */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5"
