@@ -14,7 +14,7 @@ const LOGOS = [
   { name: "Shadcnui", image: "/images/techStack/shadcnui.svg" },
   { name: "Nextui", image: "/images/techStack/nextui.svg" },
   { name: "TS", image: "/images/techStack/typescript.svg" },
-  { name: "Vercel", image: "/images/techStack/vercel.svg" }
+  { name: "Vercel", image: "/images/techStack/vercel.svg" },
 ];
 
 const Hero = ({
@@ -46,11 +46,11 @@ const Hero = ({
 
       <section className="mx-auto w-full md:max-w-5xl lg:max-w-7xl px-0 md:px-6 lg:px-8 pt-16 pb-12">
         <Marquee direction="left" autoFill pauseOnHover>
-          {LOGOS.map((image, index) => (
+          {LOGOS.map((logo, index) => (
             <div className="mx-6 text-gray-500" key={index}>
               <Image
-                src={image.image}
-                alt={image.name}
+                src={logo.image}
+                alt={logo.name}
                 width={50}
                 height={50}
                 style={{ objectFit: "cover" }}
