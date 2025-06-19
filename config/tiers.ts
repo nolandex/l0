@@ -1,109 +1,113 @@
-
 import { siteConfig } from "@/config/site";
 import { Tier, TiersEnum } from "@/types/pricing";
 
+// English Translation with updated Pro Package features
 export const TIERS_EN: Array<Tier> = [
   {
     key: TiersEnum.Free,
-    title: "Open-Source / Free",
-    price: "Free",
+    title: "Standard Business Package",
+    price: "Rp50,000",
     href: siteConfig.openSourceURL || "#",
-    description:
-      "Freely clone the landing page boilerplate from the GitHub repository.",
+    description: "Start your professional business immediately.",
     features: [
-      "Free",
-      "Access to full code",
-      "Secondary development",
-      "MIT License",
+      "Website",
+      "Content Design",
+      "Social Media Boosting",
+      "Promotional Video",
+      "Basic SEO",
     ],
-    buttonText: "Get started",
+    buttonText: "Pay Now",
     buttonColor: "primary",
     buttonVariant: "solid",
   },
   {
     key: TiersEnum.Customize,
-    title: "Customize",
+    title: "Pro Business Package",
     href: siteConfig.authors[0].twitter || "#",
-    description: "Pay to customize an exclusive landing page.",
-    price: "$188",
+    description: "3x the features of the Standard Business Package.",
+    price: "Rp100,000",
     features: [
-      "Access to full code",
-      "Secondary development",
-      "Exclusive style",
-      "One-on-one service",
-      "More exquisite pages",
+      "3 Websites",
+      "30 Content Designs", // Updated
+      "3x Social Media Boosting",
+      "3 Promotional Videos", // Updated
+      "Advanced SEO",
     ],
-    buttonText: "Contact us",
+    buttonText: "Contact Us",
     buttonColor: "default",
     buttonVariant: "flat",
   },
 ];
 
+// Revised Indonesian (Bahasa Indonesia) content with updated Pro Package features
 export const TIERS_ZH: Array<Tier> = [
   {
     key: TiersEnum.Free,
-    title: "开源 / 免费",
-    price: "免费",
+    title: "Paket Bisnis Standar",
+    price: "Rp50.000",
     href: siteConfig.openSourceURL || "#",
-    description: "可从GitHub仓库免费克隆落地页模板。",
+    description: "Mulai bisnis profesional segera",
     features: [
-      "免费",
-      "访问全部代码",
-      "二次开发",
-      "MIT 许可证",
+      "Website",
+      "Desain konten",
+      "Sosmed boosting",
+      "Video promosi",
+      "SEO dasar",
     ],
-    buttonText: "开始",
+    buttonText: "Bayar",
     buttonColor: "primary",
     buttonVariant: "solid",
   },
   {
     key: TiersEnum.Customize,
-    title: "定制",
+    title: "Paket Bisnis Pro",
     href: siteConfig.authors[0].twitter || "#",
-    description: "支付定制专属落地页。",
-    price: "$188",
+    description: "3x lipat fitur dari paket bisnis standar",
+    price: "Rp100.000",
     features: [
-      "访问全部代码",
-      "二次开发",
-      "独家风格",
-      "一对一服务",
-      "更精致的页面",
+      "3 Website",
+      "30 Desain konten", // Diperbarui
+      "3x Sosmed boosting",
+      "3 Video promosi", // Diperbarui
+      "SEO tingkat lanjut",
     ],
-    buttonText: "联系我们",
+    buttonText: "Hubungi Kami",
     buttonColor: "default",
     buttonVariant: "flat",
   },
 ];
 
+// Japanese Translation with updated Pro Package features
 export const TIERS_JA: Array<Tier> = [
   {
     key: TiersEnum.Free,
-    title: "オープンソース / 無料",
-    price: "無料",
+    title: "スタンダードビジネスパッケージ",
+    price: "Rp50.000",
     href: siteConfig.openSourceURL || "#",
-    description: "GitHubリポジトリからランディングページのボイラープレートを自由にクローンできます。",
+    description: "すぐにプロフェッショナルなビジネスを始めましょう。",
     features: [
-      "無料",
-      "全コードへのアクセス",
-      "二次開発",
-      "MITライセンス",
+      "ウェブサイト",
+      "コンテンツデザイン",
+      "SNSブースティング",
+      "プロモーションビデオ",
+      "基本的なSEO",
     ],
-    buttonText: "始める",
+    buttonText: "支払う",
     buttonColor: "primary",
     buttonVariant: "solid",
   },
   {
     key: TiersEnum.Customize,
-    title: "カスタマイズ",
+    title: "プロビジネスパッケージ",
     href: siteConfig.authors[0].twitter || "#",
-    description: "専用のランディングページをカスタマイズするために支払います。",
-    price: "$188",
+    description: "スタンダードビジネスパッケージの3倍の機能。",
+    price: "Rp100.000",
     features: [
-      "全コードへのアクセス",
-      "二次開発",
-      "独占スタイル",
-      "1対1のサービス",
-      "より精巧なページ",
+      "3つのウェブサイト",
+      "30のコンテンツデザイン", // 更新
+      "3倍のSNSブースティング",
+      "3つのプロモーションビデオ", // 更新
+      "高度なSEO",
     ],
     buttonText: "お問い合わせ",
     buttonColor: "default",
@@ -111,35 +115,37 @@ export const TIERS_JA: Array<Tier> = [
   },
 ];
 
+// Arabic Translation with updated Pro Package features
 export const TIERS_AR: Array<Tier> = [
   {
     key: TiersEnum.Free,
-    title: "مفتوح المصدر / مجاني",
-    price: "مجاناً",
+    title: "باقة الأعمال القياسية",
+    price: "Rp50.000",
     href: siteConfig.openSourceURL || "#",
-    description: "يمكنك نسخ قالب صفحة الهبوط من مستودع GitHub بحرية.",
+    description: "ابدأ عملك الاحترافي على الفور.",
     features: [
-      "مجاني",
-      "الوصول إلى كامل الكود",
-      "التطوير الثانوي",
-      "رخصة MIT",
+      "موقع إلكتروني",
+      "تصميم المحتوى",
+      "تعزيز وسائل التواصل الاجتماعي",
+      "فيديو ترويجي",
+      "تحسين محركات البحث الأساسي",
     ],
-    buttonText: "ابدأ الآن",
+    buttonText: "ادفع الآن",
     buttonColor: "primary",
     buttonVariant: "solid",
   },
   {
     key: TiersEnum.Customize,
-    title: "تخصيص",
+    title: "باقة الأعمال الاحترافية",
     href: siteConfig.authors[0].twitter || "#",
-    description: "ادفع لتخصيص صفحة هبوط حصرية.",
-    price: "$188",
+    description: "3 أضعاف ميزات باقة الأعمال القياسية.",
+    price: "Rp100.000",
     features: [
-      "الوصول إلى كامل الكود",
-      "التطوير الثانوي",
-      "أسلوب حصري",
-      "خدمة فردية",
-      "صفحات أكثر دقة",
+      "3 مواقع إلكترونية",
+      "30 تصميم محتوى", // تم التحديث
+      "3 أضعاف تعزيز وسائل التواصل",
+      "3 فيديوهات ترويجية", // تم التحديث
+      "تحسين محركات البحث المتقدم",
     ],
     buttonText: "اتصل بنا",
     buttonColor: "default",
@@ -147,36 +153,37 @@ export const TIERS_AR: Array<Tier> = [
   },
 ];
 
+// Spanish Translation with updated Pro Package features
 export const TIERS_ES: Array<Tier> = [
   {
     key: TiersEnum.Free,
-    title: "Código Abierto / Gratuito",
-    price: "Gratis",
+    title: "Paquete de Negocios Estándar",
+    price: "Rp50.000",
     href: siteConfig.openSourceURL || "#",
-    description:
-      "Clona libremente la plantilla de página de aterrizaje desde el repositorio de GitHub.",
+    description: "Inicie su negocio profesional de inmediato.",
     features: [
-      "Gratis",
-      "Acceso a todo el código",
-      "Desarrollo secundario",
-      "Licencia MIT",
+      "Sitio Web",
+      "Diseño de Contenido",
+      "Impulso en Redes Sociales",
+      "Video Promocional",
+      "SEO Básico",
     ],
-    buttonText: "Comenzar",
+    buttonText: "Pagar Ahora",
     buttonColor: "primary",
     buttonVariant: "solid",
   },
   {
     key: TiersEnum.Customize,
-    title: "Personalizar",
+    title: "Paquete de Negocios Pro",
     href: siteConfig.authors[0].twitter || "#",
-    description: "Paga para personalizar una página de aterrizaje exclusiva.",
-    price: "$188",
+    description: "3 veces las características del Paquete de Negocios Estándar.",
+    price: "Rp100.000",
     features: [
-      "Acceso a todo el código",
-      "Desarrollo secundario",
-      "Estilo exclusivo",
-      "Servicio personalizado",
-      "Páginas más exquisitas",
+      "3 Sitios Web",
+      "30 Diseños de Contenido", // Actualizado
+      "3x Impulso en Redes Sociales",
+      "3 Videos Promocionales", // Actualizado
+      "SEO Avanzado",
     ],
     buttonText: "Contáctanos",
     buttonColor: "default",
@@ -184,36 +191,37 @@ export const TIERS_ES: Array<Tier> = [
   },
 ];
 
+// Russian Translation with updated Pro Package features
 export const TIERS_RU: Array<Tier> = [
   {
     key: TiersEnum.Free,
-    title: "Открытый Источник / Бесплатно",
-    price: "Бесплатно",
+    title: "Стандартный бизнес-пакет",
+    price: "Rp50.000",
     href: siteConfig.openSourceURL || "#",
-    description:
-      "Свободно клонируйте шаблон лендинга из репозитория на GitHub.",
+    description: "Начните свой профессиональный бизнес немедленно.",
     features: [
-      "Бесплатно",
-      "Доступ ко всему коду",
-      "Вторичная разработка",
-      "Лицензия MIT",
+      "Веб-сайт",
+      "Дизайн контента",
+      "Продвижение в социальных сетях",
+      "Рекламное видео",
+      "Базовое SEO",
     ],
-    buttonText: "Начать",
+    buttonText: "Оплатить",
     buttonColor: "primary",
     buttonVariant: "solid",
   },
   {
     key: TiersEnum.Customize,
-    title: "Настройка",
+    title: "Профессиональный бизнес-пакет",
     href: siteConfig.authors[0].twitter || "#",
-    description: "Оплатите персонализацию эксклюзивной лендинг страницы.",
-    price: "$188",
+    description: "В 3 раза больше возможностей, чем в стандартном бизнес-пакете.",
+    price: "Rp100.000",
     features: [
-      "Доступ ко всему коду",
-      "Вторичная разработка",
-      "Эксклюзивный стиль",
-      "Индивидуальное обслуживание",
-      "Более изысканные страницы",
+      "3 веб-сайта",
+      "30 дизайнов контента", // Обновлено
+      "3x продвижение в соцсетях",
+      "3 рекламных видео", // Обновлено
+      "Расширенное SEO",
     ],
     buttonText: "Связаться с нами",
     buttonColor: "default",
@@ -231,5 +239,5 @@ export const ALL_TIERS: TiersCollection = {
   TIERS_JA,
   TIERS_AR,
   TIERS_ES,
-  TIERS_RU
-}
+  TIERS_RU,
+};
