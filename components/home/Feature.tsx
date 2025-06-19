@@ -19,7 +19,8 @@ const Feature = ({
     ALL_FEATURES[`FEATURES_${langName?.toUpperCase?.()}`] ?? ALL_FEATURES.FEATURES_EN;
 
   const handleCardClick = (index: number) => {
-    setSelectedFeatureIndex(index);
+    // Toggle image: show if not selected, hide if already selected
+    setSelectedFeatureIndex(selectedFeatureIndex === index ? null : index);
   };
 
   return (
@@ -40,7 +41,7 @@ const Feature = ({
             <button
               key={feature.title}
               onClick={() => handleCardClick(index)}
-              className="flex h-[180px] flex-col items-center justify-start rounded-md bg-background/70 p-8 shadow-md border dark:border-muted hover:bg-background/90 transition-colors cursor-pointer"
+              className="flex flex-col items-center justify-start rounded-md bg-background/70 p-8 shadow-md border dark:border-muted hover:bg-background/90 transition-colors cursor-pointer"
             >
               {/* Feature Icon */}
               <div className="flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 text-primary mb-3 mt-1">
@@ -63,28 +64,22 @@ const Feature = ({
               <p className="text-sm text-muted-foreground mt-0">
                 {feature.content}
               </p>
+
+              {/* Image Display */}
+              {selectedFeatureIndex === index && (
+                <div className="mt-4">
+                  <Image
+                    src={`/images/${index + 1}.jpg`}
+                    alt={`Feature ${feature.title}`}
+                    width={200}
+                    height={150}
+                    className="rounded-lg w-full h-auto"
+                  />
+                </div>
+              )}
             </button>
           ))}
         </div>
-
-        {/* Image Display */}
-        {selectedFeatureIndex !== null && (
-          <div className="mx-auto mt-8 max-w-lg text-center">
-            <Image
-              src={`/images/${selectedFeatureIndex + 1}.jpg`}
-              alt={`Feature ${FEATURES[selectedFeatureIndex].title}`}
-              width={500}
-              height={400}
-              className="rounded-lg"
-            />
-            <button
-              onClick={() => setSelectedFeatureIndex(null)}
-              className="mt-4 text-sm text-primary hover:underline"
-            >
-              Close Image
-            </button>
-          </div>
-        )}
       </div>
     </section>
   );
