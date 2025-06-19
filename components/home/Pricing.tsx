@@ -28,7 +28,7 @@ const Pricing = ({
 }) => {
   const TIERS = ALL_TIERS[`TIERS_${langName.toUpperCase()}`];
 
-  const [activeTier, setActiveTier] = useState("standar");
+  const [activeTier, setActiveTier] = useState<"standar" | "pro">("standar");
 
   const filteredTiers = TIERS?.filter(
     (tier) => tier.category === activeTier
