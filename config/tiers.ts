@@ -19,7 +19,6 @@ export const TIERS_EN: Array<Tier> = [
     buttonText: "Pay Now",
     buttonColor: "primary",
     buttonVariant: "solid",
-    category: "standar",
   },
   {
     key: TiersEnum.Customize,
@@ -37,12 +36,11 @@ export const TIERS_EN: Array<Tier> = [
     buttonText: "Contact Us",
     buttonColor: "default",
     buttonVariant: "flat",
-    category: "pro",
   },
 ];
 
-// Bahasa Indonesia (replacing ZH)
-export const TIERS_ZH: Array<Tier> = [
+// Indonesian (Bahasa Indonesia)
+export const TIERS_ID: Array<Tier> = [
   {
     key: TiersEnum.Free,
     title: "Paket Bisnis Standar",
@@ -59,7 +57,6 @@ export const TIERS_ZH: Array<Tier> = [
     buttonText: "Bayar",
     buttonColor: "primary",
     buttonVariant: "solid",
-    category: "standar",
   },
   {
     key: TiersEnum.Customize,
@@ -77,11 +74,10 @@ export const TIERS_ZH: Array<Tier> = [
     buttonText: "Hubungi Kami",
     buttonColor: "default",
     buttonVariant: "flat",
-    category: "pro",
   },
 ];
 
-// Japanese
+// Japanese Translation
 export const TIERS_JA: Array<Tier> = [
   {
     key: TiersEnum.Free,
@@ -99,7 +95,6 @@ export const TIERS_JA: Array<Tier> = [
     buttonText: "支払う",
     buttonColor: "primary",
     buttonVariant: "solid",
-    category: "standar",
   },
   {
     key: TiersEnum.Customize,
@@ -117,11 +112,10 @@ export const TIERS_JA: Array<Tier> = [
     buttonText: "お問い合わせ",
     buttonColor: "default",
     buttonVariant: "flat",
-    category: "pro",
   },
 ];
 
-// Arabic
+// Arabic Translation
 export const TIERS_AR: Array<Tier> = [
   {
     key: TiersEnum.Free,
@@ -139,7 +133,6 @@ export const TIERS_AR: Array<Tier> = [
     buttonText: "ادفع الآن",
     buttonColor: "primary",
     buttonVariant: "solid",
-    category: "standar",
   },
   {
     key: TiersEnum.Customize,
@@ -157,11 +150,10 @@ export const TIERS_AR: Array<Tier> = [
     buttonText: "اتصل بنا",
     buttonColor: "default",
     buttonVariant: "flat",
-    category: "pro",
   },
 ];
 
-// Spanish
+// Spanish Translation
 export const TIERS_ES: Array<Tier> = [
   {
     key: TiersEnum.Free,
@@ -179,7 +171,6 @@ export const TIERS_ES: Array<Tier> = [
     buttonText: "Pagar Ahora",
     buttonColor: "primary",
     buttonVariant: "solid",
-    category: "standar",
   },
   {
     key: TiersEnum.Customize,
@@ -197,11 +188,10 @@ export const TIERS_ES: Array<Tier> = [
     buttonText: "Contáctanos",
     buttonColor: "default",
     buttonVariant: "flat",
-    category: "pro",
   },
 ];
 
-// Russian
+// Russian Translation
 export const TIERS_RU: Array<Tier> = [
   {
     key: TiersEnum.Free,
@@ -219,7 +209,6 @@ export const TIERS_RU: Array<Tier> = [
     buttonText: "Оплатить",
     buttonColor: "primary",
     buttonVariant: "solid",
-    category: "standar",
   },
   {
     key: TiersEnum.Customize,
@@ -237,18 +226,16 @@ export const TIERS_RU: Array<Tier> = [
     buttonText: "Связаться с нами",
     buttonColor: "default",
     buttonVariant: "flat",
-    category: "pro",
   },
 ];
 
-// Combine all
 interface TiersCollection {
   [key: `TIERS_${string}`]: Array<Tier>;
 }
 
 export const ALL_TIERS: TiersCollection = {
   TIERS_EN,
-  TIERS_ZH,
+  TIERS_ID, // Diperbaiki dari TIERS_ZH
   TIERS_JA,
   TIERS_AR,
   TIERS_ES,
