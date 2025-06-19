@@ -9,8 +9,10 @@ import {
   Divider,
   Link,
   Spacer,
+  ButtonGroup,
 } from "@nextui-org/react";
 
+import { useState } from "react";
 import { ALL_TIERS } from "@/config/tiers";
 import { FaCheck } from "react-icons/fa";
 import { RoughNotation } from "react-rough-notation";
@@ -25,29 +27,50 @@ const Pricing = ({
   langName: string;
 }) => {
   const TIERS = ALL_TIERS[`TIERS_${langName.toUpperCase()}`];
+
+  const [activeTier, setActiveTier] = useState("standar");
+
+  const filteredTiers = TIERS?.filter(
+    (tier) => tier.category === activeTier
+  );
+
   return (
     <section
       id={id}
       className="flex flex-col justify-center max-w-4xl items-center pt-16"
     >
       <div className="flex flex-col text-center max-w-xl">
-        <h2 className="text-center text-white">
+        <h2 className="text-center text-white text-3xl font-semibold">
           <RoughNotation type="highlight" show={true} color="#2563EB">
             {locale.title}
           </RoughNotation>
         </h2>
-
-        {/* Baris <h3> yang berisi "Get unlimited access" telah dihapus dari sini */}
-
-        <Spacer y={2} /> {/* Spacer dikurangi agar jarak tidak terlalu jauh */}
-        <p className="text-large text-default-500">{locale.description}</p>
       </div>
-      <Spacer y={8} />
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 justify-items-center">
-        {TIERS?.map((tier) => (
+
+      <Spacer y={4} />
+
+      <ButtonGroup isBordered variant="solid" color="primary">
+        <Button
+          onPress={() => setActiveTier("standar")}
+          isDisabled={activeTier === "standar"}
+        >
+          Standar
+        </Button>
+        <Button
+          onPress={() => setActiveTier("pro")}
+          isDisabled={activeTier === "pro"}
+        >
+          Pro
+        </Button>
+      </ButtonGroup>
+
+      <Spacer y={6} />
+
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 justify-items-center w-full">
+        {filteredTiers?.map((tier) => (
           <Card key={tier.key} className="p-3 flex-1 w-[90%]" shadow="md">
             <CardHeader className="flex flex-col items-start gap-2 pb-6">
-              <h2 className="text-large font-medium">{tier.title}</h2>
+              <h3 className="text-large font-medium">{tier.title}</h3>
               <p className="text-medium text-default-500">{tier.description}</p>
             </CardHeader>
             <Divider />
@@ -56,11 +79,6 @@ const Pricing = ({
                 <span className="inline bg-gradient-to-br from-foreground to-foreground-600 bg-clip-text text-2xl font-semibold leading-7 tracking-tight text-transparent">
                   {tier.price}
                 </span>
-                {typeof tier.price !== "string" ? (
-                  <span className="text-small font-medium text-default-400">
-                    {tier.price}
-                  </span>
-                ) : null}
               </p>
               <ul className="flex flex-col gap-2">
                 {tier.features?.map((feature) => (
@@ -87,6 +105,7 @@ const Pricing = ({
           </Card>
         ))}
       </div>
+
       <Spacer y={12} />
     </section>
   );
