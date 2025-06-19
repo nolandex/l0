@@ -1,4 +1,4 @@
-"use client";
+"use client"; // WAJIB: Karena kita akan menggunakan hook 'useTheme'.
 
 import { LineText } from "@/components/LineText";
 import CTAButton from "@/components/home/CTAButton";
@@ -7,14 +7,38 @@ import Image from "next/image";
 import Marquee from "react-fast-marquee";
 
 const LOGOS = [
-  { name: "Next.js", image: "/images/techStack/nextjs.svg" },
-  { name: "React", image: "/images/techStack/react.svg" },
-  { name: "Tailwind", image: "/images/techStack/tailwind.svg" },
-  { name: "Framer", image: "/images/techStack/framer.svg" },
-  { name: "Shadcnui", image: "/images/techStack/shadcnui.svg" },
-  { name: "Nextui", image: "/images/techStack/nextui.svg" },
-  { name: "TS", image: "/images/techStack/typescript.svg" },
-  { name: "Vercel", image: "/images/techStack/vercel.svg" },
+  {
+    name: "Next.js",
+    image: "/images/techStack/nextjs.svg",
+  },
+  {
+    name: "React",
+    image: "/images/techStack/react.svg",
+  },
+  {
+    name: "Tailwind",
+    image: "/images/techStack/tailwind.svg",
+  },
+  {
+    name: "Framer",
+    image: "/images/techStack/framer.svg",
+  },
+  {
+    name: "Shadcnui",
+    image: "/images/techStack/shadcnui.svg",
+  },
+  {
+    name: "Nextui",
+    image: "/images/techStack/nextui.svg",
+  },
+  {
+    name: "TS",
+    image: "/images/techStack/typescript.svg",
+  },
+  {
+    name: "Vercel",
+    image: "/images/techStack/vercel.svg",
+  },
 ];
 
 const Hero = ({
@@ -28,16 +52,6 @@ const Hero = ({
 }) => {
   const { theme } = useTheme();
 
-  // Fungsi untuk menyesuaikan ukuran font berdasarkan panjang teks
-  const getFontSize = (text: string) => {
-    const length = text.length;
-    if (length > 50) return "clamp(2rem, 7vw, 4rem)"; // Teks panjang
-    return "clamp(2.5rem, 8vw, 5rem)"; // Teks normal
-  };
-
-  // Gabungkan title1, title2, title3 untuk menghitung panjang total
-  const fullTitle = `${locale.title1}${locale.title2}${locale.title3}`;
-
   return (
     <>
       <section
@@ -46,11 +60,9 @@ const Hero = ({
       >
         <h1
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight tracking-tight
-                     max-w-[90vw] mx-auto hyphens-auto whitespace-normal
-                     [&>*]:block sm:[&>*]:inline-block"
+                     [&>*]:block sm:[&>*]:inline-block" // Ensures LineText wraps on small screens
           style={{
-            fontSize: getFontSize(fullTitle), // Sesuaikan ukuran font
-            overflowWrap: "break-word", // Pecah kata panjang
+            fontSize: "clamp(2.5rem, 8vw, 5rem)", // Fluid typography
           }}
         >
           {locale.title1} <LineText>{locale.title2}</LineText> {locale.title3}
@@ -71,7 +83,9 @@ const Hero = ({
                 alt={image.name}
                 width={50}
                 height={50}
-                style={{ objectFit: "cover" }}
+                style={{
+                  objectFit: "cover",
+                }}
                 className={`${
                   theme === "dark" ? "filter dark:invert grayscale" : ""
                 } hover:filter-none transition-all duration-300 cursor-pointer text-gray-500`}
