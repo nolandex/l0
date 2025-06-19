@@ -6,25 +6,7 @@ export const TestimonialsData = [
       image: "/images/users/1.png",
     },
     content:
-      "Bisnovo bantu saya bangun bisnis online dalam hitungan jam! Website dan sistem otomatis langsung aktif, dan saya dapat penjualan di hari yang sama. Mantap banget!",
-  },
-  {
-    user: {
-      name: "James Carter",
-      username: "reseller_handal",
-      image: "/images/users/2.png",
-    },
-    content:
-      "Gabung jadi reseller Bisnovo itu game changer! Tanpa modal awal, konten siap pakai, langsung fokus jualan. Penghasilan pun langsung mengalir!",
-  },
-  {
-    user: {
-      name: "Siti Rahayu",
-      username: "seller_premium",
-      image: "/images/users/3.png",
-    },
-    content:
-      "Bisnovo bikin saya punya brand sendiri dengan tampilan profesional. Produk terlihat eksklusif, beda dari yang lain—bikin customer langsung percaya!",
+      "Bisnovo helped me build an online business in just hours! The website and automated system were instantly active, and I got sales on the same day. Absolutely amazing!",
   },
   {
     user: {
@@ -37,11 +19,38 @@ export const TestimonialsData = [
   },
   {
     user: {
+      name: "James Carter",
+      username: "reseller_handal",
+      image: "/images/users/2.png",
+    },
+    content:
+      "Joining Bisnovo as a reseller was a game changer! No initial capital needed, ready-to-use content, and I could focus on selling. Income started flowing right away!",
+  },
+  {
+    user: {
       name: "Fandi Pratama",
       username: "online_shop_owner",
       image: "/images/users/5.png",
     },
     content:
       "Bisnovo bikin bisnis online saya terlihat kredibel dan profesional. Dukungan timnya cepat banget, bikin saya makin percaya diri jualan online!",
-  }
+  },
+  {
+    user: {
+      name: "Michael Brown",
+      username: "ecommerce_pro",
+      image: "/images/users/6.png",
+    },
+    content:
+      "Bisnovo’s platform is a lifesaver for entrepreneurs. The seamless setup and marketing tools allowed me to scale my business quickly and efficiently!",
+  },
+  {
+    user: {
+      name: "Siti Rahayu",
+      username: "seller_premium",
+      image: "/images/users/3.png",
+    },
+    content:
+      "Bisnovo bikin saya punya brand sendiri dengan tampilan profesional. Produk terlihat eksklusif, beda dari yang lain—bikin customer langsung percaya!",
+  },
 ];
