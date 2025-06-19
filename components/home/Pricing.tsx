@@ -2,7 +2,6 @@
 
 import {
   Button,
-  ButtonGroup,
   Card,
   CardBody,
   CardFooter,
@@ -11,7 +10,7 @@ import {
   Link,
   Spacer,
 } from "@nextui-org/react";
-import { useState } from "react";
+
 import { ALL_TIERS } from "@/config/tiers";
 import { FaCheck } from "react-icons/fa";
 import { RoughNotation } from "react-rough-notation";
@@ -26,8 +25,6 @@ const Pricing = ({
   langName: string;
 }) => {
   const TIERS = ALL_TIERS[`TIERS_${langName.toUpperCase()}`];
-  const [activePlan, setActivePlan] = useState<"standard" | "pro">("standard");
-
   return (
     <section
       id={id}
@@ -39,26 +36,15 @@ const Pricing = ({
             {locale.title}
           </RoughNotation>
         </h2>
-        <Spacer y={4} />
+
+        {/* Baris <h3> yang berisi "Get unlimited access" telah dihapus dari sini */}
+
+        <Spacer y={2} /> {/* Spacer dikurangi agar jarak tidak terlalu jauh */}
+        <p className="text-large text-default-500">{locale.description}</p>
       </div>
-      <Spacer y={4} />
-      <ButtonGroup>
-        <Button
-          color={activePlan === "standard" ? "primary" : "default"}
-          onPress={() => setActivePlan("standard")}
-        >
-          Standard
-        </Button>
-        <Button
-          color={activePlan === "pro" ? "primary" : "default"}
-          onPress={() => setActivePlan("pro")}
-        >
-          Pro
-        </Button>
-      </ButtonGroup>
-      <Spacer y={6} />
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 justify-items-center">
-        {TIERS?.slice(0, activePlan === "pro" ? 2 : 1).map((tier) => (
+      <Spacer y={8} />
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 justify-items-center">
+        {TIERS?.map((tier) => (
           <Card key={tier.key} className="p-3 flex-1 w-[90%]" shadow="md">
             <CardHeader className="flex flex-col items-start gap-2 pb-6">
               <h2 className="text-large font-medium">{tier.title}</h2>
