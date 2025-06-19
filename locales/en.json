@@ -1,39 +1,40 @@
 {
   "Hero": {
-    "title": "Launch Your Business",
-    "subtitle": "Simple & Fast",
-    "description": "Build a trusted online business or join our profitable reseller program."
+    "title1": "Build Your",
+    "title2": "Online Business",
+    "title3": "Today",
+    "description": "Create your brand or resell our ready-made products. Zero hassle, full support."
   },
   "SocialProof": {
-    "text": "Trusted by thousands to build their online business"
+    "text": "Trusted by 1,000+ entrepreneurs"
   },
   "Showcase": {
     "title": "Success Stories",
-    "description": "1,000+ MSMEs & resellers thrive online with us."
+    "description": "Over 1,000 people have grown with Bisnovo."
   },
   "Feature": {
     "title": "Why Choose Bisnovo?"
   },
   "Pricing": {
-    "title": "Select Your Plan",
-    "subtitle": "Affordable & Complete",
-    "description": "All-in-one solutions for businesses & resellers. Proven results.",
-    "cta": "Start today!",
-    "social": "Follow @bisnovoco on Instagram"
+    "title": "Choose a Plan",
+    "title2": "Affordable & Complete",
+    "description": "For new businesses and aspiring resellers.",
+    "doYouLike": "Want to start your journey?",
+    "follow": "Follow us @bisnovoco"
   },
   "Testimonials": {
-    "title": "Customer Stories",
-    "description": "Real feedback & results from Bisnovo users."
+    "title": "What Our Users Say",
+    "description": "Real feedback from real success stories."
   },
   "FAQ": {
-    "title": "FAQs",
-    "description": "Answers about our business packages & reseller program."
+    "title": "Frequently Asked Questions",
+    "description": "Details about our plans, benefits, and how to become a reseller."
   },
   "CTA": {
-    "title": "Launch Your Business Now",
-    "description": "50% off for resellers + free marketing tools."
+    "title": "Get Started Today",
+    "description": "Get 50% off and access to complete tools to launch your business."
   },
   "CTAButton": {
-    "title": "Start Now"
+    "title": "Let’s Go"
   }
 }
