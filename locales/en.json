@@ -1,47 +1,47 @@
 {
   "Hero": {
-    "title1": "Ship",
-    "title2": "Landing Page",
-    "title3": "Fast",
-    "description": "A free, open-source, and powerful landing page boilerplate, ideal for various projects, enabling you to create a landing page in under an hour."
+    "title1": "Start",
+    "title2": "Your Online Business",
+    "title3": "Easily & Quickly",
+    "description": "Build a professional and trustworthy business — or join our high-profit reseller program!"
   },
   "SocialProof": {
-    "maker": "makers ship fast"
+    "maker": "people have successfully built their online business with us"
   },
   "Showcase": {
-    "title": "Showcase",
-    "description": "Join 1000+ Makers Boosting Conversions with Our Landing Page Boilerplate"
+    "title": "Success Stories",
+    "description": "Over 1,000 MSMEs and resellers have successfully gone online with us effortlessly."
   },
   "Feature": {
-    "title": "Features"
+    "title": "Why Bisnovo?"
   },
   "Pricing": {
-    "title": "Pricing",
-    "title2": "Get unlimited access.",
-    "description": "The page you are currently viewing is an open-source, free boilerplate.",
-    "doYouLike": "Do you like this landing page boilerplate?",
-    "follow": "Follow my Twitter."
+    "title": "Choose Your Package",
+    "title2": "Affordable Prices, Complete Services",
+    "description": "A complete package for online businesses or resellers. Simple, fast, and proven results.",
+    "doYouLike": "Want to start an online business easily?",
+    "follow": "Follow us on Instagram @bisnovoco"
   },
   "Testimonials": {
-    "title": "Testimonials",
-    "description1": "If you use this landing page template and recommend it on your Twitter,",
-    "description2": "please let me know",
-    "description3": ". I will display your tweet and recommendation here."
+    "title": "Customer Stories",
+    "description1": "Real feedback from those who built their business with Bisnovo",
+    "description2": "See their stories",
+    "description3": "and real results."
   },
   "FAQ": {
-    "title": "FAQs",
-    "description": "Here are some of the most frequently asked questions."
+    "title": "Frequently Asked Questions",
+    "description": "Find answers about our online business packages and reseller program."
   },
   "CTA": {
-    "title": "Build Your Landing Page Now",
-    "description1": "Build",
-    "description2": "your landing page,",
-    "description3": "show",
-    "description4": "your product, and",
-    "description5": "start earning",
-    "description6": "!"
+    "title": "Start Your Online Business Now",
+    "description1": "Get 50% off",
+    "description2": "for our resellers",
+    "description3": "and also",
+    "description4": "receive",
+    "description5": "free marketing tools",
+    "description6": "."
   },
   "CTAButton": {
-    "title": "Get Boilerplate"
+    "title": "Get Started Now"
   }
 }
