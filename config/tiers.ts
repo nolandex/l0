@@ -40,7 +40,7 @@ export const TIERS_EN: Array<Tier> = [
 ];
 
 // Indonesian (Bahasa Indonesia)
-export const TIERS_ID: Array<Tier> = [
+export const TIERS_ZH: Array<Tier> = [
   {
     key: TiersEnum.Free,
     title: "Paket Bisnis Standar",
@@ -235,7 +235,7 @@ interface TiersCollection {
 
 export const ALL_TIERS: TiersCollection = {
   TIERS_EN,
-  TIERS_ID, // Diperbaiki dari TIERS_ZH
+  TIERS_ZH, // Diperbaiki dari TIERS_ZH
   TIERS_JA,
   TIERS_AR,
   TIERS_ES,
